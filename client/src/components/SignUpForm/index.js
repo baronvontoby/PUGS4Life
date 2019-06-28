@@ -125,7 +125,7 @@ class RegisterPage extends Component {
                     onInput={this.handleInput}
                   />
                   <MDBRow>
-                  <MDBCol>
+                  <MDBCol md={4}>
                     <MDBInput
                       label="City"
                       icon="city"
@@ -140,7 +140,7 @@ class RegisterPage extends Component {
                       onInput={this.handleinput} 
                     />
                   </MDBCol>
-                  <MDBCol>
+                  <MDBCol md={4}>
                    <MDBInput
                     label="State"
                     icon="compass"
