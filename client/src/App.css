@@ -29,7 +29,7 @@ body{
  background-position-y: -1em;
  background-repeat: no-repeat;
  background-attachment: fixed; */
- background: linear-gradient(to top, rgb(218, 218, 218) 70%, #2C3E50 40%);
+ background: linear-gradient(to top, rgb(218, 218, 218) 70%, #c7c3fa 40%);
  height:100vh;
 }
 @keyframes App-logo-spin {

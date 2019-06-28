@@ -26,6 +26,7 @@
     "mdbreact": "^4.17.0",
     "mysql2": "^1.6.5",
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "reactstrap": "^8.0.0",
     "sendmail": "^1.4.1",

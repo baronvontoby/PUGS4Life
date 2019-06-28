@@ -45,15 +45,25 @@
 
 
     .gradient-teal{
-      background: #4CA1AF;  /* fallback for old browsers */
-    
+      background: #F8DBB4;  /* fallback for old browsers */
+      border: 1px #EFA544 solid;
       background-size: 50px;
       
      }
-    
+     .card-body{
+      border: 1px #EFA544 solid;
+
+     }
+     
+    .icon-class{
+      margin-right:10px;
+    }
      .btn{
-      background-color: #4CA1AF!important; }
-    
+      background-color: #c7c3fa!important;
+    }
+    a{
+      color: #EFA544;
+    }
      .marginz{
        margin-top:7em;
      }
@@ -63,7 +73,7 @@
      }
      
     .divider{
-      background-color:teal;
+      background-color:#c7c3fa;
       background-position: -100px;
     }
 
@@ -73,7 +83,7 @@
       background-position-y: -1em;
       background-repeat: no-repeat;
       background-attachment: fixed; */
-      background: linear-gradient(to top, rgb(218, 218, 218) 70%, #2C3E50 40%);
+      background: linear-gradient(to top, rgb(218, 218, 218) 70%, #98e0da 40%);
       height:100vh;
      }
 

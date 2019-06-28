@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBRow, MDBCardHeader, MDBContainer } from "mdbreact";
-import "./index.css";
 import "./pugs.png";
 class RegisterPage extends Component {
   constructor() {
@@ -11,19 +10,26 @@ class RegisterPage extends Component {
       email: "",
       emailconfirm:"",
       phonenumber: "",
-      message: "",
       password: "",
       city:"",
-      imageurl:""
+      imageurl:"",
+      state:"",
+      zipcode: ""
 
     };
   }
-
-  handleInput = e => {
-    this.setState({
-      [e.target.name]: e.target.value
+  handleInput = field => event => {
+    const {value} = event.target;
+    this.setState( {
+        [field] : value
     })
-  }
+}
+
+  // handleInput = e => {
+  //   this.setState({
+  //     [e.target.name]: e.target.value
+  //   })
+  // }
 
   sendForm = () => {
     fetch('https://some/url', {
@@ -42,9 +48,9 @@ class RegisterPage extends Component {
   render() {
     return (
       <MDBContainer>
-<MDBRow>
-      <MDBCol md={8} sm={12} className="text-left mx-auto">
-          <MDBCard className="mx-auto mt-2">
+<MDBRow className=" mx-auto">
+      <MDBCol md={12} sm={12} className="text-left mx-auto">
+          <MDBCard className="mx-auto mt-2 animated fadeInUp  wow">
           <MDBCardHeader className="form-header gradient-teal rounded p-3">
               <MDBRow className="justify-content-start">
                 <MDBCol xs={6} className="align-self-center">
@@ -106,34 +112,39 @@ class RegisterPage extends Component {
                     onInput={this.handleInput}
                   />
                 <MDBInput
-                    label="Your PhoneNumber"
+                    label="Your Phone Number"
                     icon="phone"
                     group
                     type="tel"
                     validate
                     error="wrong"
                     success="right"
-                    pattern="[0-9-0-9-0-9]"
-                    maxLength="10"
+                  
+                    maxLength='10'
                     value={this.state.phonenumber}
                     onInput={this.handleInput}
                   />
-                  <MDBInput
-                    label="City"
-                    icon="city"
-                    group
-                    type="tel"
-                    validate
-                    error="wrong"
-                    success="right"
-                    name="city"
-                    value={this.state.city}
-                    onInput={this.handleinput}
-                    
-                  />
+                  <MDBRow>
+                  <MDBCol>
+                    <MDBInput
+                      label="City"
+                      icon="city"
+                      // iconClass="mr-5"
+                      group
+                      type="text"
+                      validate
+                      error="wrong"
+                      success="right"
+                      name="city"
+                      value={this.state.city}
+                      onInput={this.handleinput} 
+                    />
+                  </MDBCol>
+                  <MDBCol>
                    <MDBInput
                     label="State"
                     icon="compass"
+                    iconClass="icon-class"
                     group
                     type="text"
                     validate
@@ -144,23 +155,46 @@ class RegisterPage extends Component {
                     onInput={this.handleinput}
                     
                   />
-                  {/* <MDBInput
+                  </MDBCol>
+                  <MDBCol>
+                   <MDBInput
+                    label="Zipcode"
+                    icon="compass"
+                    iconClass="icon-class"
+                    group
+                    type="text"
+                    pattern="[0-9-0-9-0-9]"
+                    maxLength= "5"
+                    validate
+                    error="wrong"
+                    success="right"
+                    name="zipcode"
+                    value={this.state.zipcode}
+                    onInput={this.handleinput}
+                    
+                  />
+                  </MDBCol>
+                  </MDBRow>
+                  <MDBInput
                     label="Avatar Image URL"
                     icon="picture"
                     group
-                    type="text"
-                    validate
-                    error="wrong"
-                    name="image"
-                    success="right"
+                    // type="text"
+                    // validate
+                    // error="wrong"
+                    // name="image"
+                    // success="right"
                     name= "imageurl"
                     value={this.state.imageurl}
-                    onChange={this.handleinput("imageurl")}
+                    onChange={this.handleInput("imageurl")}
                     
-                  /> */}
+                  />
+                  <div className="mx-auto text-center">
+      <img alt="" src={this.state.imageurl} className="img-fluid img-circle "></img>
+      </div>
                   
               </div>
-              <img alt="" src={this.state.imageUrl} className="img-fluid img-circle "></img>
+
               <div className="text-center py-4 mt-3">
                 <MDBBtn color="cyan" onClick={this.sendForm}>
                   Send Message
@@ -169,7 +203,10 @@ class RegisterPage extends Component {
             </form>
           </MDBCardBody>
         </MDBCard>
+
+
       </MDBCol>
+
     </MDBRow>
   </MDBContainer>    
     );

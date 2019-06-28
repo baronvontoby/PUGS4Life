@@ -1,7 +1,6 @@
 import React from "react";
 // import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBCardHeader} from 'mdbreact';
 // import {Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, } from 'reactstrap';
-import './index.css';
 import './pugs.png';
 
 
@@ -22,7 +21,7 @@ const FormPage = props => (
           
           // <MDBRow>
           //   <MDBCol md={8} sm={12} className="text-left mx-auto" >
-              <MDBCard className= "mx-auto marginz" >
+              <MDBCard className= "mx-auto marginz animated fadeInDown slow wow" >
                 <MDBCardHeader className="form-header gradient-teal rounded p-3">
                   <MDBRow className="justify-content-start">
                     <MDBCol xs={6} className="align-self-center">
