@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import {BrowserRouter, Route} from 'react-router-dom';
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <BrowserRouter>
+            <Route exact path='/' component={() => <div>hello world</div>}></Route>
+            <Route exact path='/home' component={() => <div>Main Pugs Page</div>}></Route>
+            <Route exact path='/mypugs' component={() => <div>My Pugs Page</div>}></Route>
+            <Route exact path='/create' component={() => <div>Create a pug here</div>}></Route>
+          </BrowserRouter>
       </div>
     );
   }
