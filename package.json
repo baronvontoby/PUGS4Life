@@ -23,6 +23,7 @@
     "bootstrap": "^4.3.1",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
+    "mdbreact": "^4.17.0",
     "mysql2": "^1.6.5",
     "react": "^16.8.6",
     "react-router-dom": "^5.0.1",
