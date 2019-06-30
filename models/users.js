@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   //Creates table "user" in pugs4life_db schema.
   var User = sequelize.define("User", {
   //creates "username" column in "users" table, cannot be NULL, must have between 1 and 20 characters
-    username: {
+    user_name: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     //creates "imagelink" column in "user" table
-    imageLink: {
+    image_link: {
       type: DataTypes.STRING,
       allowNull: true,
       unique: false,
@@ -46,8 +46,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     //creates "phone_num" column in "user" table
-    imageLink: {
-      type: DataTypes.int,
+    phone_num: {
+      type: DataTypes.INTEGER,
       allowNull: true,
       unique: false,
       validate: {
@@ -74,7 +74,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     //creates "zipcode" column in "user" table
     zipcode: {
-      type: DataTypes.int,
+      type: DataTypes.INTEGER,
       allowNull: false,
       unique: false,
       validate: {
@@ -83,7 +83,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     //creates "active" column in "user" table
     active: {
-      type: DataTypes.boolean,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       unique: false,
     }
@@ -94,11 +94,7 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
     });
   };
-  // //Required validation for passport
-  // User.prototype.validPassword = function(password){
-  //   return this.password === password;
-  // };
 
-  // return User;
+  return User;
 };
   
