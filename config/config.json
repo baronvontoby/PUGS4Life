@@ -1,0 +1,21 @@
+{
+    "development": {
+      "username": "root",
+      "password": "root",
+      "database": "pugs4life_db",
+      "host": "localhost",
+      "dialect": "mysql"
+    },
+    "test": {
+      "username": "root",
+      "password": "root",
+      "database": "pugs4life_db",
+      "host": "localhost",
+      "dialect": "mysql"
+    },
+    "production": {
+      "use_env_variable": "JAWSDB_URL",
+      "dialect": "mysql"
+    }
+  }
+  

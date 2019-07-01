@@ -1,0 +1,91 @@
+.form-light .font-small {
+    font-size: 0.8rem; }
+  
+  .form-light [type="radio"] + label,
+  .form-light [type="checkbox"] + label {
+    font-size: 0.8rem; }
+  
+  .form-light [type="checkbox"] + label:before {
+    top: 2px;
+    width: 15px;
+    height: 15px; }
+  
+  .form-light input[type="checkbox"] + label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 17px;
+    height: 17px;
+    z-index: 0;
+    border-radius: 1px;
+    margin-top: 2px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s; }
+  
+  .form-light input[type="checkbox"]:checked + label:before {
+    top: -4px;
+    left: -3px;
+    width: 12px;
+    height: 22px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent #EB3573 #EB3573 transparent;
+    -webkit-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    transform-origin: 100% 100%; }
+  
+  .form-light .footer {
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem; }
+
+
+    .gradient-teal{
+      background: #F8DBB4;  /* fallback for old browsers */
+      border: 1px #EFA544 solid;
+      background-size: 50px;
+      
+     }
+     .card-body{
+      border: 1px #EFA544 solid;
+
+     }
+     
+    .icon-class{
+      margin-right:10px;
+    }
+     .btn{
+      background-color: #c7c3fa!important;
+    }
+    a{
+      color: #EFA544;
+    }
+     .marginz{
+       margin-top:7em;
+     }
+    
+     .card{
+       font-size: 1em;
+     }
+     
+    .divider{
+      background-color:#c7c3fa;
+      background-position: -100px;
+    }
+
+    body{
+      /* background-image: url('./basketball-game-ocean-69773.jpg');
+      background-size: cover;
+      background-position-y: -1em;
+      background-repeat: no-repeat;
+      background-attachment: fixed; */
+      background: linear-gradient(to top, rgb(218, 218, 218) 70%, #98e0da 40%);
+      height:100vh;
+     }
+
+
+
