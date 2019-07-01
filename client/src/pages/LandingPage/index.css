@@ -70,6 +70,7 @@
     
      .card{
        font-size: 1em;
+       max-width:40em;
      }
      
     .divider{
@@ -83,7 +84,7 @@
       background-position-y: -1em;
       background-repeat: no-repeat;
       background-attachment: fixed; */
-      background: linear-gradient(to top, rgb(218, 218, 218) 70%, #98e0da 40%);
+      /* background: linear-gradient(to top, rgb(218, 218, 218) 50%, #98e0da 50%); */
       height:100vh;
      }
 
