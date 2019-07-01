@@ -25,8 +25,8 @@ export default class MainPugs extends React.Component {
 
     render () {
         return (
-            <Navbar></Navbar>
             <Container>
+            <Navbar></Navbar>
                 <Row>
 
                 </Row>
