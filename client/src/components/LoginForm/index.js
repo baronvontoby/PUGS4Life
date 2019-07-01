@@ -4,14 +4,13 @@ import React from "react";
 import './pugs.png';
 
 
-import {   MDBContainer,
+import { 
   MDBRow,
   MDBCol,
   MDBInput,
   MDBCard,
   MDBCardBody,
   MDBModalFooter,
-  MDBIcon,
   MDBCardHeader,
   MDBBtn } from 'mdbreact';
 
@@ -35,7 +34,7 @@ const FormPage = props => (
                         {/* <MDBIcon icon="lock" />  */}
                   </MDBCardHeader>
                 <MDBCardBody>
-                  <form>
+                  <form onSubmit={props.getWeather}>
                     <div className="grey-text">
                       <MDBInput
                         label="Type your email"
