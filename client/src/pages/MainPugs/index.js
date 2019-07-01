@@ -31,7 +31,7 @@ class MainPugs extends React.Component {
                 <NavBar></NavBar>
                 <Container>
                     <Row>
-                        <Button className='sport' color='info' size='lg'>Sport</Button>
+                        <Button className='info' color='info' size='lg'>Sport</Button>
                         <Button className='sport' color='info' size='lg'>Sport</Button>
                         <Button className='sport' color='info' size='lg'>Sport</Button>
                         <Button className='sport' color='info' size='lg'>Sport</Button>
