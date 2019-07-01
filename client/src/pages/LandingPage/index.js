@@ -8,6 +8,7 @@ import {
   } from "mdbreact";
 
 import FormPage from '../../components/LoginForm'
+import WeatherWidget from '../../components/weatherWidget'
 
 export default class LandingPage extends React.Component{
     render(){

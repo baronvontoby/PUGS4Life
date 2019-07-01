@@ -12,6 +12,8 @@ import {
 } from "mdbreact";
 import "./pugs.png";
 import imagelogo from "./user-circle-solid.svg"
+import {FormErrors} from '../FormErrors'
+
 class RegisterPage extends Component {
   constructor() {
     super();
@@ -24,21 +26,57 @@ class RegisterPage extends Component {
       city: "",
       imageurl: imagelogo,
       state: "",
-      zipcode: ""
+      zipcode: "",
+      formErrors: {email: '', password: ''},
+      emailValid: false,
+      passwordValid: false,
+      emailconfirmValid: false,
+      formValid: false
     };
   }
   handleInput = field => event => {
     const { value } = event.target;
-    this.setState({
-      [field]: value
-    });
+    this.setState(
+        {[field]: value},
+        () => { this.validateField(field, value) }
+      );
   };
 
-  submitHandler = event => {
-    event.preventDefault();
-    event.target.className += " was-validated";
-  };
+  validateField(fieldName, value) {
+    let fieldValidationErrors = this.state.formErrors;
+    let emailValid = this.state.emailValid;
+    let passwordValid = this.state.passwordValid;
+    let emailconfirmValid = this.state.emailconfirmValid;
 
+
+    switch(fieldName) {
+      case 'email':
+        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+        break;
+      case 'password':
+        passwordValid = value.length >= 6;
+        fieldValidationErrors.password = passwordValid ? '': ' is too short';
+        break;
+      case 'emailconfirm':
+        if (this.state.email === this.state.emailconfirm){
+          emailconfirm
+        }
+      default:
+        break;
+    }
+    this.setState({formErrors: fieldValidationErrors,
+                    emailValid: emailValid,
+                    passwordValid: passwordValid
+                  }, this.validateForm);
+  }
+  validateForm() {
+    this.setState({formValid: this.state.emailValid && this.state.passwordValid});
+  }
+
+  errorClass(error) {
+    return(error.length === 0 ? '' : 'has-error');
+  }
 
   sendForm = () => {
     fetch("/api/weather", {
@@ -60,7 +98,11 @@ class RegisterPage extends Component {
 
   render() {
     return (
+
       <MDBContainer className="">
+            <div className="panel panel-default">
+      <FormErrors formErrors={this.state.formErrors} />
+    </div>
         <MDBRow className=" mx-auto ">
           <MDBCol md={12} sm={12} className="text-left mx-auto mt-1 mb-1">
             <MDBCard className="mx-auto mt-2 animated fadeInUp  wow">
@@ -76,9 +118,7 @@ class RegisterPage extends Component {
                 {/* <MDBIcon icon="lock" />  */}
               </MDBCardHeader>
               <MDBCardBody className="p-3">
-                <form noValidate
-                className="needs-validation"
-          onSubmit={this.submitHandler}>
+                <form>
                   <div className="grey-text border-bottom">
                   <MDBRow>
                     <MDBCol md={6}>
@@ -88,12 +128,11 @@ class RegisterPage extends Component {
                           group
                           type="text"
                           validate
-                          error="Please enter a valid username"
-                          success="Looks good!"
+                          error="wrong"
+                          success="right"
                           name="name"
                           value={this.state.username}
                           onInput={this.handleInput("username")}
-                          required
                         />
                       </MDBCol>
                     <MDBCol md={6}>
@@ -102,10 +141,7 @@ class RegisterPage extends Component {
                           icon="lock"
                           group
                           type="password"
-                          required
-                          // validate
-                          error="Please enter a valid password"
-                          success="Looks good!"
+                        
                           name="password"
                           value={this.state.password}
                           onInput={this.handleInput("password")}
@@ -113,16 +149,13 @@ class RegisterPage extends Component {
                       </MDBCol>
                     </MDBRow>
                     <MDBRow>
-                      <MDBCol md={6}>
+                      <MDBCol className={`form-group ${this.errorClass(this.state.formErrors.email)}`} md={6}>
                           <MDBInput
                             label="Your email"
                             icon="envelope"
                             group
                             type="email"
-                            // validate
-                            required
-                            error="Please enter a valid email"
-                            success="Looks good!"
+                        
                             name="email"
                             value={this.state.email}
                             onInput={this.handleInput("email")}
@@ -136,9 +169,8 @@ class RegisterPage extends Component {
                             group
                             type="text"
                             validate
-                            required
-                            error="Your email does not match"
-                            success="Looks good!"
+                            error="wrong"
+                            success="right"
                             name="emailconfirm"
                             value={this.state.emailconfirm}
                             onInput={this.handleInput("emailconfirm")}
@@ -153,14 +185,43 @@ class RegisterPage extends Component {
                       group
                       type="tel"
                       validate
-                      required
-                      error="Please enter a valid phone number"
-                      success="Looks good!"
-                      maxLength="10"
+                      error="wrong"
+                      success="right"
+                      maxLength= '10'
                       value={this.state.phonenumber}
                       onInput={this.handleInput("phonenumber")}
                     />
               </MDBCol>
+                      {/* <MDBCol md={4}>
+                        <MDBInput
+                          label="City"
+                          icon="city"
+                          // iconClass="mr-5"
+                          group
+                          type="text"
+                          validate
+                          error="wrong"
+                          success="right"
+                          name="city"
+                          value={this.state.city}
+                          onInput={this.handleinput}
+                        />
+                      </MDBCol>
+                      <MDBCol md={4}>
+                        <MDBInput
+                          label="State"
+                          icon="compass"
+                          iconClass="icon-class"
+                          group
+                          type="text"
+                          validate
+                          error="wrong"
+                          success="right"
+                          name="stateloc"
+                          value={this.state.stateloc}
+                          onInput={this.handleinput}
+                        />
+                      </MDBCol> */}
                       <MDBCol>
                         <MDBInput
                           label="Zipcode"
@@ -168,13 +229,11 @@ class RegisterPage extends Component {
                           iconClass="icon-class"
                           group
                           type="text"
-                          // pattern="[0-9-0-9-0]"
+                          pattern="[0-9-0-9-0-9]"
                           maxLength="5"
-                          minLength="5"
                           validate
-                          required
-                          error="Please enter a valid zip"
-                          success="Looks good!"
+                          error="wrong"
+                          success="right"
                           name="zipcode"
                           value={this.state.zipcode}
                           onInput={this.handleInput("zipcode")}
@@ -187,6 +246,11 @@ class RegisterPage extends Component {
                           label="Avatar Image URL"
                           icon="image"
                           group
+                          // type="text"
+                          // validate
+                          // error="wrong"
+                          // name="image"
+                          // success="right"
                           name="imageurl"
                           value={this.state.imageurl}
                           onChange={this.handleInput("imageurl")}
@@ -208,7 +272,7 @@ class RegisterPage extends Component {
                   </div>
 
                   <div className="text-center p-2 my-4 ">
-                    <MDBBtn color="cyan" onClick={this.sendForm}>
+                    <MDBBtn color="cyan" onClick={this.sendForm} disabled={!this.state.formValid}>
                       Submit
                     </MDBBtn>
                   </div>
@@ -230,3 +294,16 @@ class RegisterPage extends Component {
 }
 
 export default RegisterPage;
+
+
+        // <form onSubmit={props.handleSubmit}>
+        //   <input
+        //     type="text"
+        //     onChange={props.handleChange}
+        //     onBlur={props.handleBlur}
+        //     value={props.values.name}
+        //     name="name"
+        //   />
+        //   {props.errors.name && <div id="feedback">{props.errors.name}</div>}
+        //   <button type="submit">Submit</button>
+        // </form>

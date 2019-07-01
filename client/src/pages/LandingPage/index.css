@@ -45,13 +45,28 @@
 
 
     .gradient-teal{
-      background: #F8DBB4;  /* fallback for old browsers */
-      border: 1px #EFA544 solid;
+      background: #1c768f;  /* fallback for old browsers */
+      /* border-top: 1px #fa911c solid;
+      border-right: 1px #fa911c solid;
+      border-left: 1px #fa911c solid; */
       background-size: 50px;
       
      }
      .card-body{
-      border: 1px #EFA544 solid;
+      border-left: 1px #fa911c solid;
+      border-right: 1px #fa911c solid;
+      border-bottom: 1px #fa911c solid;
+     border-top: 1px #fa911c solid;
+
+
+
+     }
+     input:focus{
+       border-bottom:1px #fa911c solid!important;
+       box-shadow: none!important;
+     }
+     input:focus +label{
+      color: #fa911c!important;
 
      }
      
@@ -59,22 +74,32 @@
       margin-right:10px;
     }
      .btn{
-      background-color: #c7c3fa!important;
+      background-color: #1c768f!important;
     }
+
+    label.active::after {
+      width: 250%!important;
+      padding: 0;
+      margin: 0 auto;
+  }
     a{
-      color: #EFA544;
+      color: #fa911c;
     }
      .marginz{
-       margin-top:7em;
+       margin-top:3em;
      }
     
+     .navbar{
+       background-color: #1c768f!important;
+     }
      .card{
        font-size: 1em;
        max-width:40em;
+       background-color:#fbf3f2;
      }
      
     .divider{
-      background-color:#c7c3fa;
+      background-color:#fa911c;
       background-position: -100px;
     }
 
@@ -88,5 +113,29 @@
       height:100vh;
      }
 
+     .imageurlDiv{
+       /* margin-right:4em; */
 
+       align-self: center;
+     }
+     .image-av{
+       max-width: 100px!important;
+     }
+
+     @media only screen and (min-width: 600px) {
+      .container {
+        /* padding-right: 5em!important;
+        padding-left: 5em!important;
+        padding-bottom: 5em!important;
+padding-top:2em; */
+        /* background-color:red; */
+        margin-top:2em;
+        margin-bottom:5em;
+        width:50%;
+      }
+      .md-form{
+        margin:0!important;
+      }
+
+    }
 

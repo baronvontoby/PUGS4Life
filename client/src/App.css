@@ -29,11 +29,16 @@ body{
  background-position-y: -1em;
  background-repeat: no-repeat;
  background-attachment: fixed; */
- background: linear-gradient(to top, rgb(218, 218, 218) 50%, #c7c3fa 50%);
+ /* 032539 1c768f */
+ background: linear-gradient(to top, #fbf3f2 50%, #032539 50%);
  height:100vh;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
+label.active::after {
+  width: 150%!important;
+  padding: 0;
+  margin: 0 auto;
+}
