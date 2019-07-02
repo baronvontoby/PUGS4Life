@@ -6,12 +6,12 @@ export default class TimePicker extends React.Component {
     return (
       <Form>
           <FormGroup>
-            <Label for="exampleTime">Time</Label>
+            <Label for="event-time">Time (12HR Format)</Label>
             <Input
               className="w-50"
               type="time"
               name="time"
-              id="exampleTime"
+              id="event-time"
               placeholder="time placeholder"
             />
             </FormGroup>
