@@ -49,11 +49,11 @@ class MainPugs extends React.Component {
                         <Button className='sport' GameCategoryId={4} onClick={() => this.handleButtonClick()} color='info' size='lg'>Card and Table Top Games</Button>
                     </Row>
                     <Row>
-                        {
+                        {/* {
                             this.state.events.map((events, id) => (
                                 <EventsCard event={events} key={id} />
                             ))
-                        }
+                        } */}
                     </Row>
                 </Container>
             </div>
