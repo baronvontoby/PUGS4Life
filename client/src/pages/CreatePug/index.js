@@ -1,41 +1,39 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBCardImage, MDBIcon } from 'mdbreact';
 import CreateForm from '../../components/CreateForm';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+// import {
+//     Collapse,
+//     Navbar,
+//     NavbarToggler,
+//     NavbarBrand,
+//     Nav,
+//     NavItem,
+//     NavLink,
+//     UncontrolledDropdown,
+//     DropdownToggle,
+//     DropdownMenu,
+//     DropdownItem } from 'reactstrap';
 import './CreatePug.css';
 
 class CreatePug extends React.Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
     
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-          isOpen: false
-        };
-      }
-      toggle() {
-        this.setState({
-          isOpen: !this.state.isOpen
-        });
-      }
+    //     this.toggle = this.toggle.bind(this);
+    //     this.state = {
+    //       isOpen: false
+    //     };
+    //   }
+    //   toggle() {
+    //     this.setState({
+    //       isOpen: !this.state.isOpen
+    //     });
+    //   }
 
     render() {
         return <div className="create-background">
         <div>
-        {/* Navbar */}
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          {/* <NavbarBrand href="/">reactstrap</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -64,12 +62,12 @@ class CreatePug extends React.Component {
               </UncontrolledDropdown>
             </Nav>
           </Collapse>
-        </Navbar>
+        </Navbar> */}
         {/* Jumbotron */}
         <MDBJumbotron className="p-0">
           <MDBCardImage
             className="img-fluid"
-            src="https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg"
+            src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
           />
         </MDBJumbotron>
       </div>
@@ -77,6 +75,7 @@ class CreatePug extends React.Component {
             <MDBContainer fluid>
             <MDBRow>
                 <MDBCol sm={12} className="text-center">
+                    <MDBIcon far icon="calendar-plus fa-2x" />
                     <h2>Create a PUG!</h2>
                 </MDBCol>
             </MDBRow>
