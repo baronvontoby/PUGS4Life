@@ -28,7 +28,7 @@ class MainPugs extends React.Component {
     render () {
         return (
             <div>
-                <NavBar></NavBar>
+            
                 <Container>
                     <Row>
                         <Button className='info' color='info' size='lg'>Sport</Button>
@@ -37,23 +37,17 @@ class MainPugs extends React.Component {
                         <Button className='sport' color='info' size='lg'>Sport</Button>
                         <Button className='sport' color='info' size='lg'>Sport</Button>
                     </Row>
-<<<<<<< HEAD
-                      <Row>
-                        {/* {
-                            this.state.events.map((events, id) => (
-                                
-                            ))
-                        } */}
-                    </Row>  
-=======
                     <Row>
                         {/* {
+
+                            this.state.events.map((events, id) => ())
+
+
                             this.state.events.map((events, id) => (
                                 
                             ))
                         } */}
                     </Row>
->>>>>>> 9f1496908d96c943e3e13afc53be5e604a7ea791
                 </Container>
             </div>
         )
