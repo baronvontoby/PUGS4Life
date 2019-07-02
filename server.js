@@ -35,15 +35,12 @@ app.get("*", (req, res) => {
 //         console.log("Message sent",resp.responses[0].id);
 //     }
 // });
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
-<<<<<<< HEAD
-=======
   // this controls the reset of our mysql database
->>>>>>> dc3778883bcf605e6a3b2d04ec466ae125760ac5
   syncOptions.force = false;
 }
 
