@@ -20,21 +20,21 @@ class MainPugs extends React.Component {
         API.getUser().then( user => this.setState({user: user}))
     )
 
-    componentDidMount () {
-        this.fetchAllPugs()
-        this.fetchUserInfo()
-    }
-
+    
     handleButtonClick = event => {
         const id = event.target;
         API.getTheseEvents(id).then( events => this.setState({events: events}))
     }
-
+    
     handle2ButtonClick = event => {
         const id = event.target; 
         API.getAllEvents().then( events => this.setState({events: events}))
     }
-
+    
+    componentDidMount () {
+        this.fetchAllPugs()
+        this.fetchUserInfo()
+    }
 
     render () {
         return (
@@ -43,10 +43,10 @@ class MainPugs extends React.Component {
                 <Container>
                     <Row>
                         <Button className='sport' onClick={() => this.handle2ButtonClick()} color='info' size='lg'>View All Events</Button>
-                        <Button className='sport' GameCategoryId={1} onClick={() => this.handleButtonClick()} color='info' size='lg'>Indoor Sports</Button>
-                        <Button className='sport' GameCategoryId={2} onClick={() => this.handleButtonClick()} color='info' size='lg'>Outdoor Sports</Button>
-                        <Button className='sport' GameCategoryId={3} onClick={() => this.handleButtonClick()} color='info' size='lg'>Video Games</Button>
-                        <Button className='sport' GameCategoryId={4} onClick={() => this.handleButtonClick()} color='info' size='lg'>Card and Table Top Games</Button>
+                        <Button className='sport' gamecategoryid='1' onClick={() => this.handleButtonClick()} color='info' size='lg'>Indoor Sports</Button>
+                        <Button className='sport' gamecategoryid='2' onClick={() => this.handleButtonClick()} color='info' size='lg'>Outdoor Sports</Button>
+                        <Button className='sport' gamecategoryid='3' onClick={() => this.handleButtonClick()} color='info' size='lg'>Video Games</Button>
+                        <Button className='sport' gamecategoryid='4' onClick={() => this.handleButtonClick()} color='info' size='lg'>Card and Table Top Games</Button>
                     </Row>
                     <Row>
                         {/* {
