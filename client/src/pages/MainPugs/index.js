@@ -37,13 +37,13 @@ class MainPugs extends React.Component {
                         <Button className='sport' color='info' size='lg'>Sport</Button>
                         <Button className='sport' color='info' size='lg'>Sport</Button>
                     </Row>
-                    <Row>
-                        {
+                      <Row>
+                        {/* {
                             this.state.events.map((events, id) => (
                                 
                             ))
-                        }
-                    </Row>
+                        } */}
+                    </Row>  
                 </Container>
             </div>
         )
