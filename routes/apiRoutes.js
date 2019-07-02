@@ -10,12 +10,12 @@ router.get("/api/allevents", function(req,res) {
     });
 });
 
-router.route('/myevents')
+router.route('/api/myevents')
     .get((req,res,err) => {
         res.json()
     });
 
-router.route('/newevent') 
+router.route('/api/newevent') 
     .post((req,res,err) => {
     var newEvent = req.body;
     db.Events.create(newEvent)
@@ -24,7 +24,7 @@ router.route('/newevent')
         //res.json()
     });
 
-router.route('/newuser') 
+router.route('/api/newuser') 
     .post((req,res,err) => {
     var newUser = req.body;
     db.User.create(newUser)
@@ -33,7 +33,7 @@ router.route('/newuser')
         //res.json()
     });
 
-router.route('/update/:id') 
+router.route('/api/update/:id') 
     .put((req,res,err) => {
     db.Events.update({
         where: {
@@ -45,19 +45,18 @@ router.route('/update/:id')
         });
     });
 
-router.route('/remove/:id')
+router.route('/api/remove/:id')
     .delete((req,res,err) => {
      db.Events.destroy({
          where:{
              id: req.params.id}
-         }
-             )
+         })
         .then(function(dbdelete) {
             res.json(dbdelete)
         });
     });
 
-router.route('/user')
+router.route('/api/user')
     .get((req,res,err) => {
         res.json();
     });
