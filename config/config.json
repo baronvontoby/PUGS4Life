@@ -2,7 +2,6 @@
     "development": {
       "username": "root",
       "password": "root",
-
       "database": "pugs4life_db",
       "host": "localhost",
       "dialect": "mysql"
