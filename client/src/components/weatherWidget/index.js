@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import './index.css'
-import Moment from 'react-moment';
 import pugPic from './pugs.png'
 
 const API_KEY = "85fa4de20dcfbd962e68e36c4530c26d";
@@ -44,7 +43,6 @@ class WeatherWidget extends Component {
       });
   }
   render() {
-    const dateToFormat = '1976-04-19T12:59-0500';
 
     return (
       <div className="widget-right widget-right--type5 widget-right--brown">
@@ -70,21 +68,6 @@ class WeatherWidget extends Component {
         </tbody>
         </table>
       </div>
-
-      {/* <div className="widget-right__footer widget-right__footer--brown">
-        <div className="widget-right__layout">
-        <div>
-          <a href="" target="_blank" className="widget-right__date">
-          <Moment local format="MMMM Do">
-            </Moment>
-          </a>
-          </div>
-          <div className="widget-right__date">
-          <Moment local format="hh:mm A">
-            </Moment>
-          </div>
-        </div>
-      </div> */}
 
 
     </div>
