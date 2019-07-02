@@ -11,6 +11,7 @@ import {
   MDBModalFooter
 } from "mdbreact";
 import "./pugs.png";
+import './index.css';
 import imagelogo from "./user-circle-solid.svg"
 class RegisterPage extends Component {
   constructor() {
@@ -62,8 +63,8 @@ class RegisterPage extends Component {
     return (
       <MDBContainer className="">
         <MDBRow className=" mx-auto ">
-          <MDBCol md={12} sm={12} className="text-left mx-auto mt-1 mb-1">
-            <MDBCard className="mx-auto mt-2 animated fadeInUp  wow">
+          <MDBCol md={12} sm={12} className="text-left mx-auto mt-1 mb-5">
+            <MDBCard className="mx-auto mt-2 animated fadeInDown  wow">
               <MDBCardHeader className="form-header gradient-teal rounded">
                 <MDBRow className="justify-content-start">
                   <MDBCol xs={6} className="align-self-center">

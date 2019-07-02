@@ -61,6 +61,11 @@
 
 
      }
+
+     html{
+       height:100vh!important;
+       background-repeat: no-repeat!important;
+     }
      input:focus{
        border-bottom:1px #fa911c solid!important;
        box-shadow: none!important;
@@ -103,15 +108,6 @@
       background-position: -100px;
     }
 
-    body{
-      /* background-image: url('./basketball-game-ocean-69773.jpg');
-      background-size: cover;
-      background-position-y: -1em;
-      background-repeat: no-repeat;
-      background-attachment: fixed; */
-      /* background: linear-gradient(to top, rgb(218, 218, 218) 50%, #98e0da 50%); */
-      height:100vh;
-     }
 
      .imageurlDiv{
        /* margin-right:4em; */
@@ -124,14 +120,11 @@
 
      @media only screen and (min-width: 600px) {
       .container {
-        /* padding-right: 5em!important;
-        padding-left: 5em!important;
-        padding-bottom: 5em!important;
-padding-top:2em; */
-        /* background-color:red; */
+
         margin-top:2em;
-        margin-bottom:5em;
+        /* margin-bottom:5em; */
         width:50%;
+
       }
       .md-form{
         margin:0!important;

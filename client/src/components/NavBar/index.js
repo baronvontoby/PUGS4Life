@@ -16,7 +16,6 @@ render() {
   return (
     <MDBNavbar color="default-color" dark expand="md">
       <MDBNavbarBrand>
-        <strong className="white-text">Navbar</strong>
         <WeatherWidget></WeatherWidget>
       </MDBNavbarBrand>
       <MDBNavbarToggler onClick={this.toggleCollapse} />

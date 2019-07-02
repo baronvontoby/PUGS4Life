@@ -15,7 +15,8 @@ export default class LandingPage extends React.Component{
         return (
             <MDBContainer>
                 <MDBRow>
-                    <MDBCol md={8} sm={12} className="text-left mx-auto">
+                    <MDBCol md={10} sm={12} lg={9}
+                     className="text-left mx-auto">
                     <FormPage className="text-left mx-auto" />
            
                 </MDBCol>

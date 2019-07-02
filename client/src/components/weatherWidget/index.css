@@ -1519,8 +1519,8 @@ th {
   background-image: linear-gradient(to top left, #ddf730, #f1f029);
 }
 .widget-right--type5 .widget-right__layout--brown {
-  background-image: -webkit-linear-gradient(top, #feb020, #ffd05c);
-  background-image: linear-gradient(to bottom, #feb020, #ffd05c);
+  background-image: -webkit-linear-gradient(top, #fa911c, #ffd05c);
+  background-image: linear-gradient(to bottom, #fa911c, #ffd05c);
 }
 .widget-right--type5 .widget-right__description,
 .widget-right--type5 .widget-right__title {
