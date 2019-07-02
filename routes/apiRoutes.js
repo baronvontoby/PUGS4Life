@@ -39,9 +39,12 @@ router.route('/newuser')
 router.route('/update/:id') 
     .put((req,res,err) => {
     db.Events.update({
-        event_name: "basketball"})
-        .then(function(dbupdate) {
-            res.json(dbupdate)
+        where:{
+            id: req.params.id
+        }
+    })
+    .then(function(dbupdate) {
+        res.json(dbupdate)
         });
     });
 

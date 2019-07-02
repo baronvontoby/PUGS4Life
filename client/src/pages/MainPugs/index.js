@@ -48,10 +48,6 @@ class MainPugs extends React.Component {
                         <Button className='sport' gamecategoryid='3' onClick={() => this.handleButtonClick()} color='info' size='lg'>Video Games</Button>
                         <Button className='sport' gamecategoryid='4' onClick={() => this.handleButtonClick()} color='info' size='lg'>Card and Table Top Games</Button>
                     </Row>
-<<<<<<< HEAD
-
-=======
->>>>>>> 93eeabc59dadd5885f0f00b0a2390aadfa7a9192
                       <Row>
                          {
                             this.state.events.map((events, id) => (
@@ -59,18 +55,6 @@ class MainPugs extends React.Component {
                             ))
                         } 
                     </Row>  
-<<<<<<< HEAD
-
-                    <Row>
-                        {/* {
-                            this.state.events.map((events, id) => (
-                                
-                            ))
-                        } */}
-                    </Row>
-
-=======
->>>>>>> 93eeabc59dadd5885f0f00b0a2390aadfa7a9192
                 </Container>
             </div>
         )
