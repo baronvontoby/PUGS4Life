@@ -1,92 +1,133 @@
 .form-light .font-small {
-    font-size: 0.8rem; }
-  
-  .form-light [type="radio"] + label,
-  .form-light [type="checkbox"] + label {
-    font-size: 0.8rem; }
-  
-  .form-light [type="checkbox"] + label:before {
-    top: 2px;
-    width: 15px;
-    height: 15px; }
-  
-  .form-light input[type="checkbox"] + label:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 17px;
-    height: 17px;
-    z-index: 0;
-    border-radius: 1px;
-    margin-top: 2px;
-    -webkit-transition: 0.2s;
-    transition: 0.2s; }
-  
-  .form-light input[type="checkbox"]:checked + label:before {
-    top: -4px;
-    left: -3px;
-    width: 12px;
-    height: 22px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: transparent #EB3573 #EB3573 transparent;
-    -webkit-transform: rotate(40deg);
-    -ms-transform: rotate(40deg);
-    transform: rotate(40deg);
-    -webkit-backface-visibility: hidden;
-    -webkit-transform-origin: 100% 100%;
-    -ms-transform-origin: 100% 100%;
-    transform-origin: 100% 100%; }
-  
-  .form-light .footer {
-    border-bottom-left-radius: .3rem;
-    border-bottom-right-radius: .3rem; }
+  font-size: 0.8rem; }
+
+.form-light [type="radio"] + label,
+.form-light [type="checkbox"] + label {
+  font-size: 0.8rem; }
+
+.form-light [type="checkbox"] + label:before {
+  top: 2px;
+  width: 15px;
+  height: 15px; }
+
+.form-light input[type="checkbox"] + label:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 17px;
+  height: 17px;
+  z-index: 0;
+  border-radius: 1px;
+  margin-top: 2px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s; }
+
+.form-light input[type="checkbox"]:checked + label:before {
+  top: -4px;
+  left: -3px;
+  width: 12px;
+  height: 22px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: transparent #EB3573 #EB3573 transparent;
+  -webkit-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  transform: rotate(40deg);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  transform-origin: 100% 100%; }
+
+.form-light .footer {
+  border-bottom-left-radius: .3rem;
+  border-bottom-right-radius: .3rem; }
 
 
-    .gradient-teal{
-      background: #F8DBB4;  /* fallback for old browsers */
-      border: 1px #EFA544 solid;
-      background-size: 50px;
-      
-     }
-     .card-body{
-      border: 1px #EFA544 solid;
-
-     }
-     
-    .icon-class{
-      margin-right:10px;
-    }
-     .btn{
-      background-color: #c7c3fa!important;
-    }
-    a{
-      color: #EFA544;
-    }
-     .marginz{
-       margin-top:7em;
-     }
+  .gradient-teal{
+    background: #1c768f;  /* fallback for old browsers */
+    /* border-top: 1px #fa911c solid;
+    border-right: 1px #fa911c solid;
+    border-left: 1px #fa911c solid; */
+    background-size: 50px;
     
-     .card{
-       font-size: 1em;
-       max-width:40em;
-     }
-     
-    .divider{
-      background-color:#c7c3fa;
-      background-position: -100px;
+   }
+   .card-body{
+    border-left: 1px #fa911c solid;
+    border-right: 1px #fa911c solid;
+    border-bottom: 1px #fa911c solid;
+   border-top: 1px #fa911c solid;
+
+
+
+   }
+
+   html{
+     height:100vh!important;
+     background-repeat: no-repeat!important;
+   }
+   input:focus{
+     border-bottom:1px #fa911c solid!important;
+     box-shadow: none!important;
+   }
+   input:focus +label{
+    color: #fa911c!important;
+
+   }
+   
+  .icon-class{
+    margin-right:10px;
+  }
+   .btn{
+    background-color: #1c768f!important;
+  }
+
+  label.active::after {
+    width: 250%!important;
+    padding: 0;
+    margin: 0 auto;
+}
+  a{
+    color: #fa911c;
+  }
+   .marginz{
+     margin-top:3em;
+   }
+  
+   .navbar{
+     background-color: #1c768f!important;
+   }
+   .card{
+     font-size: 1em;
+     max-width:40em;
+     background-color:#fbf3f2;
+   }
+   
+  .divider{
+    background-color:#fa911c;
+    background-position: -100px;
+  }
+
+
+   .imageurlDiv{
+     /* margin-right:4em; */
+
+     align-self: center;
+   }
+   .image-av{
+     max-width: 100px!important;
+   }
+
+   @media only screen and (min-width: 600px) {
+    .container {
+
+      margin-top:2em;
+      /* margin-bottom:5em; */
+      width:50%;
+
+    }
+    .md-form{
+      margin:0!important;
     }
 
-    body{
-      /* background-image: url('./basketball-game-ocean-69773.jpg');
-      background-size: cover;
-      background-position-y: -1em;
-      background-repeat: no-repeat;
-      background-attachment: fixed; */
-      /* background: linear-gradient(to top, rgb(218, 218, 218) 50%, #98e0da 50%); */
-      height:100vh;
-     }
-
-
-
+  }

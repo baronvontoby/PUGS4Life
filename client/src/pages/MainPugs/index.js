@@ -39,7 +39,7 @@ class MainPugs extends React.Component {
     render () {
         return (
             <div>
-                <NavBar></NavBar>
+            
                 <Container>
                     <Row>
                         <Button className='sport' onClick={() => this.handle2ButtonClick()} color='info' size='lg'>View All Events</Button>
