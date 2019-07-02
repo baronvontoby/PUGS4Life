@@ -36,15 +36,15 @@ class MainPugs extends React.Component {
 
     render () {
         return (
-            <div className='han'>
+            <div className='han mx-auto'>
             
                 <Container className='solo'>
-                    <Row>
+                    <Row className="justify-content-center">
                         <Button className='sport' onClick={() => this.handle2ButtonClick()} color='info'>View All Events</Button>
                         <Button className='sport' gamecategoryid='true' onClick={() => this.handleButtonClick(1)} color='info'>Indoor Sports</Button>
                         <Button className='sport' gamecategoryid='false' onClick={() => this.handleButtonClick(2)} color='info'>Outdoor Sports</Button>
                     </Row>
-                      <Row>
+                      <Row className="justify-content-center">
                          {
                             this.state.events.map((events, id) => (
                                 <EventsCard events={events} key={id} />                                
