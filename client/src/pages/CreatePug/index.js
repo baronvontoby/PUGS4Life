@@ -1,41 +1,39 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBCardImage, MDBIcon } from 'mdbreact';
 import CreateForm from '../../components/CreateForm';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+// import {
+//     Collapse,
+//     Navbar,
+//     NavbarToggler,
+//     NavbarBrand,
+//     Nav,
+//     NavItem,
+//     NavLink,
+//     UncontrolledDropdown,
+//     DropdownToggle,
+//     DropdownMenu,
+//     DropdownItem } from 'reactstrap';
 import './CreatePug.css';
 
 class CreatePug extends React.Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
     
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-          isOpen: false
-        };
-      }
-      toggle() {
-        this.setState({
-          isOpen: !this.state.isOpen
-        });
-      }
+    //     this.toggle = this.toggle.bind(this);
+    //     this.state = {
+    //       isOpen: false
+    //     };
+    //   }
+    //   toggle() {
+    //     this.setState({
+    //       isOpen: !this.state.isOpen
+    //     });
+    //   }
 
     render() {
         return <div className="create-background">
         <div>
-        {/* Navbar */}
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          {/* <NavbarBrand href="/">reactstrap</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -64,7 +62,7 @@ class CreatePug extends React.Component {
               </UncontrolledDropdown>
             </Nav>
           </Collapse>
-        </Navbar>
+        </Navbar> */}
         {/* Jumbotron */}
         <MDBJumbotron className="p-0">
           <MDBCardImage
