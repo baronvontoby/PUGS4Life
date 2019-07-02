@@ -11,6 +11,8 @@ import {
   MDBModalFooter
 } from "mdbreact";
 import "./pugs.png";
+import './index.css';
+import imagelogo from "./user-circle-solid.svg"
 class RegisterPage extends Component {
   constructor() {
     super();
@@ -21,7 +23,7 @@ class RegisterPage extends Component {
       emailconfirm: "",
       phonenumber: "",
       city: "",
-      imageurl: "",
+      imageurl: imagelogo,
       state: "",
       zipcode: ""
     };
@@ -33,8 +35,14 @@ class RegisterPage extends Component {
     });
   };
 
+  submitHandler = event => {
+    event.preventDefault();
+    event.target.className += " was-validated";
+  };
+
+
   sendForm = () => {
-    fetch("/weather", {
+    fetch("/api/weather", {
       method: "POST",
       body: JSON.stringify({
         username: this.state.username,
@@ -53,11 +61,11 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <MDBContainer>
-        <MDBRow className=" mx-auto">
-          <MDBCol md={12} sm={12} className="text-left mx-auto">
-            <MDBCard className="mx-auto mt-2 animated fadeInUp  wow">
-              <MDBCardHeader className="form-header gradient-teal rounded p-3">
+      <MDBContainer className="">
+        <MDBRow className=" mx-auto ">
+          <MDBCol md={12} sm={12} className="text-left mx-auto mt-1 mb-5">
+            <MDBCard className="mx-auto mt-2 animated fadeInDown  wow">
+              <MDBCardHeader className="form-header gradient-teal rounded">
                 <MDBRow className="justify-content-start">
                   <MDBCol xs={6} className="align-self-center">
                     <i className="far fa-2x fa-sign-in left mr-3 ml-3" />
@@ -68,96 +76,92 @@ class RegisterPage extends Component {
                 </MDBRow>
                 {/* <MDBIcon icon="lock" />  */}
               </MDBCardHeader>
-              <MDBCardBody>
-                <form>
-                  <div className="grey-text">
-                    <MDBInput
-                      label="Username"
-                      icon="user"
-                      group
-                      type="text"
-                      validate
-                      error="wrong"
-                      success="right"
-                      name="name"
-                      value={this.state.username}
-                      onInput={this.handleInput}
-                    />
-                    <MDBInput
-                      label="Your password"
-                      icon="lock"
-                      group
-                      type="password"
-                    
-                      name="password"
-                      value={this.state.password}
-                      onInput={this.handleInput}
-                    />
-                    <MDBInput
-                      label="Your email"
-                      icon="envelope"
-                      group
-                      type="email"
-                  
-                      name="email"
-                      value={this.state.email}
-                      onInput={this.handleInput}
-                    />
-                    <MDBInput
-                      label="Confirm your email"
-                      icon="exclamation-triangle"
-                      group
-                      type="text"
-                      validate
-                      error="wrong"
-                      success="right"
-                      name="emailconfirm"
-                      value={this.state.emailconfirm}
-                      onInput={this.handleInput}
-                    />
+              <MDBCardBody className="p-3">
+                <form noValidate
+                className="needs-validation"
+          onSubmit={this.submitHandler}>
+                  <div className="grey-text border-bottom">
+                  <MDBRow>
+                    <MDBCol md={6}>
+                        <MDBInput
+                          label="Username"
+                          icon="user"
+                          group
+                          type="text"
+                          validate
+                          error="Please enter a valid username"
+                          success="Looks good!"
+                          name="name"
+                          value={this.state.username}
+                          onInput={this.handleInput("username")}
+                          required
+                        />
+                      </MDBCol>
+                    <MDBCol md={6}>
+                        <MDBInput
+                          label="Your password"
+                          icon="lock"
+                          group
+                          type="password"
+                          required
+                          // validate
+                          error="Please enter a valid password"
+                          success="Looks good!"
+                          name="password"
+                          value={this.state.password}
+                          onInput={this.handleInput("password")}
+                        />
+                      </MDBCol>
+                    </MDBRow>
+                    <MDBRow>
+                      <MDBCol md={6}>
+                          <MDBInput
+                            label="Your email"
+                            icon="envelope"
+                            group
+                            type="email"
+                            // validate
+                            required
+                            error="Please enter a valid email"
+                            success="Looks good!"
+                            name="email"
+                            value={this.state.email}
+                            onInput={this.handleInput("email")}
+                            
+                          />
+                      </MDBCol>
+                      <MDBCol md={6}>
+                          <MDBInput
+                            label="Confirm your email"
+                            icon="exclamation-triangle"
+                            group
+                            type="text"
+                            validate
+                            required
+                            error="Your email does not match"
+                            success="Looks good!"
+                            name="emailconfirm"
+                            value={this.state.emailconfirm}
+                            onInput={this.handleInput("emailconfirm")}
+                          />
+                        </MDBCol>
+                      </MDBRow>
+                      <MDBRow>
+                      <MDBCol md={6}>
                     <MDBInput
                       label="Your Phone Number"
                       icon="phone"
                       group
                       type="tel"
                       validate
-                      error="wrong"
-                      success="right"
+                      required
+                      error="Please enter a valid phone number"
+                      success="Looks good!"
                       maxLength="10"
                       value={this.state.phonenumber}
-                      onInput={this.handleInput}
+                      onInput={this.handleInput("phonenumber")}
                     />
-                    <MDBRow>
-                      <MDBCol md={4}>
-                        <MDBInput
-                          label="City"
-                          icon="city"
-                          // iconClass="mr-5"
-                          group
-                          type="text"
-                          validate
-                          error="wrong"
-                          success="right"
-                          name="city"
-                          value={this.state.city}
-                          onInput={this.handleinput}
-                        />
-                      </MDBCol>
-                      <MDBCol md={4}>
-                        <MDBInput
-                          label="State"
-                          icon="compass"
-                          iconClass="icon-class"
-                          group
-                          type="text"
-                          validate
-                          error="wrong"
-                          success="right"
-                          name="stateloc"
-                          value={this.state.stateloc}
-                          onInput={this.handleinput}
-                        />
-                      </MDBCol>
+              </MDBCol>
                       <MDBCol>
                         <MDBInput
                           label="Zipcode"
@@ -165,46 +169,52 @@ class RegisterPage extends Component {
                           iconClass="icon-class"
                           group
                           type="text"
-                          pattern="[0-9-0-9-0-9]"
+                          // pattern="[0-9-0-9-0]"
                           maxLength="5"
+                          minLength="5"
                           validate
-                          error="wrong"
-                          success="right"
+                          required
+                          error="Please enter a valid zip"
+                          success="Looks good!"
                           name="zipcode"
                           value={this.state.zipcode}
-                          onInput={this.handleinput}
+                          onInput={this.handleInput("zipcode")}
                         />
                       </MDBCol>
                     </MDBRow>
-                    <MDBInput
-                      label="Avatar Image URL"
-                      icon="image"
-                      group
-                      // type="text"
-                      // validate
-                      // error="wrong"
-                      // name="image"
-                      // success="right"
-                      name="imageurl"
-                      value={this.state.imageurl}
-                      onChange={this.handleInput("imageurl")}
-                    />
-                    <div className="mx-auto text-center">
-                      <img
-                        alt=""
-                        src={this.state.imageurl}
-                        className="img-fluid img-circle "
-                      />
-                    </div>
+                    <MDBRow>
+                      <MDBCol className="imageurlDiv" md={6}> 
+                        <MDBInput
+                          label="Avatar Image URL"
+                          icon="image"
+                          group
+                          name="imageurl"
+                          value={this.state.imageurl}
+                          onChange={this.handleInput("imageurl")}
+                        />
+                      </MDBCol>
+                      <MDBCol className="p-0" md={6} >
+                        <div className="mx-auto text-center w-75 p-0 m-0">
+                        <figure>
+                          <img
+                            alt="Your Image Here"
+                            src={this.state.imageurl}
+                            className="img-fluid img-circle image-av"
+                          />
+                          <figcaption>Your Image Here</figcaption>
+                          </figure>
+                        </div>
+                      </MDBCol>
+                    </MDBRow>
                   </div>
 
-                  <div className="text-center py-4 mt-3">
+                  <div className="text-center p-2 my-4 ">
                     <MDBBtn color="cyan" onClick={this.sendForm}>
                       Submit
                     </MDBBtn>
                   </div>
                 </form>
-                <MDBModalFooter>
+                <MDBModalFooter className="p-0">
                   <div className="font-weight-light">
                     <a href="/">
                       <p>Already a member? Sign In</p>
