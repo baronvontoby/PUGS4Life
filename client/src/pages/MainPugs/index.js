@@ -21,13 +21,11 @@ class MainPugs extends React.Component {
     )
 
     
-    handleButtonClick = event => {
-        const id = event.target;
-        API.getTheseEvents(id).then( events => this.setState({events: events}))
+    handleButtonClick = category => {
+     API.getTheseEvents(category).then( events => this.setState({events: events}))
     }
     
-    handle2ButtonClick = event => {
-        const id = event.target; 
+    handle2ButtonClick = () => { 
         API.getAllEvents().then( events => this.setState({events: events}))
     }
     
@@ -38,15 +36,13 @@ class MainPugs extends React.Component {
 
     render () {
         return (
-            <div>
+            <div className='han'>
             
-                <Container>
+                <Container className='solo'>
                     <Row>
-                        <Button className='sport' onClick={() => this.handle2ButtonClick()} color='info' size='lg'>View All Events</Button>
-                        <Button className='sport' gamecategoryid='1' onClick={() => this.handleButtonClick()} color='info' size='lg'>Indoor Sports</Button>
-                        <Button className='sport' gamecategoryid='2' onClick={() => this.handleButtonClick()} color='info' size='lg'>Outdoor Sports</Button>
-                        <Button className='sport' gamecategoryid='3' onClick={() => this.handleButtonClick()} color='info' size='lg'>Video Games</Button>
-                        <Button className='sport' gamecategoryid='4' onClick={() => this.handleButtonClick()} color='info' size='lg'>Card and Table Top Games</Button>
+                        <Button className='sport' onClick={() => this.handle2ButtonClick()} color='info'>View All Events</Button>
+                        <Button className='sport' gamecategoryid='true' onClick={() => this.handleButtonClick(1)} color='info'>Indoor Sports</Button>
+                        <Button className='sport' gamecategoryid='false' onClick={() => this.handleButtonClick(2)} color='info'>Outdoor Sports</Button>
                     </Row>
                       <Row>
                          {
