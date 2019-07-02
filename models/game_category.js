@@ -1,14 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   //Creates table "user" in pugs4life_db schema.
   var GameCategory = sequelize.define("GameCategory", {
-  //creates "name" column in "GameCategories" table, cannot be NULL, must have between 1 and 20 characters
+  //creates "name" column in "GameCategories" table, cannot be NULL
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
-      // unique: true,
-      // validate: {
-      //     len: [1, 20]
-      // }
+      allowNull: false
     },
     //creates "isOutdoor" column in "GameCategories" table. Value is a boolean and cannot be NULL.
     is_outdoor: {
