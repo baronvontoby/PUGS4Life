@@ -9,8 +9,10 @@ export default {
         .then( response => response.data ),
     createNewUser : () => axios.post('/api/newuser')
         .then( response => response.data ),
-    updateEvent: () => axios.put('/api/update')
+    updateEvent: id => axios.put('/api/update/:id')
         .then( response => response.data ),
-    removeEvent: () => axios.delete('/api/remove')
-        .then( response => response.data )
+    removeEvent: id => axios.delete('/api/remove/:id')
+        .then( response => response.data ),
+    getUser: () => axios.get('/api/user')
+        .then( response => response.data)
 }
