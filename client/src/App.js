@@ -7,7 +7,6 @@ import WeatherWidget from './components/weatherWidget';
 import MainPugs from './pages/MainPugs';
 import NavbarPage from './components/NavBar'
 import CreatePug from './pages/CreatePug';
-
 class App extends Component {
   render() {
     return (
@@ -18,11 +17,10 @@ class App extends Component {
           <BrowserRouter>
           <Switch>
             <Route exact path="/" component={() => <LandingPage />} />
-            <Route exact path="/weather" component={() => <WeatherWidget />} />
             <Route exact path="/register" component={() => <RegisterPage className="text-left mx-auto"/>}/>
-            <Route exact path="/home" component={() => <MainPugs />}></Route> 
-            <Route exact path="/mypugs" component={() => <div>My Pugs Page</div>}></Route>
-            <Route exact path="/create" component={() => <CreatePug />}></Route>
+            <Route exact path='/home' component={() => <div>Main Pugs Page</div>}></Route>
+            <Route exact path='/mypugs' component={() => <div>My Pugs Page</div>}></Route>
+            <Route exact path='/create' component={() => <div>Create a pug here</div>}></Route>
             </Switch>
           </BrowserRouter>
         </div>
