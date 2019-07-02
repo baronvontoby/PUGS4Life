@@ -1,7 +1,7 @@
 var db = require("../models");
 var router = require('express').Router();
 
-router.get("/allevents", function(req,res) {
+router.get("/api/allevents", function(req,res) {
      //console.log("hello")
     // console.log(db.Events);
     db.Events.findAll({})
@@ -15,11 +15,6 @@ router.route('/myevents')
         res.json()
     });
 
-    router.post('/newevent', function(req,res) {
-        db.Events.create(req.body).then(function(response){
-            console.log(response);
-        });
-    });
 router.route('/newevent') 
     .post((req,res,err) => {
     var newEvent = req.body;
@@ -40,12 +35,26 @@ router.route('/newuser')
 
 router.route('/update/:id') 
     .put((req,res,err) => {
-        res.json()
+    db.Events.update({
+        where: {
+            id: req.params.id
+        }}
+        )
+        .then(function(dbupdate) {
+            res.json(dbupdate)
+        });
     });
 
 router.route('/remove/:id')
     .delete((req,res,err) => {
-        res.json()
+     db.Events.destroy({
+         where:{
+             id: req.params.id}
+         }
+             )
+        .then(function(dbdelete) {
+            res.json(dbdelete)
+        });
     });
 
 router.route('/user')
