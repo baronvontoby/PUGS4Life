@@ -3,15 +3,9 @@ module.exports = function(sequelize, DataTypes) {
   var Participation = sequelize.define("Participation", {
   // //creates "user_id" column in "Participation" table, cannot be NULL.
   //   user_id: {
-  //     type: DataTypes.STRING,
-  //     allowNull: false,
-  //     unique: true,
   //   },
   //   //creates "event_id" column in "Participation" table. Value cannot be NULL.
   //   event_id: {
-  //     type: DataTypes.STRING,
-  //     allowNUll: false,
-  //     unique: true,
   //   }
   });
   //creates association between two tables.

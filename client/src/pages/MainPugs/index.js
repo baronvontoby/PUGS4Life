@@ -8,8 +8,7 @@ class MainPugs extends React.Component {
 
     // state = {
     //     events = [],
-    //     user =[],
-    //     category = []
+    //     user =[]
     // }
 
     // fetchAllPugs = () => (
@@ -25,6 +24,7 @@ class MainPugs extends React.Component {
     //     this.fetchUserInfo()
     // }
 
+
     render () {
         return (
             <div>
@@ -38,7 +38,11 @@ class MainPugs extends React.Component {
                         <Button className='sport' color='info' size='lg'>Sport</Button>
                     </Row>
                     <Row>
-                        Events Go Here
+                        {
+                            this.state.events.map((events, id) => (
+                                
+                            ))
+                        }
                     </Row>
                 </Container>
             </div>
