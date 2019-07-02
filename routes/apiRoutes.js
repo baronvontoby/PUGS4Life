@@ -15,22 +15,35 @@ router.route('/myevents')
         res.json()
     });
 
+    router.post('/newevent', function(req,res) {
+        db.Events.create(req.body).then(function(response){
+            console.log(response);
+        });
+    });
 router.route('/newevent') 
     .post((req,res,err) => {
-        res.json()
+    var newEvent = req.body;
+    db.Events.create(newEvent)
+        .then(event => res.json(event))
+        .catch(err => res.json(500, err))
+        //res.json()
     });
 
 router.route('/newuser') 
     .post((req,res,err) => {
-        res.json()
+    var newUser = req.body;
+    db.User.create(newUser)
+        .then(user => res.json(user))
+        .catch(err => res.json(500, err))
+        //res.json()
     });
 
-router.route('/update') 
+router.route('/update/:id') 
     .put((req,res,err) => {
         res.json()
     });
 
-router.route('/remove')
+router.route('/remove/:id')
     .delete((req,res,err) => {
         res.json()
     });
