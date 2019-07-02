@@ -23,7 +23,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
-var syncOptions = { force: false };
+
+var syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -37,6 +38,8 @@ db.sequelize.sync(syncOptions).then(function() {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
 });
+
+
 
 module.exports = app;
 
