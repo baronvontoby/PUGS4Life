@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      // unique: true,
       validate: {
           len: [1, 20]
       }
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      // unique: true,
       // validate: {
       //   len: [1, 20]
       // }
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      // unique: true,
       validate: {
           len: [1, 20]
       }
@@ -40,7 +40,7 @@ module.exports = function(sequelize, DataTypes) {
     image_link: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: false,
+      // unique: false,
       validate: {
           len: [1, 20]
       }
@@ -57,26 +57,19 @@ module.exports = function(sequelize, DataTypes) {
     //creates "city" column in "user" table
     city: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: false,
-      validate: {
-          len: [1, 40]
-      }
+      allowNull: true,
+      // unique: false,
     },
     //creates "state" column in "user" table
     state: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: false,
-      validate: {
-          len: [1, 40]
-      }
+      allowNull: true
     },
     //creates "zipcode" column in "user" table
     zipcode: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: false,
+      // unique: false,
       validate: {
           len: [5]
       }
@@ -85,7 +78,7 @@ module.exports = function(sequelize, DataTypes) {
     active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      unique: false,
+      defaultValue: true
     }
   });
   //creates association between two tables. The primary key from users table will be id(created column). user_id will be created in the horses table as a foreign key
