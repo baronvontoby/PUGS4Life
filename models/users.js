@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   //Creates table "user" in pugs4life_db schema.
   var User = sequelize.define("User", {
-  //creates "username" column in "users" table, cannot be NULL, must have between 1 and 20 characters
+  //creates "username" column in "users" table, cannot be NULL
     user_name: {
       type: DataTypes.STRING,
       allowNull: false
