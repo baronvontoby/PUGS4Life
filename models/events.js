@@ -3,53 +3,32 @@ module.exports = function(sequelize, DataTypes) {
   var Events = sequelize.define("Events", {
   //creates "game_id" column in "Events" table, cannot be NULL.
     start_date: {
-      type: DataTypes.STRING,
-      allowNUll: false,
-      validate: {
-          len: [1, 20]
-      }
+      type: DataTypes.DATEONLY,
+      allowNUll: false
     },
     end_date: {
-      type: DataTypes.STRING,
-      allowNUll: false,
-      validate: {
-          len: [1, 20]
-      }
+      type: DataTypes.DATEONLY,
+      allowNUll: false
     },
     event_time: {
-      type: DataTypes.STRING,
-      allowNUll: false,
-      validate: {
-          len: [1, 20]
-      }
+      type: DataTypes.TIME,
+      allowNUll: false
     },
     event_city: {
       type: DataTypes.STRING,
-      allowNUll: false,
-      validate: {
-          len: [1, 20]
-      }
+      allowNUll: false
     },
     event_state: {
       type: DataTypes.STRING,
-      allowNUll: false,
-      validate: {
-          len: [1, 20]
-      }
+      allowNUll: false
     },
     event_zipcode: {
       type: DataTypes.STRING,
-      allowNUll: false,
-      validate: {
-          len: [1, 20]
-      }
+      allowNUll: false
     },
-    desciption: {
+    description: {
       type: DataTypes.STRING,
-      allowNUll: false,
-      validate: {
-          len: [1, 1000]
-      }
+      allowNUll: false
     },
   });
   //creates association between two tables. The primary key from GameCategories table will be id(created column). game_id will be created in the Event table as a foreign key
