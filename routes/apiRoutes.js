@@ -35,4 +35,9 @@ router.route('/remove')
         res.json()
     });
 
+router.route('/user')
+    .get((req,res,err) => {
+        res.json();
+    });
+
 module.exports = router;
