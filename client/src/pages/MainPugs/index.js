@@ -1,28 +1,29 @@
 import React from 'react';
-import {Col, Row, Container, Jumbotron, Button} from 'reactstrap';
+import {Row, Container, Button} from 'reactstrap';
 import NavBar from '../../components/NavBar';
 import API from '../../util/API';
 import './MainPugs.css';
+import EventsCard from '../../components/EventsCard';
 
 class MainPugs extends React.Component {
 
-    // state = {
-    //     events = [],
-    //     user =[]
-    // }
+    state = {
+        events : [],
+        user : []
+    }
 
-    // fetchAllPugs = () => (
-    //     API.getAllEvents().then( events => this.setState({events: events}))
-    // )
+    fetchAllPugs = () => (
+        API.getAllEvents().then( events => this.setState({events: events}))
+    )
 
-    // fetchUserInfo = () => (
-    //     API.getUser().then( user => this.setState({user: user}))
-    // )
+    fetchUserInfo = () => (
+        API.getUser().then( user => this.setState({user: user}))
+    )
 
-    // componentDidMount () {
-    //     this.fetchAllPugs()
-    //     this.fetchUserInfo()
-    // }
+    componentDidMount () {
+        this.fetchAllPugs()
+        this.fetchUserInfo()
+    }
 
 
     render () {
@@ -40,7 +41,7 @@ class MainPugs extends React.Component {
                     <Row>
                         {
                             this.state.events.map((events, id) => (
-                                
+                                <EventsCard event={events} key={id} />
                             ))
                         }
                     </Row>
