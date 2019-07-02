@@ -2,6 +2,10 @@ module.exports = function(sequelize, DataTypes) {
   //Creates table "user" in pugs4life_db schema.
   var Events = sequelize.define("Events", {
   //creates "game_id" column in "Events" table, cannot be NULL.
+    event_name: {
+      type: DataTypes.STRING,
+      allowNUll: false
+    },
     start_date: {
       type: DataTypes.DATEONLY,
       allowNUll: false
