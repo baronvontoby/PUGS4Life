@@ -39,9 +39,13 @@ class MainPugs extends React.Component {
                     </Row>
                     <Row>
                         {/* {
+<<<<<<< HEAD
+                            this.state.events.map((events, id) => ())
+=======
                             this.state.events.map((events, id) => (
                                 
                             ))
+>>>>>>> 615d1337142b8ceb731edf9ff37d817f9e612ab4
                         } */}
                     </Row>
                 </Container>
