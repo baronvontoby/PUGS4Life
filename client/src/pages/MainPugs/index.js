@@ -13,7 +13,7 @@ class MainPugs extends React.Component {
     }
 
     fetchAllPugs = () => (
-        API.getAllEvents().then( events => this.setState({events: events}))
+       API.getAllEvents().then(events => this.setState({events: events}))
     )
 
     fetchUserInfo = () => (
