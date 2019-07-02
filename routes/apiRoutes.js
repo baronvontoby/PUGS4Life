@@ -1,6 +1,7 @@
 var db = require("../models");
 var router = require('express').Router();
 
+// call all events
 router.get("/allevents", function(req,res) {
      //console.log("hello")
     // console.log(db.Events);
@@ -10,48 +11,57 @@ router.get("/allevents", function(req,res) {
     });
 });
 
+// add new event (but doesn't have unique id associated) WORKING
+router.post('/newevent', function(req,res) {
+    db.Events.create(req.body).then(function(response){
+        console.log(req.body);
+        console.log(response);
+    });
+});
+
+
+// get users events WORKING
 router.route('/myevents')
     .get((req,res,err) => {
         res.json()
     });
 
-    router.post('/newevent', function(req,res) {
-        db.Events.create(req.body).then(function(response){
-            console.log(response);
-        });
-    });
-router.route('/newevent') 
-    .post((req,res,err) => {
-    var newEvent = req.body;
-    db.Events.create(newEvent)
-        .then(event => res.json(event))
-        .catch(err => res.json(500, err))
-        //res.json()
-    });
-
+// add new user WORKING
 router.route('/newuser') 
     .post((req,res,err) => {
     var newUser = req.body;
     db.User.create(newUser)
         .then(user => res.json(user))
         .catch(err => res.json(500, err))
-        //res.json()
     });
+
 
 router.route('/update/:id') 
     .put((req,res,err) => {
-        res.json()
+    db.Events.update({
+        event_name: "basketball"})
+        .then(function(dbupdate) {
+            res.json(dbupdate)
+        });
     });
 
 router.route('/remove/:id')
     .delete((req,res,err) => {
-        res.json()
+     db.Events.destroy({
+         where:{
+             id: req.params.id}
+         })
+        .then(function(dbdelete) {
+            res.json(dbdelete)
+        });
     });
 
-router.route('/user')
-    .get((req,res,err) => {
-        res.json();
-    });
+
+
+// router.route('/user')
+//     .get((req,res,err) => {
+//         res.json();
+//     });
 
 
 
