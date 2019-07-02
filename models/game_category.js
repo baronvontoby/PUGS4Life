@@ -5,10 +5,10 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-      validate: {
-          len: [1, 20]
-      }
+      // unique: true,
+      // validate: {
+      //     len: [1, 20]
+      // }
     },
     //creates "isOutdoor" column in "GameCategories" table. Value is a boolean and cannot be NULL.
     is_outdoor: {
