@@ -14,6 +14,7 @@ import {
   import logo from './navpugs.png';
   import avatar from './avatar.png';
 import WeatherWidget from '../weatherWidget';
+import './NavBar.css';
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -33,13 +34,14 @@ export default class NavBar extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/home/"><img src={logo} alt="Logo" /></NavbarBrand>
+          <NavbarBrand href="/home/"><img className="pug-logo" src={logo} alt="Logo" /></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
+          <NavItem>
                 <NavLink href="/weather/"><WeatherWidget></WeatherWidget></NavLink>
               </NavItem>
+            <Nav className="ml-auto d-flex" navbar>
+
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Mah Pugs...
@@ -58,7 +60,7 @@ export default class NavBar extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink href="/home/">User avatar here</NavLink>
+                <NavLink href="/home/"></NavLink>
               </NavItem>
               <NavbarBrand href="/home/"><img src={avatar} alt="Avatar" /></NavbarBrand>
             </Nav>

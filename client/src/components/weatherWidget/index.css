@@ -259,7 +259,11 @@ th {
   background-image: linear-gradient(to top, #5fd6d6, #a1e6e6);
 }
 .widget-left--brown {
-  background-image: -webkit-linear-gradient(bottom, #feb020, #ffd05c);
+  /* background-image: -webkit-linear-gradient(bottom, #feb020, #ffd05c); */
+  background: #232526!important;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #414345, #232526)!important;  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #414345, #232526)!important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 .widget-left--small,
 .widget-left--small2 {
@@ -1069,6 +1073,9 @@ th {
 .weather-right--type4,
 .weather-right--type5 {
   width: 300px;
+
+    bottom: 0;
+    position: absolute;
 }
 .weather-right__icon {
   position: absolute;
@@ -1391,6 +1398,9 @@ th {
   height: initial;
   background: 0 0;
   box-shadow: none;
+  position: absolute!important;
+  /* bottom:0!important; */
+  left: 1%!important;
 }
 .widget-right--type4 {
   color: #fff;
@@ -1420,8 +1430,12 @@ th {
   background-image: linear-gradient(to bottom, #5fd6d6, #a1e6e6);
 }
 .widget-right--type4 .widget-right__layout--brown {
-  background-image: -webkit-linear-gradient(top, #feb020, #ffd05c);
-  background-image: linear-gradient(to bottom, #feb020, #ffd05c);
+  /* background-image: -webkit-linear-gradient(top, #feb020, #ffd05c);
+  background-image: linear-gradient(to bottom, #feb020, #ffd05c); */
+  background: #232526;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 .widget-right--type4 .widget-right__description,
 .widget-right--type4 .widget-right__title {
@@ -1519,14 +1533,19 @@ th {
   background-image: linear-gradient(to top left, #ddf730, #f1f029);
 }
 .widget-right--type5 .widget-right__layout--brown {
-  background-image: -webkit-linear-gradient(top, #fa911c, #ffd05c);
-  background-image: linear-gradient(to bottom, #fa911c, #ffd05c);
+  /* background-image: -webkit-linear-gradient(top, #fa911c, #ffd05c);
+  background-image: linear-gradient(to bottom, #fa911c, #ffd05c); */
+  background: #232526;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color:white!important;
 }
 .widget-right--type5 .widget-right__description,
 .widget-right--type5 .widget-right__title {
   line-height: 1;
   font-family: Roboto, Arial, sans-serif !important;
-  color: #333;
+  /* color: #333; */
+  color:white!important;
   -webkit-filter: none;
   filter: none;
 }
@@ -1573,7 +1592,8 @@ th {
   font-size: 12px;
   line-height: 1.3;
   font-family: Roboto, Arial, sans-serif !important;
-  color: #333;
+  /* color: #333; */
+  color:white!important;
 }
 .weather-right-table__item:first-child {
   padding-right: 10px;
@@ -1594,7 +1614,8 @@ th {
   font-size: 18px;
   line-height: 1.3;
   font-family: Oswald, Arial, sans-serif !important;
-  color: #333;
+  /* color: #333; */
+  color:white!important;
 }
 .weather-right-card--type4 {
   color: #fff;
@@ -1610,3 +1631,11 @@ th {
   border-right: 2px solid #02ffea;
   padding-right: 5px;
 }
+
+.pugImg{
+  bottom:25px;
+  z-index: 1000;
+right:58%;
+  top: -2.9em;
+}
+

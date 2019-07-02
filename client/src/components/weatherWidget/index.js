@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import './index.css'
 import Moment from 'react-moment';
-
+import pugPic from './pugs.png'
 
 const API_KEY = "85fa4de20dcfbd962e68e36c4530c26d";
 
@@ -48,12 +48,14 @@ class WeatherWidget extends Component {
 
     return (
       <div className="widget-right widget-right--type5 widget-right--brown">
+            <div className="mx-auto text-center position-relative"><img src={pugPic} style={{width: "8em"} } className="position-absolute pugImg"></img></div>
       <div className="widget-right__layout widget-right__layout--brown">
+
         <div className="widget-right-card">
           <div className="widget-right__title">{this.state.name}</div>
           <div className="widget-right__description">moderate rain</div>
         </div>
-        <img src={this.state.weathericon} width="64" height="64" alt="Weather in Minneapolis, US" className="weather-right__icon weather-right__icon--type5 weather-right__icon--brown" />
+        <img src={this.state.weathericon} width="50" height="50" alt="Weather in Minneapolis, US" className="weather-right__icon weather-right__icon--type5 weather-right__icon--brown" />
         <table className="weather-right-card">
           <tbody>
           <tr className="weather-right-card__items">
@@ -69,7 +71,7 @@ class WeatherWidget extends Component {
         </table>
       </div>
 
-      <div className="widget-right__footer widget-right__footer--brown">
+      {/* <div className="widget-right__footer widget-right__footer--brown">
         <div className="widget-right__layout">
         <div>
           <a href="" target="_blank" className="widget-right__date">
@@ -82,7 +84,7 @@ class WeatherWidget extends Component {
             </Moment>
           </div>
         </div>
-      </div>
+      </div> */}
 
 
     </div>
