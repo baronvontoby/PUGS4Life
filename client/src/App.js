@@ -5,7 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import RegisterPage from "./components/SignUpForm";
 import MainPugs from "./pages/MainPugs";
 import MyPugs from "./pages/MyPugs";
-import NavbarPage from "./components/NavBar";
+
 import CreatePug from "./pages/CreatePug";
 
 class App extends Component {
@@ -41,6 +41,13 @@ renderPage = () => {
     return (
       <div className="App">
         <div className="main">
+<<<<<<< HEAD
+=======
+
+
+        
+
+>>>>>>> 5a7671ab040c5428235b072b8ebdd77542cb45bb
          <BrowserRouter>
             <Switch>
               <Route exact path="/" component={() => <LandingPage />} />
