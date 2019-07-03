@@ -2,10 +2,10 @@
 USE pugs4life_db;
 
 -- create users
-INSERT INTO users (user_name, password, email, name, image_link, phone_num, city, state, zipcode, createdAt, updatedAt, active) values ('ebuelow', '12345', 'email1@gmail.com', 'ellen', NULL, '7155675309', 'Saint Paul', 'MN', '53061', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, TRUE);
-INSERT INTO users (user_name, password, email, name, image_link, phone_num, city, state, zipcode, createdAt, updatedAt, active) values ('wbuelow', '12345', 'email2@gmail.com', 'winnie', NULL, '7155675308', 'Saint Paul', 'MN', '53061', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, TRUE);
-INSERT INTO users (user_name, password, email, name, image_link, phone_num, city, state, zipcode, createdAt, updatedAt, active) values ('pbuelow', '123456', 'email3@gmail.com', 'phillip', NULL, '7155675301', 'Minneapolis', 'MN', '55111', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, TRUE);
-INSERT INTO users (user_name, password, email, name, image_link, phone_num, city, state, zipcode, createdAt, updatedAt, active) values ('sthong', '123456', 'email4@gmail.com', 'sabrina', NULL, '7155675302', 'Minneapolis', 'MN', '55111', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, TRUE);
+INSERT INTO users (user_name, password, email, name, image_link, phone_num, city, state, zipcode, active, createdAt, updatedAt) values ('ebuelow', '12345', 'email1@gmail.com', 'ellen', NULL, '7155675309', 'Saint Paul', 'MN', '53061', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO users (user_name, password, email, name, image_link, phone_num, city, state, zipcode, active, createdAt, updatedAt) values ('wbuelow', '12345', 'email2@gmail.com', 'winnie', NULL, '7155675308', 'Saint Paul', 'MN', '53061', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO users (user_name, password, email, name, image_link, phone_num, city, state, zipcode, active, createdAt, updatedAt) values ('pbuelow', '123456', 'email3@gmail.com', 'phillip', NULL, '7155675301', 'Minneapolis', 'MN', '55111', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO users (user_name, password, email, name, image_link, phone_num, city, state, zipcode, active, createdAt, updatedAt) values ('sthong', '123456', 'email4@gmail.com', 'sabrina', NULL, '7155675302', 'Minneapolis', 'MN', '55111', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- create game category
 INSERT INTO gamecategories (name, is_outdoor, createdAt, updatedAt) values ('Volleyball', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
