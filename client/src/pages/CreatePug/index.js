@@ -4,10 +4,10 @@ import CreateForm from '../../components/CreateForm';
 import './CreatePug.css';
 
 class CreatePug extends React.Component {
-        state = {
-            eventName: "",
+        // state = {
+        //     eventName: "",
 
-        }
+        // }
       
       handleInput = field => event => {
         const { value } = event.target;
@@ -42,7 +42,7 @@ class CreatePug extends React.Component {
                 </MDBCol>
             </MDBRow>
             <CreateForm 
-                eventName= {this.state.eventName},
+                // eventName= {this.state.eventName},
 
             />
                 <MDBRow>
