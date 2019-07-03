@@ -41,13 +41,6 @@ renderPage = () => {
     return (
       <div className="App">
         <div className="main">
-<<<<<<< HEAD
-=======
-
-
-        
-
->>>>>>> 5a7671ab040c5428235b072b8ebdd77542cb45bb
          <BrowserRouter>
             <Switch>
               <Route exact path="/" component={() => <LandingPage />} />
