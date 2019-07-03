@@ -44,24 +44,7 @@ const CreateForm = () => {
                 </MDBRow>
                 <MDBRow>
                     <MDBCol sm={12} className="my-5">
-                        <div className="input-group">
-                          <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroupFileAddon01">
-                              Event Image
-                            </span>
-                          </div>
-                          <div className="custom-file">
-                            <input
-                              type="file"
-                              className="custom-file-input"
-                              id="inputGroupFile01"
-                              aria-describedby="inputGroupFileAddon01"
-                            />
-                            <label className="custom-file-label" htmlFor="inputGroupFile01">
-                              Choose file
-                            </label>
-                          </div>
-                        </div>
+                        <MDBInput label="Add URL to Event Image" />
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
