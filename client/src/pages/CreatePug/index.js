@@ -6,6 +6,11 @@ import './CreatePug.css';
 class CreatePug extends React.Component {
         // state = {
         //     eventName: "",
+            // eventLocation: "",
+            // time,
+            // isOutdoor: false,
+            // eventImage: "",
+
 
         // }
       
