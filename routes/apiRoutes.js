@@ -36,16 +36,17 @@ router.route('/newuser')
     });
 
 
-router.route('/update/:id') 
-    .put((req,res,err) => {
-    db.Events.update({
-        where:{
-            id: req.params.id
-        }
-    })
-    .then(function(dbupdate) {
-        res.json(dbupdate)
-        });
+router.put('/update/:id', function(req, res){
+    db.Events.update(
+        req.body,
+        {
+            where: {
+                id: req.params.id
+            }
+        })
+    .then(function(dbevents){
+        res.json(dbevents);
+    });
     });
 
 router.route('/api/remove/:id')
