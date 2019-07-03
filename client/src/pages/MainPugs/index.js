@@ -28,6 +28,14 @@ class MainPugs extends React.Component {
     handle2ButtonClick = () => { 
         API.getAllEvents().then( events => this.setState({events: events}))
     }
+
+    joinClickHandler = () => {
+        const data = {
+            user: this.user.id,
+            events: this.events.id
+        }
+        API.joinEvent(data).then( data => this.setState({events: data}))
+    }
     
     componentDidMount () {
         this.fetchAllPugs()
@@ -37,17 +45,17 @@ class MainPugs extends React.Component {
     render () {
         return (
             <div className='han'>
-                <NavBar></NavBar>
+                <NavBar />
                 <Container className='solo'>
                     <Row>
                         <Button className='sport' onClick={() => this.handle2ButtonClick()} color='info'>View All Events</Button>
-                        <Button className='sport' gamecategoryid='true' onClick={() => this.handleButtonClick(0)} color='info'>Indoor Sports</Button>
-                        <Button className='sport' gamecategoryid='false' onClick={() => this.handleButtonClick(1)} color='info'>Outdoor Sports</Button>
+                        <Button className='sport' gamecategoryid='true' onClick={() => this.handleButtonClick(1)} color='info'>Indoor Sports</Button>
+                        <Button className='sport' gamecategoryid='false' onClick={() => this.handleButtonClick(0)} color='info'>Outdoor Sports</Button>
                     </Row>
                     <Row>
                          {
                             this.state.events.map((events, id) => (
-                                <EventsCard events={events} key={id} />                                
+                                <EventsCard clicker={() => joinClickHandler()} events={events} key={id} />                                
                             ))
                         } 
                     </Row>  

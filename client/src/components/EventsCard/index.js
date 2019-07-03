@@ -9,7 +9,7 @@ const EventsCard = props => (
             <CardBody>
                 <CardTitle>{props.events.event_city}</CardTitle>
                 <CardText>{props.events.description}</CardText>
-                <Button className='sugar'>Join</Button>
+                <Button className='sugar' >Join</Button>
             </CardBody>
         <CardFooter>{props.events.event_time}</CardFooter>
     </Card>
