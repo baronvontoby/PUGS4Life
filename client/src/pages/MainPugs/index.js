@@ -40,7 +40,9 @@ class MainPugs extends React.Component {
 
     render () {
 
-        return (
+    return (
+        <div>
+            <NavBar />         
             <div className='han mx-auto'> 
                 <Container className='solo'>
                     <Row className="justify-content-center">
@@ -50,13 +52,14 @@ class MainPugs extends React.Component {
                     </Row>
                       <Row className="justify-content-center px-3">
                          {
-                            this.state.events.map((events, id) => (
-                                <EventsCard joinEvent={this.joinClickHandler} events={events} key={id} />                                
-                            ))
-                        } 
+                             this.state.events.map((events, id) => (
+                                 <EventsCard joinEvent={this.joinClickHandler} events={events} key={id} />                                
+                                 ))
+                                } 
                     </Row>  
                 </Container>
             </div>
+        </div>
         )
     }
 }
