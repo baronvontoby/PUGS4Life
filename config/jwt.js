@@ -1,4 +1,4 @@
-const JWT_SECRET_KEY = '6aRYMci5oqLQtpFkpeFrid7BbAjB'; //hide the key in the config vars
+const JWT_SECRET_KEY = 'b0TX6u4GeLJ0EUHcR9iMxH02HLEacArt'; //hide the key in the config vars
 var db = require("../models");
 
 //use dummy user until we are ready with real users database
@@ -8,6 +8,7 @@ const TEST_USER = {
   name: "Pugs Gamer",
   email: "pugs2@gmail.com",
   city: "Minneapolis",
+  state: "MN",
   zipcode: "55346"
   // ,
   // createdAt: new Date(),
@@ -16,7 +17,7 @@ const TEST_USER = {
 
 const JWT_OPTIONS = { //this is boilerplate. 
   algorithm: "HS256",
-  expiresIn: "2 days"
+  expiresIn: "10 days"
 }
 
 module.exports = {

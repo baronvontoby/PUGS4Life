@@ -47,7 +47,7 @@ app.get("*", (req, res) => {
 });
 
 // Starting the server, syncing our models ------------------------------------/
-var syncOptions = { force: false };
+var syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -66,6 +66,7 @@ db.sequelize.sync(syncOptions)
       name: TEST_USER.name,
       email: TEST_USER.email, 
       city: TEST_USER.city,
+      state: TEST_USER.state,
       zipcode: TEST_USER.zipcode
     })
 })

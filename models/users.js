@@ -49,15 +49,16 @@ module.exports = function(sequelize, DataTypes) {
     //creates "active" column in "user" table
     active: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      defaultValue: true
     }
-  });
+  }); 
   //creates association between two tables. The primary key from users table will be id(created column). user_id will be created in the horses table as a foreign key
   User.associate = function(models) {
     User.hasMany(models.Participation, {
       onDelete: "cascade"
     });
-    User.hasMany(models.Events, {
+    User.hasMany(models.Events, { 
       onDelete: "cascade"
     });
   };
