@@ -11,6 +11,8 @@ export default {
         .then( response => response.data ),
     createNewUser : () => axios.post('/api/newuser')
         .then( response => response.data ),
+    joinEvent : data => axios.put('/api/join/' + data)
+        .then(response => response.data),
     updateEvent: id => axios.put('/api/update/' + id)
         .then( response => response.data ),
     removeEvent: id => axios.delete('/api/remove/' + id)
