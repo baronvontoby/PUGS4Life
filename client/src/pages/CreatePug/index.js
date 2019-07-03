@@ -2,6 +2,8 @@ import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBIcon } from 'mdbreact';
 import CreateForm from '../../components/CreateForm';
 import './CreatePug.css';
+import '../../components/NavBar';
+import NavBar from '../../components/NavBar';
 
 class CreatePug extends React.Component {
         // state = {
@@ -23,16 +25,18 @@ class CreatePug extends React.Component {
     
     
     render() {
-        return <div className="create-background">
-        <div>
-        {/* Jumbotron */}
-          <MDBRow>
-            <MDBCol>
-              <MDBJumbotron className="image-jumbo">
-              </MDBJumbotron>
-            </MDBCol>
-          </MDBRow>
-      </div>
+        return (
+        <div className="create-background">
+          <NavBar />
+          <div>
+          {/* Jumbotron */}
+            <MDBRow>
+              <MDBCol>
+                <MDBJumbotron className="image-jumbo">
+                </MDBJumbotron>
+              </MDBCol>
+            </MDBRow>
+          </div>
             {/* Input Form */}
             <MDBContainer fluid>
             <MDBRow>
@@ -52,7 +56,7 @@ class CreatePug extends React.Component {
                 </MDBRow>
             </MDBContainer>
         </div>
-        
+        )
          
     }
 }
