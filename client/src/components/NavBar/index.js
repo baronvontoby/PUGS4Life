@@ -32,7 +32,7 @@ export default class NavBar extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div id="navigatBar">
         <Navbar color="light" light expand="md" className="z-depth-2">
           <NavbarBrand href="/home/">
           {/* <img className="pug-logo" src={logo} alt="Logo" /> */}
