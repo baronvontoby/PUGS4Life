@@ -1,9 +1,10 @@
 import React from 'react';
 import {Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText} from 'reactstrap';
+// import moment from 'moment';
 import './index.css';
 
-
 const EventsCard = props => (
+
     <Card className='george'>
         <CardHeader>{props.events.event_name}</CardHeader>
             <CardBody>
@@ -14,5 +15,7 @@ const EventsCard = props => (
         <CardFooter>{props.events.event_time}</CardFooter>
     </Card>
 )
+
+console.log(EventsCard);
 
 export default EventsCard;
