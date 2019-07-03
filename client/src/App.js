@@ -20,7 +20,7 @@ class App extends Component {
             <Route exact path="/" component={() => <LandingPage />} />
             <Route exact path="/register" component={() => <RegisterPage className="text-left mx-auto"/>}/>
             <Route exact path='/home' component={() => <MainPugs />}></Route>
-            <Route exact path='/mypugs' component={() => <div>My Pugs Page</div>}></Route>
+            <Route exact path='/mypugs' component={() => <MyPugs/>}></Route>
             <Route exact path='/create' component={() => <CreatePug />}></Route>
             </Switch>
           </BrowserRouter>
