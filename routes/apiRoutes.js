@@ -13,18 +13,36 @@ router.get("/allevents", function(req,res) {
 
 router.get('/outdoor', function(req,res) {
   db.GameCategory.findAll({
-    where: {is_outdoor: true}
+    where: {is_outdoor: true},
+    include: [{
+      model: db.Events,
+    }]   
   })
   .then(function(outdoor) {
-    res.json(outdoor)
+    let events = [];
+    for (let i=0; i < outdoor.length; i++ ){
+      for(let e=0; e < outdoor[i].Events.length; e++){
+        events.push(outdoor[i].Events[e]);
+      }
+    }
+    res.json(events);
   });
 });
 router.get('/indoor', function(req,res) {
   db.GameCategory.findAll({
-    where: {is_outdoor: false}
+    where: {is_outdoor: false},
+    include: [{
+      model: db.Events,
+    }]   
   })
   .then(function(outdoor) {
-    res.json(outdoor)
+    let events = [];
+    for (let i=0; i < outdoor.length; i++ ){
+      for(let e=0; e < outdoor[i].Events.length; e++){
+        events.push(outdoor[i].Events[e]);
+      }
+    }
+    res.json(events);
   });
 });
 
