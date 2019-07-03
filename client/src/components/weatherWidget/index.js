@@ -71,24 +71,6 @@ class WeatherWidget extends Component {
         </table>
       </div>
 
-<<<<<<< HEAD
-       <div className="widget-right__footer widget-right__footer--brown">
-        <div className="widget-right__layout">
-        <div>
-          <a href="" target="_blank" className="widget-right__date">
-          <Moment local format="MMMM Do">
-            </Moment>
-          </a>
-          </div>
-          <div className="widget-right__date">
-          <Moment local format="hh:mm A">
-            </Moment>
-          </div>
-        </div>
-      </div>
-
-=======
->>>>>>> a8e9fb1779d8ab457740039f9615e3a6563b4290
 
      </div>
         
