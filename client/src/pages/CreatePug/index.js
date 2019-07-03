@@ -1,11 +1,16 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBCardImage, MDBIcon } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBIcon } from 'mdbreact';
 import CreateForm from '../../components/CreateForm';
 import './CreatePug.css';
 
 class CreatePug extends React.Component {
         // state = {
         //     eventName: "",
+            // eventLocation: "",
+            // time,
+            // isOutdoor: false,
+            // eventImage: "",
+
 
         // }
       

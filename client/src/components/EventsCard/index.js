@@ -7,6 +7,8 @@ import './index.css';
 import avatar from './avatar.png'
 
 
+
+
 const EventsCard = props => (
      
             <MDBCard className="card mx-auto row my-3 justify-content-center px-2">

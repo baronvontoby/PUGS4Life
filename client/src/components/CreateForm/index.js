@@ -23,7 +23,7 @@ const CreateForm = () => {
                         />
                     </MDBCol>
                 </MDBRow>
-                <MDBRow className="my-5">
+                <MDBRow className="mt-5">
                     <MDBCol sm={6}>
                         <TimePickerPage />
                     </MDBCol>
@@ -40,6 +40,11 @@ const CreateForm = () => {
                                     />
                                 </div>
                         </FormGroup>
+                    </MDBCol>
+                </MDBRow>
+                <MDBRow>
+                    <MDBCol sm={12} className="my-5">
+                        <MDBInput label="Add URL to Event Image" />
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
