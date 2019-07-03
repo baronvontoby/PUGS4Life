@@ -1,8 +1,6 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBCardImage, MDBIcon, } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBBtn} from 'mdbreact';
 import './MyPugs.css';
-import WeatherWidget from '../../components/weatherWidget'
-import NavbarPage from '../../components/NavBar';
 
 class MyPugs extends React.Component {
 

@@ -1,4 +1,11 @@
-
+/* Jumbotron */
+.image-jumbo {
+    background-image: url("https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 15%;
+    min-height: 250px;
+}
 
 /* Background */
 .create-background {
