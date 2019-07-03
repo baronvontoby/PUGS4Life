@@ -5,7 +5,9 @@ export default {
         .then( response => response.data ),
     getMyEvents: () => axios.get('/api/myevents')
         .then( response => response.data),
-    getTheseEvents: id => axios.get('/api/events/' + id)
+    getOutdoor: () => axios.get('/api/outdoor')
+        .then( response => response.data ),
+    getIndoor: () => axios.get('/api/indoor')
         .then( response => response.data ),
     createNewEvent : () => axios.post('/api/newevent')
         .then( response => response.data ),
