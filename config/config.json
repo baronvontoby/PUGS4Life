@@ -1,14 +1,14 @@
 {
     "development": {
-      "username": "root",
-      "password": "jimmyneutron",
+      "username": "nodeuser",
+      "password": "nodeuser",
       "database": "pugs4life_db",
       "host": "localhost",
       "dialect": "mysql"
     },
     "test": {
-      "username": "root",
-      "password": "jimmyneutron",
+      "username": "nodeuser",
+      "password": "nodeuser",
       "database": "pugs4life_db",
       "host": "localhost",
       "dialect": "mysql"
