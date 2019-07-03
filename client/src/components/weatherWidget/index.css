@@ -1635,7 +1635,7 @@ background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, F
 .pugImg{
   bottom:25px;
   z-index: 1000;
-right:58%;
-  top: -2.9em;
+  right: 50%;
+  top: -2.4em;
 }
 
