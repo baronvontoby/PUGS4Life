@@ -4,18 +4,34 @@ import CreateForm from '../../components/CreateForm';
 import './CreatePug.css';
 
 class CreatePug extends React.Component {
-   
+        state = {
+            eventName: "",
 
+        }
+      
+      handleInput = field => event => {
+        const { value } = event.target;
+        this.setState({
+          [field]: value
+        });
+      };
+    
+      submitHandler = event => {
+        event.preventDefault();
+        event.target.className += " was-validated";
+      };
+    
+    
     render() {
         return <div className="create-background">
         <div>
         {/* Jumbotron */}
-        <MDBJumbotron className="p-0">
-          <MDBCardImage
-            className="img-fluid"
-            src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          />
-        </MDBJumbotron>
+          <MDBRow>
+            <MDBCol>
+              <MDBJumbotron className="image-jumbo">
+              </MDBJumbotron>
+            </MDBCol>
+          </MDBRow>
       </div>
             {/* Input Form */}
             <MDBContainer fluid>
@@ -25,7 +41,10 @@ class CreatePug extends React.Component {
                     <h2>Create a PUG!</h2>
                 </MDBCol>
             </MDBRow>
-            <CreateForm />
+            <CreateForm 
+                eventName= {this.state.eventName},
+
+            />
                 <MDBRow>
                     <MDBCol sm={12} className="text-center">
                         <MDBBtn className="createBtn create-color mx-auto mt-3">Create</MDBBtn>
