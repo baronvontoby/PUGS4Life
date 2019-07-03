@@ -23,7 +23,7 @@ const CreateForm = () => {
                         />
                     </MDBCol>
                 </MDBRow>
-                <MDBRow className="my-5">
+                <MDBRow className="mt-5">
                     <MDBCol sm={6}>
                         <TimePickerPage />
                     </MDBCol>
@@ -40,6 +40,28 @@ const CreateForm = () => {
                                     />
                                 </div>
                         </FormGroup>
+                    </MDBCol>
+                </MDBRow>
+                <MDBRow>
+                    <MDBCol sm={12} className="my-5">
+                        <div className="input-group">
+                          <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroupFileAddon01">
+                              Event Image
+                            </span>
+                          </div>
+                          <div className="custom-file">
+                            <input
+                              type="file"
+                              className="custom-file-input"
+                              id="inputGroupFile01"
+                              aria-describedby="inputGroupFileAddon01"
+                            />
+                            <label className="custom-file-label" htmlFor="inputGroupFile01">
+                              Choose file
+                            </label>
+                          </div>
+                        </div>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
