@@ -52,7 +52,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
-  //creates association between two tables. The primary key from users table will be id(created column). user_id will be created in the horses table as a foreign key
+  //creates association between two tables. The primary key from users table will be id(created column). user_id will be created in the users table as a foreign key
   User.associate = function(models) {
     User.hasMany(models.Participation, {
       onDelete: "cascade"

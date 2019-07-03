@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import './index.css'
-import Moment from 'react-moment';
+// import Moment from 'react-moment';
 import pugPic from './pugs.png'
 
 const API_KEY = "85fa4de20dcfbd962e68e36c4530c26d";
@@ -71,6 +71,7 @@ class WeatherWidget extends Component {
         </table>
       </div>
 
+<<<<<<< HEAD
        <div className="widget-right__footer widget-right__footer--brown">
         <div className="widget-right__layout">
         <div>
@@ -86,6 +87,8 @@ class WeatherWidget extends Component {
         </div>
       </div>
 
+=======
+>>>>>>> a8e9fb1779d8ab457740039f9615e3a6563b4290
 
      </div>
         
