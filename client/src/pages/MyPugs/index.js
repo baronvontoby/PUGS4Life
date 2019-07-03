@@ -10,12 +10,7 @@ class MyPugs extends React.Component {
     render() {
         return (
             <div>
-<<<<<<< HEAD
                 <NavBar />
-=======
-
-
->>>>>>> 2eba430c1668143c777a18da3797bad7b9070638
                 <MDBContainer>
 
                     <MDBRow>

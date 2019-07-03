@@ -29,7 +29,6 @@ class CreatePug extends React.Component {
     
     
     render() {
-<<<<<<< HEAD
         return (
         <div className="create-background">
           <NavBar />
@@ -42,19 +41,6 @@ class CreatePug extends React.Component {
               </MDBCol>
             </MDBRow>
           </div>
-=======
-        
-        return <div className="create-background">
-        <div>
-        {/* Jumbotron */}
-          <MDBRow>
-            <MDBCol>
-              <MDBJumbotron className="image-jumbo">
-              </MDBJumbotron>
-            </MDBCol>
-          </MDBRow>
-      </div>
->>>>>>> 2eba430c1668143c777a18da3797bad7b9070638
             {/* Input Form */}
             <MDBContainer fluid>
             <MDBRow>
