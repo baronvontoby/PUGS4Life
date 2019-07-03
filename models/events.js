@@ -54,19 +54,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Events.belongsTo(models.User, {
-      // foreignKey: {
-      //   foreignKey: 'eventOwnerId',
-      //   allowNull:false
-      // }
     })
-
-
-    // Events.belongsTo(models.User, {
-    //   foreignKey: {
-
-    //     allowNUll:false
-    //   }
-    // });
   };
   return Events;
 };
