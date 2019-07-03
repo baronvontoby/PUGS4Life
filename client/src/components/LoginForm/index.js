@@ -48,7 +48,7 @@ const FormPage = props => (
         </div>
 
         <div className="text-center mt-4">
-          <MDBBtn color="light-blue" className="mb-3" type="submit">
+          <MDBBtn className="mb-3" type="submit">
             Login
           </MDBBtn>
         </div>

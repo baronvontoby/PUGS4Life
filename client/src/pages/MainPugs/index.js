@@ -44,7 +44,7 @@ class MainPugs extends React.Component {
                         <Button className='sport' gamecategoryid='true' onClick={() => this.handleButtonClick(1)} color='info'>Indoor Sports <i className="fal fa-chess-pawn-alt fa-lg right"></i></Button>
                         <Button className='sport' gamecategoryid='false' onClick={() => this.handleButtonClick(2)} color='info'>Outdoor Sports  <i className="fal fa-basketball-hoop fa-lg"></i></Button>
                     </Row>
-                      <Row className="justify-content-center">
+                      <Row className="justify-content-center px-3">
                          {
                             this.state.events.map((events, id) => (
                                 <EventsCard events={events} key={id} />                                
