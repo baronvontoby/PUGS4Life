@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import RegisterPage from './components/SignUpForm';
 import WeatherWidget from './components/weatherWidget';
 import MainPugs from './pages/MainPugs';
+import MyPugs from './pages/MyPugs';
 import NavbarPage from './components/NavBar'
 import CreatePug from './pages/CreatePug';
 

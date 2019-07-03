@@ -17,7 +17,7 @@ const CreateForm = () => {
                         <MDBInput hint=" Location Address" type="location-address" />
                     </MDBCol>
                 </MDBRow>
-                <MDBRow>
+                <MDBRow className="mt-3">
                     <MDBCol sm={6}>
                         <TimePickerPage />
                     </MDBCol>
@@ -27,15 +27,13 @@ const CreateForm = () => {
                                 <div>
                                     <CustomInput type="switch" id="indoor-switch" name="customSwitch" label="Indoor" />
                                     <CustomInput type="switch" id="outdoor-switch" name="customSwitch" label="Outdoor" />
-                                    <CustomInput type="switch" id="tableTop-switch" name="customSwitch" label="Table Top" />
-                                    <CustomInput type="switch" id="videoGame-switch" name="customSwitch" label="Video Game" />
                                 </div>
                         </FormGroup>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
                     <MDBCol>
-                        <MDBInput type="textarea" rows="5" hint="What are we doing?" label="PUG Description" />
+                        <MDBInput className="mt-3" type="textarea" rows="5" hint="What are we doing?" label="PUG Description" />
                     </MDBCol>
                 </MDBRow>
             
