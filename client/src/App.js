@@ -15,6 +15,7 @@ state = {
 
 renderPage = () => {
   if (this.state.loggedIn === false ) {
+    
     return <LandingPage />
   }
   else if (this.state.loggedIn === true ) {
@@ -27,6 +28,7 @@ renderPage = () => {
     else if ('/mypugs') {
       return <MyPugs />
     }
+  }
 }
   render() {
     return (
@@ -34,7 +36,6 @@ renderPage = () => {
         <div className="main">
          <BrowserRouter>
             <Switch>
-
               <Route exact path="/" component={() => <LandingPage />} />
               <Route exact path="/register" component={() => <RegisterPage className="text-left mx-auto"/>}/>
               <Route exact path='/home' component={() => <MainPugs />}></Route>
