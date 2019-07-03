@@ -4,6 +4,7 @@ import API from '../../util/API';
 import './MainPugs.css';
 import EventsCard from '../../components/EventsCard';
 import NavBar from '../../components/NavBar';
+import { runInThisContext } from 'vm';
 
 class MainPugs extends React.Component {
 
@@ -21,8 +22,12 @@ class MainPugs extends React.Component {
     )
 
     
-    handleButtonClick = category => {
-     API.getTheseEvents(category).then( events => this.setState({events: events}))
+    handleOutdoorClick = () => {
+        API.getOutdoor().then( events => this.setState({events: events}))
+    }
+
+    handleIndoorClick = () => {
+        API.getIndoor().then( events => this.setState({ events: events}))
     }
     
     handle2ButtonClick = () => { 
@@ -47,8 +52,8 @@ class MainPugs extends React.Component {
                 <Container className='solo'>
                     <Row className="justify-content-center">
                         <Button className='sport' onClick={() => this.handle2ButtonClick()} color='info'> View All Events <i className="fal fa-angle-double-down fa-lg"></i></Button>
-                        <Button className='sport' gamecategoryid='true' onClick={() => this.handleButtonClick(1)} color='info'>Indoor Sports <i className="fal fa-chess-pawn-alt fa-lg right"></i></Button>
-                        <Button className='sport' gamecategoryid='false' onClick={() => this.handleButtonClick(2)} color='info'>Outdoor Sports  <i className="fal fa-basketball-hoop fa-lg"></i></Button>
+                        <Button className='sport' onClick={() => this.handleIndoorClick()} color='info'>Indoor Sports <i className="fal fa-chess-pawn-alt fa-lg right"></i></Button>
+                        <Button className='sport' onClick={() => this.handleOutdoorClick()} color='info'>Outdoor Sports  <i className="fal fa-basketball-hoop fa-lg"></i></Button>
                     </Row>
                       <Row className="justify-content-center px-3">
                          {

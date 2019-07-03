@@ -1,7 +1,8 @@
 {
     "development": {
-      "username": "nodeuser",
-      "password": "nodeuser",
+
+      "username": "root",
+      "password": "root",
       "database": "pugs4life_db",
       "host": "localhost",
       "dialect": "mysql"
