@@ -9,18 +9,18 @@ module.exports = function(sequelize, DataTypes) {
   //   }
   });
   //creates association between two tables.
-  Participation.associate = function(models) {
-    Participation.belongsTo(models.User, {
-      foreignKey: {
-        allowNUll:false
-      }
-    });
-    Participation.belongsTo(models.Events, {
-      foreignKey: {
-        allowNull:false
-      }
-    });
-  };
+  // Participation.associate = function(models) {
+  //   Participation.belongsTo(models.User, {
+  //     foreignKey: {
+  //       allowNUll:false
+  //     }
+  //   });
+  //   Participation.belongsTo(models.Events, {
+  //     foreignKey: {
+  //       allowNull:false
+  //     }
+  //   });
+  // };
 
   return Participation;
 };
