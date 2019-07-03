@@ -11,6 +11,23 @@ router.get("/allevents", function(req,res) {
   });
 });
 
+router.get('/outdoor', function(req,res) {
+  db.GameCategory.findAll({
+    where: {is_outdoor: true}
+  })
+  .then(function(outdoor) {
+    res.json(outdoor)
+  });
+});
+router.get('/indoor', function(req,res) {
+  db.GameCategory.findAll({
+    where: {is_outdoor: false}
+  })
+  .then(function(outdoor) {
+    res.json(outdoor)
+  });
+});
+
 // add new event WORKING (in postman a json of the add event will be returned)
 router.post('/newevent', function(req,res) {
   db.Events.create(req.body).then(function(response){
@@ -60,12 +77,12 @@ router.delete('/remove/:id', function(req, res) {
   });
 });
 
+router.route('/api/user')
+    .get((req,res,err) => {
+        res.json();
+    });
 
 
-// router.route('/user')
-//     .get((req,res,err) => {
-//         res.json();
-//     });
 
 
 
