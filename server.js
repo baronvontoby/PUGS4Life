@@ -52,8 +52,8 @@ var syncOptions = { force: true };
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
-  console.log("option is true");
-  syncOptions.force = true;
+  // this controls the reset of our mysql database
+  syncOptions.force = false;
 }
 
 // Starting the server, syncing our models ------------------------------------/
@@ -75,6 +75,8 @@ db.sequelize.sync(syncOptions)
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
 });
+
+
 
 module.exports = app;
 
