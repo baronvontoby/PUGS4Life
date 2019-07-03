@@ -11,8 +11,18 @@ router.get("/allevents", function(req,res) {
   });
 });
 
-router.get('/api/outdoor', function(req,res) {
-  db.GameCategory.findAll({})
+router.get('/outdoor', function(req,res) {
+  db.GameCategory.findAll({
+    where: {is_outdoor: true}
+  })
+  .then(function(outdoor) {
+    res.json(outdoor)
+  });
+});
+router.get('/indoor', function(req,res) {
+  db.GameCategory.findAll({
+    where: {is_outdoor: false}
+  })
   .then(function(outdoor) {
     res.json(outdoor)
   });
