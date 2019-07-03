@@ -787,11 +787,11 @@ background: linear-gradient(to right, #414345, #232526)!important; /* W3C, IE 10
   background-image: linear-gradient(to top, #5fd6d6, #a1e6e6);
 }
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-@charset "UTF-8";
+/* @charset "UTF-8";
 hr,
 input[type="search"] {
   box-sizing: content-box;
-}
+} */
 .weather-right,
 sub,
 sup {
