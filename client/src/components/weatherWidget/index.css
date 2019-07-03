@@ -538,7 +538,7 @@ background: linear-gradient(to right, #414345, #232526)!important; /* W3C, IE 10
 }
 .widget-left-menu--blue .widget-left-menu__layout,
 .widget-left-menu--brown .widget-left-menu__layout {
-  border-bottom: 2px solid #ff4f98;
+  border-bottom: 2px solid #eee;
 }
 .widget-left-menu--brown {
   background-image: -webkit-linear-gradient(bottom right, #feb020, #ffd05c);
@@ -555,7 +555,7 @@ background: linear-gradient(to right, #414345, #232526)!important; /* W3C, IE 10
 }
 .widget-left-menu__links--compact .widget-left-menu__layout--blue,
 .widget-left-menu__links--compact .widget-left-menu__layout--brown {
-  border-top: 2px solid #ff4f98;
+  border-top: 2px solid #eee;
 }
 .widget-left-menu__christmas {
   position: absolute;
@@ -1624,7 +1624,7 @@ background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, F
   padding: 5px 0 5px 5px;
 }
 .weather-right-card__item:first-child {
-  border-right: 2px solid #ff4f98;
+  border-right: 2px solid #eee;
   padding-right: 5px;
 }
 .weather-right-card--blue .weather-right-card__item:first-child {

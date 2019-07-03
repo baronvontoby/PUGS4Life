@@ -1,8 +1,14 @@
-/* 
+
 body{
  background-repeat: no-repeat!important;
  background-attachment: fixed;
- background: linear-gradient(to top, #fbf3f2 50%, #032539 50%)!important;
+ background-color:#fbf3f2;
+height: 100%!important;
+
 }
 
- */
+html{
+    height: 100%!important;
+}
+
+

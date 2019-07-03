@@ -3,7 +3,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import "./App.css";
 import LandingPage from './pages/LandingPage';
 import RegisterPage from './components/SignUpForm';
-import WeatherWidget from './components/weatherWidget';
 import MainPugs from './pages/MainPugs';
 import MyPugs from './pages/MyPugs';
 import NavbarPage from './components/NavBar'
@@ -26,7 +25,9 @@ class App extends Component {
             </Switch>
           </BrowserRouter>
         </div>
+
       </div>
+
     );
   }
 }
