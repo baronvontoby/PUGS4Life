@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useImperativeHandle } from 'react';
 import {Row, Container, Button} from 'reactstrap';
 import API from '../../util/API';
 import './MainPugs.css';
 import EventsCard from '../../components/EventsCard';
+import NavBar from '../../components/NavBar';
 
 class MainPugs extends React.Component {
 
@@ -28,12 +29,8 @@ class MainPugs extends React.Component {
         API.getAllEvents().then( events => this.setState({events: events}))
     }
 
-    joinClickHandler = () => {
-        const data = {
-            user: this.user.id,
-            events: this.events.id
-        }
-        API.joinEvent(data).then( data => this.setState({events: data}))
+    joinClickHandler = id => {
+        API.joinEvent(id).then( events => this.setState({events: events}))
     }
     
     componentDidMount () {
@@ -44,8 +41,8 @@ class MainPugs extends React.Component {
     render () {
 
         return (
-            <div className='han mx-auto'>
-            
+            <div className='han mx-auto'> 
+                <NavBar />         
                 <Container className='solo'>
                     <Row className="justify-content-center">
                         <Button className='sport' onClick={() => this.handle2ButtonClick()} color='info'> View All Events <i className="fal fa-angle-double-down fa-lg"></i></Button>
@@ -55,7 +52,7 @@ class MainPugs extends React.Component {
                       <Row className="justify-content-center">
                          {
                             this.state.events.map((events, id) => (
-                                <EventsCard clicker={() => joinClickHandler()} events={events} key={id} />                                
+                                <EventsCard joinEvent={this.joinClickHandler} events={events} key={id} />                                
                             ))
                         } 
                     </Row>  
