@@ -4,7 +4,7 @@ var router = require('express').Router();
 // call all events WORKING
 router.get("/allevents", function(req,res) {
   //console.log("hello")
-  // console.log(db.Events);
+  console.log(db.Events);
   db.Events.findAll({})
   .then(function(dbevents) {
       res.json(dbevents);
