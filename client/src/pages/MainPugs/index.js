@@ -27,6 +27,14 @@ class MainPugs extends React.Component {
     handle2ButtonClick = () => { 
         API.getAllEvents().then( events => this.setState({events: events}))
     }
+
+    joinClickHandler = () => {
+        const data = {
+            user: this.user.id,
+            events: this.events.id
+        }
+        API.joinEvent(data).then( data => this.setState({events: data}))
+    }
     
     componentDidMount () {
         this.fetchAllPugs()
@@ -47,7 +55,7 @@ class MainPugs extends React.Component {
                       <Row className="justify-content-center">
                          {
                             this.state.events.map((events, id) => (
-                                <EventsCard events={events} key={id} />                                
+                                <EventsCard clicker={() => joinClickHandler()} events={events} key={id} />                                
                             ))
                         } 
                     </Row>  
