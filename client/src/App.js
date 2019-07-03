@@ -15,11 +15,15 @@ state = {
 
 renderPage = () => {
   if (this.state.loggedIn === false ) {
-    
-    return <LandingPage />
+    if ('/register') {
+      return <RegisterPage className="text-left mx-auto"/>
+    }
+    else {
+      return <LandingPage />
+    }
   }
   else if (this.state.loggedIn === true ) {
-    if('/homer') {
+    if('/home') {
       return <RegisterPage className="text-left mx-auto"/>
     }
     else if ('/create') {
@@ -28,6 +32,9 @@ renderPage = () => {
     else if ('/mypugs') {
       return <MyPugs />
     }
+  }
+  else {
+    return <LandingPage />
   }
 }
   render() {

@@ -1,6 +1,8 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBBtn, MDBCol, MDBIcon } from 'mdbreact';
 import './MyPugs.css';
+import '../../components/NavBar';
+import NavBar from '../../components/NavBar';
 
 
 class MyPugs extends React.Component {
@@ -8,8 +10,7 @@ class MyPugs extends React.Component {
     render() {
         return (
             <div>
-
-
+                <NavBar />
                 <MDBContainer>
 
                     <MDBRow>
