@@ -33,12 +33,12 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
+        <Navbar color="light" light expand="md" className="z-depth-1-half">
           <NavbarBrand href="/home/"><img className="pug-logo" src={logo} alt="Logo" /></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
           <NavItem>
-                <NavLink href="/weather/"><WeatherWidget></WeatherWidget></NavLink>
+                <NavLink href="/home/"><WeatherWidget></WeatherWidget></NavLink>
               </NavItem>
             <Nav className="ml-auto d-flex" navbar>
 
@@ -66,6 +66,8 @@ export default class NavBar extends React.Component {
             </Nav>
           </Collapse>
         </Navbar>
+        <div className="navbar-expand" style={{backgroundColor:"#022133 ", width:"100vw", height:"1em", }}></div>
+
       </div>
     );
   }
