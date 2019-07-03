@@ -34,7 +34,7 @@ renderPage = () => {
     return (
       <div className="App">
         <div className="main">
-        <NavbarPage/>
+        {/* <NavbarPage/> */}
          <BrowserRouter>
             <Switch>
               <Route exact path="/" component={() => <LandingPage />} />

@@ -41,6 +41,8 @@ class MainPugs extends React.Component {
     render () {
 
         return (
+            <div>
+            <NavBar/>
             <div className='han mx-auto'> 
                 <Container className='solo'>
                     <Row className="justify-content-center">
@@ -56,6 +58,7 @@ class MainPugs extends React.Component {
                         } 
                     </Row>  
                 </Container>
+            </div>
             </div>
         )
     }

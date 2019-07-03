@@ -2,6 +2,7 @@ import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBIcon } from 'mdbreact';
 import CreateForm from '../../components/CreateForm';
 import './CreatePug.css';
+import NavbarPage from '../../components/NavBar'
 
 class CreatePug extends React.Component {
         // state = {
@@ -30,6 +31,8 @@ class CreatePug extends React.Component {
     render() {
         return <div className="create-background">
         <div>
+        <NavbarPage/>
+
         {/* Jumbotron */}
           <MDBRow>
             <MDBCol>

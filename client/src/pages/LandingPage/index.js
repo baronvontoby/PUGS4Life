@@ -13,6 +13,8 @@ import FormPage from '../../components/LoginForm'
 export default class LandingPage extends React.Component{
     render(){
         return (
+            <div>
+            {/* <MDBHeader>Yo</MDBHeader> */}
             <MDBContainer>
                 <MDBRow>
                     <MDBCol md={10} sm={12} lg={9}
@@ -22,6 +24,7 @@ export default class LandingPage extends React.Component{
                 </MDBCol>
                 </MDBRow>
             </MDBContainer>
+            </div>
         )
     }
 
