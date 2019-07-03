@@ -11,6 +11,15 @@ router.get("/allevents", function(req,res) {
   });
 });
 
+router.get('/api/outdoor', function(req,res,err) {
+  db.GameCategory.findAll({
+    where: {is_outdoor: req.body.is_outdoor}
+  })
+  .then(function(outdoor) {
+    res.json(outdoor)
+  });
+});
+
 // add new event WORKING (in postman a json of the add event will be returned)
 router.post('/newevent', function(req,res) {
   db.Events.create(req.body).then(function(response){
@@ -64,6 +73,8 @@ router.route('/api/user')
     .get((req,res,err) => {
         res.json();
     });
+
+
 
 
 
