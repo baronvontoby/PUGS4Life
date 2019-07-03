@@ -201,7 +201,7 @@ class RegisterPage extends Component {
                             src={this.state.imageurl}
                             className="img-fluid img-circle image-av"
                           />
-                          <figcaption>Your Image Here</figcaption>
+                          {/* <figcaption>Your Image Here</figcaption> */}
                           </figure>
                         </div>
                       </MDBCol>
