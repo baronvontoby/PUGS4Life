@@ -72,7 +72,7 @@ class WeatherWidget extends Component {
       </div>
 
 
-    </div>
+     </div>
         
     
     

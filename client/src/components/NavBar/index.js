@@ -32,18 +32,21 @@ export default class NavBar extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div id="navigatBar">
         <Navbar color="light" light expand="md" className="z-depth-2">
-          <NavbarBrand href="/home/"><img className="pug-logo" src={logo} alt="Logo" /></NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarBrand href="/home/">
+          {/* <img className="pug-logo" src={logo} alt="Logo" /> */}
           <NavItem>
                 <NavLink href="/home/"><WeatherWidget></WeatherWidget></NavLink>
               </NavItem>
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+        
             <Nav className="ml-auto d-flex" navbar>
 
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+                <DropdownToggle nav caret className="h4 gray-text">
                   Mah Pugs...
                 </DropdownToggle>
                 <DropdownMenu right>

@@ -4,10 +4,27 @@ var router = require('express').Router();
 // call all events WORKING
 router.get("/allevents", function(req,res) {
   //console.log("hello")
-  // console.log(db.Events);
+  console.log(db.Events);
   db.Events.findAll({})
   .then(function(dbevents) {
       res.json(dbevents);
+  });
+});
+
+router.get('/outdoor', function(req,res) {
+  db.GameCategory.findAll({
+    where: {is_outdoor: true}
+  })
+  .then(function(outdoor) {
+    res.json(outdoor)
+  });
+});
+router.get('/indoor', function(req,res) {
+  db.GameCategory.findAll({
+    where: {is_outdoor: false}
+  })
+  .then(function(outdoor) {
+    res.json(outdoor)
   });
 });
 
@@ -60,12 +77,12 @@ router.delete('/remove/:id', function(req, res) {
   });
 });
 
+router.route('/api/user')
+    .get((req,res,err) => {
+        res.json();
+    });
 
 
-// router.route('/user')
-//     .get((req,res,err) => {
-//         res.json();
-//     });
 
 
 
