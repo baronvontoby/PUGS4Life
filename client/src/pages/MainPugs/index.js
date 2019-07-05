@@ -20,7 +20,6 @@ class MainPugs extends React.Component {
         API.getUser().then( user => this.setState({user: user}))
     )
 
-    
     handleOutdoorClick = () => {
         API.getOutdoor().then( events => this.setState({events: events}))
     }
