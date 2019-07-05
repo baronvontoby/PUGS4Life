@@ -46,24 +46,24 @@
 
   .gradient-teal{
     background: #1c768f;  /* fallback for old browsers */
-    /* border-top: 1px #fa911c solid;
-    border-right: 1px #fa911c solid;
-    border-left: 1px #fa911c solid; */
+    border-left: 1px #021B2A solid;
+    border-right: 1px #021B2A solid;
+    border-top: 1px #021B2A solid;
     background-size: 50px;
     
    }
    .card-body{
-    border-left: 1px #fa911c solid;
-    border-right: 1px #fa911c solid;
-    border-bottom: 1px #fa911c solid;
-   border-top: 1px #fa911c solid;
+    border-left: 1px #021B2A solid;
+    border-right: 1px #021B2A solid;
+    border-bottom: 1px #021B2A solid;
+   /* border-top: 1px #021B2A solid; */
 
 
 
    }
 
    html{
-     height:100vh!important;
+     height:100%!important;
      background-repeat: no-repeat!important;
    }
    input:focus{
@@ -79,7 +79,7 @@
     margin-right:10px;
   }
    .btn{
-    background-color: #1c768f!important;
+    background-color: #fa911c!important;
   }
 
   label.active::after {
@@ -95,7 +95,8 @@
    }
   
    .navbar{
-     background-color: #1c768f!important;
+     background-color: #032539
+     !important;
    }
    .card{
      font-size: 1em;
@@ -131,3 +132,6 @@
     }
 
   }
+  .footer{
+    background-color: #022133!important;
+}

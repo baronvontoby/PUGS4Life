@@ -52,15 +52,30 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: true
     }
-  }); 
-  //creates association between two tables. The primary key from users table will be id(created column). user_id will be created in the horses table as a foreign key
+  });
+  //creates association between two tables. The primary key from users table will be id(created column). user_id will be created in the users table as a foreign key
   User.associate = function(models) {
-    User.hasMany(models.Participation, {
+    // User.hasMany(models.Participation, {
+    //   onDelete: "cascade"
+    // });
+    // User.belongsToMany(models.Events, {
+    //   as: 'eventOwner', foreignKey: 'eventOwnerId',
+    //   constraints: false,
+    //   through: models.Participation,
+    //   onDelete: "cascade"
+    // });
+
+
+    // Many to Many users thru partic to events
+    User.belongsToMany(models.Events, {
+      through: models.Participation,
       onDelete: "cascade"
     });
-    User.hasMany(models.Events, { 
-      onDelete: "cascade"
-    });
+
+    // one to many relationship of user/owner to event created
+    User.hasMany(models.Events, {
+    })
+
   };
 
   return User;

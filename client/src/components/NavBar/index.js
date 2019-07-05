@@ -32,30 +32,33 @@ export default class NavBar extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/home/"><img className="pug-logo" src={logo} alt="Logo" /></NavbarBrand>
+      <div id="navigatBar">
+        <Navbar color="light" light expand="md" className="z-depth-2">
+          <NavbarBrand href="/home/">
+          {/* <img className="pug-logo" src={logo} alt="Logo" /> */}
+          <NavItem>
+                <NavLink href="/home/"><WeatherWidget></WeatherWidget></NavLink>
+              </NavItem>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-          <NavItem>
-                <NavLink href="/weather/"><WeatherWidget></WeatherWidget></NavLink>
-              </NavItem>
+        
             <Nav className="ml-auto d-flex" navbar>
 
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+                <DropdownToggle nav caret className="h4 gray-text">
                   Mah Pugs...
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Find Pugs in my area
+                    <a href="/home">Find Pugs in my area</a>
                   </DropdownItem>
                   <DropdownItem>
-                    See my Pugs
+                    <a href="/mypugs">See my Pugs</a>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    Create a Pug!
+                    <a href="/create">Create a Pug!</a>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
@@ -66,6 +69,8 @@ export default class NavBar extends React.Component {
             </Nav>
           </Collapse>
         </Navbar>
+        <div className="navbar-expand z-depth-2" style={{backgroundColor:"#022133 ", width:"100vw", height:"1em", }}></div>
+
       </div>
     );
   }

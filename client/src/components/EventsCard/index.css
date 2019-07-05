@@ -5,5 +5,31 @@
 }
 
 .sugar {
-    float: right;
+    max-height: 35px;
+    font-size: 0.8rem;
+}
+
+.joinBtn{
+    left: 80%;
+    bottom: 80%;
+}
+
+.card-body{
+    /* padding:0; */
+    border: none!important;
+}
+
+.eventDesc{
+   /* height: 150px; */
+   /* border:red 1px solid; */
+   /* width: auto;
+   display: block; */
+   max-width:100%;
+   padding:0;
+    max-height:250px;
+    overflow: scroll
+}
+
+.card{
+    max-width:55em;
 }

@@ -12,13 +12,17 @@ export default {
         .then( response => response.data),
     getMyEvents: () => axios.get('/api/myevents')
         .then( response => response.data),
-    getTheseEvents: id => axios.get('/api/events/' + id)
+    getOutdoor: () => axios.get('/api/outdoor')
+        .then( response => response.data ),
+    getIndoor: () => axios.get('/api/indoor')
         .then( response => response.data ),
     createNewEvent : () => axios.post('/api/newevent')
         .then( response => response.data ),
             // Axios.post('/auth/login', this.state, config )        
     createNewUser : (dbUser) => axios.post('/api/newuser')
         .then( response => response.data ),
+    joinEvent : data => axios.put('/api/join/' + data)
+        .then(response => response.data),
     updateEvent: id => axios.put('/api/update/' + id)
         .then( response => response.data ),
     removeEvent: id => axios.delete('/api/remove/' + id)

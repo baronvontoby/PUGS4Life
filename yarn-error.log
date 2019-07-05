@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/12.5.0/bin/node /usr/local/bin/yarn add popperjs
+  /usr/local/Cellar/node/12.5.0/bin/node /usr/local/bin/yarn add install react-simple-infinite-scroll --save
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
@@ -14,17 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/popperjs: Not found
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66091:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129590:22)
-      at Request.emit (events.js:200:13)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:130562:10)
-      at Request.emit (events.js:200:13)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:130484:12)
-      at Object.onceWrapper (events.js:288:20)
-      at IncomingMessage.emit (events.js:205:15)
-      at endReadableNT (_stream_readable.js:1154:12)
-      at processTicksAndRejections (internal/process/task_queues.js:74:11)
+  Error: EACCES: permission denied, unlink '/Users/ash/Documents/codingBootcamp/projects/AshNewProject3/PUGS4Life/node_modules/@compone/class/index.js'
 
 npm manifest: 
   {
@@ -49,6 +39,8 @@ npm manifest:
       "nodemon": "^1.18.7"
     },
     "dependencies": {
+      "@fortawesome/free-brands-svg-icons": "^5.9.0",
+      "@fortawesome/react-fontawesome": "^0.1.4",
       "axios": "^0.19.0",
       "bipsms": "^0.4.3",
       "bootstrap": "^4.3.1",

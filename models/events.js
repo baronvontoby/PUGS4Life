@@ -42,9 +42,19 @@ module.exports = function(sequelize, DataTypes) {
         allowNUll:false
       }
     });
-    Events.hasMany(models.Participation, {
-      onDelete: "cascade"
+
+
+    // Events.hasMany(models.Participation, {
+    //   onDelete: "cascade"
+    // });
+
+
+    Events.belongsToMany(models.User, { 
+      through: models.Participation, 
     });
+
+    Events.belongsTo(models.User, {
+    })
   };
   return Events;
 };
