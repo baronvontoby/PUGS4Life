@@ -2,14 +2,14 @@ var db = require("../models");
 var router = require('express').Router();
 
 // WORKING call all events
-router.get("/allevents", function(req,res) {
-  //console.log("hello")
-  console.log(db.Events);
-  db.Events.findAll({})
-  .then(function(dbevents) {
-      res.json(dbevents);
-  });
-});
+// router.get("/allevents", function(req,res) {
+//   //console.log("hello")
+//   console.log(db.Events);
+//   db.Events.findAll({})
+//   .then(function(dbevents) {
+//       res.json(dbevents);
+//   });
+// });
 
 // WORKING - get all outdoor games
 router.get('/outdoor', function(req,res) {
@@ -104,6 +104,19 @@ router.get("/eventsToJoin/:id", function(req, res) {
 });
 
 
+//========================================================================
+
+//========================================================================
+//WORKING - grab all events that a user has created
+router.get('/eventscreated/:id', function(req,res) {
+  db.Events.findAll({
+    where: {
+      UserId: req.params.id
+    }
+  })
+  .then(result => 
+    res.json(result))
+});
 //========================================================================
 
 // WORKING - add new user
