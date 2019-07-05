@@ -1,12 +1,13 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBIcon, MDBInput } from 'mdbreact';
-import { CustomInput, FormGroup, Label} from 'reactstrap';
+import { CustomInput, FormGroup, Label, Form, Input} from 'reactstrap';
 import CreateForm from '../../components/CreateForm';
 import './CreatePug.css';
 import '../../components/NavBar';
 import NavBar from '../../components/NavBar';
 import Moment from 'react-moment';
 import TimePickerPage from '../../components/TimePicker/TimePicker.js';
+import API from '../../util/API';
 
 class CreatePug extends React.Component {
         state = {
@@ -14,7 +15,8 @@ class CreatePug extends React.Component {
             eventLoc: "",
             isOutdoor: "",
             eventImgUrl: "",
-            eventDes: ""
+            eventDes: "",
+            eventTime: ""
         }
       
         //how is this already happening?
@@ -25,6 +27,16 @@ class CreatePug extends React.Component {
             });
         };
     
+        // clearForm = () => {
+        //     state ={
+        //         eventName: "",
+        //         eventLoc: "",
+        //         isOutdoor: "",
+        //         eventImgUrl: "",
+        //         eventDes: "",
+        //         eventTime: ""
+        //     }
+        // }
 
         submitHandler = event => {
             event.preventDefault();
@@ -32,11 +44,11 @@ class CreatePug extends React.Component {
                 eventName: this.state.eventName,
                 eventLoc: this.state.eventLoc,
                 time: this.state.time,
-                isOutdoor: false,
+                isOutdoor: this.state.isOutdoor,
                 eventImgUrl: this.state.eventImgUrl,
                 eventDes: this.state.eventDes
             }
-
+            API.createNewEvent(newEvent).then(() => console.log('Success'))
           };
     
     
@@ -65,25 +77,36 @@ class CreatePug extends React.Component {
                     <MDBCol sm="6">
                         <MDBInput
                             hint="Event Name" 
-                            type="event-name" 
+                            value= {this.state.eventName}
+                            onChange={this.handleInput('eventName')}
                             name="event"
-                            // value= ""
-                            // onChange= {this.handleInput("eventName")}
                         />
                     </MDBCol>
                     <MDBCol sm="6">
                         <MDBInput 
                             hint=" Location Address" 
-                            type="location-address"
+                            value={this.state.eventLoc}
+                            onChange={this.handleInput('eventLoc')}
                             name="eventLoc"
-                            // value= {this.props.eventLoc}
-                            // onChange= {this.handleInput("eventLoc")}
                         />
                     </MDBCol>
                 </MDBRow>
                 <MDBRow className="mt-5">
                     <MDBCol sm="6">
-                        <TimePickerPage />
+                        <Form>
+                            <FormGroup>
+                                <Label for="event-time">Time (12HR Format)</Label>
+                                <Input
+                                className="w-50"
+                                type="time"
+                                name="time"
+                                id="event-time"
+                                placeholder="time placeholder"
+                                value={this.state.eventTime}
+                                onChange={this.handleInput('eventTime')}
+                                />
+                            </FormGroup>
+                    </Form>
                     </MDBCol>
                     <MDBCol sm="6">
                         <FormGroup>
@@ -95,8 +118,8 @@ class CreatePug extends React.Component {
                                         id="outdoor-switch" 
                                         label="Outdoor" 
                                         name="isOutdoor"
-                                        // value={false}
-                                        // onChange={this.handleInput("isOutdoor")}
+                                        value={this.state.isOutdoor}
+                                        onChange={this.handleInput('isOutdoor')}
                                     />
                                 </div>
                         </FormGroup>
@@ -107,8 +130,8 @@ class CreatePug extends React.Component {
                         <MDBInput 
                             label="Add URL to Event Image" 
                             name="event image"
-                            // value={this.props.eventImgUrl}
-                            // onChange={this.handleInput("eventImgUrl")}
+                            value={this.state.eventImgUrl}
+                            onChange={this.handleInput('eventImgUrl')}
                         />
                     </MDBCol>
                 </MDBRow>
@@ -121,8 +144,8 @@ class CreatePug extends React.Component {
                                 hint="What are we doing?" 
                                 label="PUG Description"
                                 name="event description"
-                                // value={this.props.eventDes}
-                                // onChange={this.handleInput("eventDes")} 
+                                value={this.state.eventDes}
+                                onChange={this.handleInput('eventDes')}
                             />
                         </MDBCol>
                     </MDBRow>
