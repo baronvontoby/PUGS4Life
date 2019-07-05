@@ -54,9 +54,20 @@ router.post('/newevent', function(req,res) {
 });
 
 router.route('/myevents')
+//
+// SELECT events.* FROM events
+// Join participations
+// where events.id = participations.EventId
+// and participations.UserId = userId
   .get((req,res,err) => {
       res.json()
   });
+
+// Not my events
+// Select * from events
+// where id not in (
+// select EventId from participations
+// where UserId = 4 )
 
 // add new user WORKING
 router.route('/newuser') 
