@@ -9,9 +9,9 @@ export default {
         .then( response => response.data ),
     getIndoor: () => axios.get('/api/indoor')
         .then( response => response.data ),
-    createNewEvent : newEvent => axios.post('/api/newevent', newEvent )
+    createNewEvent : newEvent => axios.post('/api/newevent', newEvent)
         .then( response => response.data ),
-    createNewUser : newUser => axios.post('/api/newuser', newUser )
+    createNewUser : newUser => axios.post('/api/newuser', newUser)
         .then( response => response.data ),
     joinEvent : eventId => axios.post('/api/join/' + eventId )
         .then(response => response.data),
