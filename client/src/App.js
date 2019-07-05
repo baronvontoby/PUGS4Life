@@ -6,7 +6,6 @@ import RegisterPage from "./components/SignUpForm";
 import MainPugs from "./pages/MainPugs";
 import MyPugs from "./pages/MyPugs";
 import CreatePug from "./pages/CreatePug";
-import Moment from 'react-moment';
 
 class App extends Component {
 state = {
