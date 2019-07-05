@@ -47,7 +47,7 @@ class CreatePug extends React.Component {
             const newEvent = {
                 eventName: this.state.eventName,
                 eventLoc: this.state.eventLoc,
-                time: this.state.time,
+                time: this.state.eventTime,
                 isOutdoor: this.state.isOutdoor,
                 eventImgUrl: this.state.eventImgUrl,
                 eventDes: this.state.eventDes
