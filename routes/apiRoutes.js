@@ -32,6 +32,7 @@ router.get('/outdoor', function(req,res) {
 // group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description;
 
 router.get('/indoor', function(req,res) {
+  db.sequelize.query("E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 0 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description");
   db.GameCategory.findAll({
     where: {is_outdoor: false},
     include: [{
@@ -49,8 +50,16 @@ router.get('/indoor', function(req,res) {
   });
 });
 // WORKING - add new event (in postman a json of the add event will be returned)
-router.post('/newevent/:newEvent', function(req,res) {
-  db.Events.create(req.body).then(function(response){
+router.post('/newevent', function(req,res) {
+  console.log(req.body)
+  let newEvent = {
+    event_name: req.body.eventName,
+    event_time: req.body.eventTime,
+    description: req.body.eventDes,
+  }
+  //console.log(newEvent)
+
+  db.Events.create(newEvent).then(function(response){
       res.json(response);
   });
 });
