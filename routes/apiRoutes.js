@@ -21,24 +21,45 @@ router.get('/outdoor', function(req,res) {
   });
 });
 
+//===========================================================================
 // WORKING/NEED TO ADD IF NOT JOINED AND COUNT  - get all indoor games
-router.get('/indoor', function(req,res) {
-  db.GameCategory.findAll({
-    where: {is_outdoor: false},
-    include: [{
-      model: db.Events,
-    }]   
-  })
-  .then(function(outdoor) {
-    let events = [];
-    for (let i=0; i < outdoor.length; i++ ){
-      for(let e=0; e < outdoor[i].Events.length; e++){
-        events.push(outdoor[i].Events[e]);
-      }
-    }
-    res.json(events);
+// router.get('/indoor', function(req,res) {
+//   db.GameCategory.findAll({
+//     where: {is_outdoor: false},
+//     include: [{
+//       model: db.Events,
+//     }]   
+//   })
+//   .then(function(outdoor) {
+//     let events = [];
+//     for (let i=0; i < outdoor.length; i++ ){
+//       for(let e=0; e < outdoor[i].Events.length; e++){
+//         events.push(outdoor[i].Events[e]);
+//       }
+//     }
+//     res.json(events);
+//   });
+// });
+
+//===========================================================================
+// WORKING - get indoor events
+router.get('/indoor/', function(req,res) {
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+  E.description , count(1) as player_count
+  FROM events E
+  join participations AS P2
+  join gamecategories AS g
+  where E.GameCategoryId = g.id
+  AND 	E.id = P2.EventId
+  AND 	g.is_outdoor = 0
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description;`)
+  .then(indoorActivityToJoin => {
+    console.log(indoorActivityToJoin);
+    res.json(indoorActivityToJoin[0]);
   });
 });
+
+//=========================================================================
 
 // WORKING - add new event (in postman a json of the add event will be returned)
 router.post('/newevent', function(req,res) {
