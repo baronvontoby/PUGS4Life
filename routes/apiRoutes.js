@@ -1,28 +1,15 @@
 var db = require("../models");
 var router = require('express').Router();
-var sequelize = require("sequelize");
-// call all events WORKING
-
-// Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) 
-// from events E
-// join participations AS P2
-// where E.id = P2.EventId
-// group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description
-
-router.get("/allevents", function(req,res) {
-  //console.log("hello")
-  console.log(db.Events);
-  db.Events.findAll({})
-  .then(function(response) {
-    res.json(response)
-  })
-  .then(function() {
-    sequelize.query("Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) from events E join participations AS P2 where E.id = P2.EventId group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description")
-});
-    
-  });
-
-
+// WORKING call all events
+// router.get("/allevents", function(req,res) {
+//   //console.log("hello")
+//   console.log(db.Events);
+//   db.Events.findAll({})
+//   .then(function(dbevents) {
+//       res.json(dbevents);
+//   });
+// });
+// WORKING - get all outdoor games
 router.get('/outdoor', function(req,res) {
   db.GameCategory.findAll({
     where: {is_outdoor: true},
@@ -40,6 +27,7 @@ router.get('/outdoor', function(req,res) {
     res.json(events);
   });
 });
+// WORKING - get all indoor games
 router.get('/indoor', function(req,res) {
   db.GameCategory.findAll({
     where: {is_outdoor: false},
@@ -57,110 +45,67 @@ router.get('/indoor', function(req,res) {
     res.json(events);
   });
 });
-
-// add new event WORKING (in postman a json of the add event will be returned)
-router.post('/newevent', function(req,res) {
+// WORKING - add new event (in postman a json of the add event will be returned)
+router.post('/newevent/', function(req,res) {
   db.Events.create(req.body).then(function(response){
-    // let partcipant = {
-    //   UserId = response.UserId,
-    //   EventId = response.EventId
-    // }
-    db.Participations.create(partcipant).then(function(res){
-      res.json(res);
-  });
+      res.json(response);
   });
 });
-
-// join/participate in an event WORKING (sends back of UserId and EventId)
+// WORKING join/participate in an event (sends back of UserId and EventId)
 router.post('/joinevent', function(req,res) {
   db.Participation.create(req.body).then(function(response){
     res.json(response);
   });
 });
 
-router.get("/myevents", function(req,res) {
-  Sequelize.query('SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_city, E.event_state, E.event_zipcode, E.description , count(1) as noOfPart FROM events E Join participations AS P1 join participations AS P2 where E.id = P1.EventId and P1.EventId = P2.EventId and P1.UserId = 1 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description')
-  .then(myevents=> {
-    let events = [];
-    for (let i=0; i < myevents.length; i++)
-    {
-      
-      id = myevents[i].id,
-      event_name  = myevents[i].event_name,
-      start_date = myevents[i].start_date,
-      event_time = myevents[i].event_time,
-      event_city = myevents[i].event_city,
-      event_state = myevents[i].event_state,
-      event_zipcode = myevents[i].event_zipcode,
-      description = myevents[i].description,
-      noOfParticipants = myevents[i].noOfPart
-      // Each record will now be an instance of Event with Count of Participants
-      events.push(myevents[i]);
-      }
-      res.json(myevents[i])
+router.get('/eventscreated/:id', function(req,res) {
+  db.Events.findAll({
+    where: {
+      UserId: req.params.id
     }
-  );
-})
-// query above with count added to it
-// SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1)
-// FROM events E
-// Join participations AS P1
-// join participations AS P2
-// where E.id = P1.EventId
-// and P1.EventId = P2.EventId
-// and P1.UserId = 1
-// group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description
-
-//   .get((req,res,err) => {
-//     db.Events.findAll({})
-//     .then(function(response) {
-//       res.json(response)
-//     })
-//     .then(function() {
-//       sequelize.query("SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) FROM events E Join participations AS P1 join participations AS P2 where E.id = P1.EventId and P1.EventId = P2.EventId and P1.UserId = 1 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description")
-//         });
-// });
-// router.get("/myevents", function(req,res) {
-
-// sequelize.query('SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) FROM events E Join participations AS P1 join participations AS P2 where E.id = P1.EventId and P1.EventId = P2.EventId and P1.UserId = 1 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description', {
-//    model: Events,
-//    mapToModel: true // pass true here if you have any mapped fields
-//  })
-//  .then(myevents=> {
-//    res.json(myevents)
-//    // Each record will now be an instance of Project
-//  });
-// })
-  //console.log("hello")
-  // db.Events.findAll({})
-  // .then(function(response) {
-  //   res.json(response)
-  // })
-  // .then(function() {
-  //   sequelize.query("SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) FROM events E Join participations AS P1 join participations AS P2 where E.id = P1.EventId and P1.EventId = P2.EventId and P1.UserId = 1 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description")
-
-
-    
-
-
-// Not my events
-// Select * from events
-// where id not in (
-// select EventId from participations
-// where UserId = 4 )
-
-// NOT MY EVENTS with count : of participatns joined but I have not
-// Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) 
-// from events E
-// join participations AS P2
-// where E.id = P2.EventId
-// and id not in (
-// select EventId from participations
-// where UserId = 4 )
-// group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description
-
-
-// add new user WORKING
+  })
+  .then(result => 
+    res.json(result))
+});
+//========================================================================
+// WORKING - get myevents by id and count the number of participants who have joined. 
+router.get("/myevents/:id", function(req,res) {
+  let uid = req.params.id;
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) as player_count
+  FROM events E
+  Join participations AS P1
+  join participations AS P2
+  where E.id = P1.EventId
+  and P1.EventId = P2.EventId
+  and P1.UserId = ${uid}
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
+  .then(myevents=> {
+      console.log(myevents);
+      res.json(myEvents[0]);
+    }
+  )
+  });
+//==========================================================================
+//========================================================================
+//Working - get events that available to join (this does not include events I have already signed up for)
+router.get("/eventsToJoin/:id", function(req, res) {
+  let userId = req.params.id;
+  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) 
+  from events E
+  join participations AS P2
+  where E.id = P2.EventId
+  and id not in (
+  select EventId from participations
+  where UserId = ${userId} )
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
+  )
+  .then(eventsToJoin => {
+    console.log(eventsToJoin);
+    res.json(eventsToJoin[0]);
+  })
+});
+//========================================================================
+// WORKING - add new user
 router.route('/newuser') 
   .post((req,res,err) => {
   var newUser = req.body;
@@ -168,8 +113,7 @@ router.route('/newuser')
       .then(user => res.json(user))
       .catch(err => res.json(500, err))
   });
-
-// update event information WORKING
+// WORKING - update event information
 router.put('/update/:id', function(req, res){
   db.Events.update(
     req.body,
@@ -183,9 +127,7 @@ router.put('/update/:id', function(req, res){
       res.json(dbevents);
     });
 });
-
-
-// Deletes event by id and returns json of number of rows affected. 
+// WORKING - Deletes event by id and returns json of number of rows affected.
 router.delete('/remove/:id', function(req, res) {
   db.Events.destroy({
     where:{
@@ -196,15 +138,10 @@ router.delete('/remove/:id', function(req, res) {
     res.json(dbdelete);
   });
 });
-
 router.route('/api/user')
     .get((req,res,err) => {
         res.json();
     });
-
-
-
-
 
 
 module.exports = router;
