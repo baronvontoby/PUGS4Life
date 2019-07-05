@@ -1,14 +1,6 @@
 var db = require("../models");
 var router = require('express').Router();
-// WORKING call all events
-// router.get("/allevents", function(req,res) {
-//   //console.log("hello")
-//   console.log(db.Events);
-//   db.Events.findAll({})
-//   .then(function(dbevents) {
-//       res.json(dbevents);
-//   });
-// });
+
 // WORKING - get all outdoor games
 router.get('/outdoor', function(req,res) {
   db.GameCategory.findAll({
@@ -46,13 +38,13 @@ router.get('/indoor', function(req,res) {
   });
 });
 // WORKING - add new event (in postman a json of the add event will be returned)
-router.post('/newevent/' + newEvent, function(req,res) {
+router.post('/newevent/:newEvent', function(req,res) {
   db.Events.create(req.body).then(function(response){
       res.json(response);
   });
 });
 // WORKING join/participate in an event (sends back of UserId and EventId)
-router.post('/joinevent', function(req,res) {
+router.post('/join', function(req,res) {
   db.Participation.create(req.body).then(function(response){
     res.json(response);
   });
@@ -88,7 +80,7 @@ router.get("/myevents/:id", function(req,res) {
 //==========================================================================
 //========================================================================
 //Working - get events that available to join (this does not include events I have already signed up for)
-router.get("/eventsToJoin/:id", function(req, res) {
+router.get("/allevents/:id", function(req, res) {
   let userId = req.params.id;
   db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) 
   from events E
