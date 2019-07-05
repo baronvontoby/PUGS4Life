@@ -1,31 +1,35 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBIcon, MDBInput } from 'mdbreact';
 import { CustomInput, FormGroup, Label, Form, Input} from 'reactstrap';
-import CreateForm from '../../components/CreateForm';
 import './CreatePug.css';
 import '../../components/NavBar';
 import NavBar from '../../components/NavBar';
 import Moment from 'react-moment';
-import TimePickerPage from '../../components/TimePicker/TimePicker.js';
 import API from '../../util/API';
 
 class CreatePug extends React.Component {
         state = {
             eventName: "",
             eventLoc: "",
-            isOutdoor: "",
+            isOutdoor: false,
             eventImgUrl: "",
             eventDes: "",
             eventTime: ""
         }
       
-        //how is this already happening?
         handleInput = field => event => {
             const { value } = event.target;
             this.setState({
               [field]: value
             });
         };
+
+        // handleSwitchInput = isOutdoor => {
+        //     this.setState({
+        //         checked: e.target.checked
+        //       })
+        // }
+
     
         // clearForm = () => {
         //     state ={
@@ -96,30 +100,29 @@ class CreatePug extends React.Component {
                         <Form>
                             <FormGroup>
                                 <Label for="event-time">Time (12HR Format)</Label>
-                                <Input
-                                className="w-50"
-                                type="time"
-                                name="time"
-                                id="event-time"
-                                placeholder="time placeholder"
-                                value={this.state.eventTime}
-                                onChange={this.handleInput('eventTime')}
-                                />
+                                    <Input
+                                    className="w-50"
+                                    type="time"
+                                    name="time"
+                                    id="event-time"
+                                    placeholder="time placeholder"
+                                    value={this.state.eventTime}
+                                    onChange={this.handleInput('eventTime')}
+                                    />
                             </FormGroup>
                     </Form>
                     </MDBCol>
                     <MDBCol sm="6">
                         <FormGroup>
                             <Label className="sm-mt-3" for="category-switch">PUG Category</Label>
-                                <div>
-                                    {/* <CustomInput type="switch" id="indoor-switch" name="customSwitch" label="Indoor" /> */}
+                                <div>  
                                     <CustomInput 
-                                        type="switch" 
-                                        id="outdoor-switch" 
-                                        label="Outdoor" 
-                                        name="isOutdoor"
-                                        value={this.state.isOutdoor}
-                                        onChange={this.handleInput('isOutdoor')}
+                                    type="switch" 
+                                    id="outdoor" 
+                                    name="customSwitch" 
+                                    value={this.state.isOutdoor}
+                                    onChange={this.handleInput('isOutdoor')}
+                                    label="Outdoor" 
                                     />
                                 </div>
                         </FormGroup>
