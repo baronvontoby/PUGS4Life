@@ -5,6 +5,7 @@ import './CreatePug.css';
 import '../../components/NavBar';
 import NavBar from '../../components/NavBar';
 import API from '../../util/API';
+import NavBarRe from '../../components/NavBarRe';
 import moment from 'moment';
 
 class CreatePug extends React.Component {
@@ -59,7 +60,7 @@ class CreatePug extends React.Component {
     render() {
         return (
         <div className="create-background">
-          <NavBar />
+          <NavBarRe />
           <div>
           {/* Jumbotron */}
             <MDBRow>

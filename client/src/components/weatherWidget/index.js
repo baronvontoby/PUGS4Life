@@ -47,7 +47,7 @@ class WeatherWidget extends Component {
     // const dateToFormat = '1976-04-19T12:59-0500';
 
     return (
-      <div className="widget-right widget-right--type5 widget-right--brown ml-.5">
+      <div className="widget-right widget-right--type5 widget-right--brown ml-.5 z-depth">
             <div className="mx-auto text-center position-relative"><img src={pugPic} style={{width: "8em"} } className="position-absolute pugImg"></img></div>
       <div className="widget-right__layout widget-right__layout--brown mt-1">
 
