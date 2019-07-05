@@ -41,16 +41,30 @@ class RegisterPage extends Component {
   submitHandler = event => {
     event.preventDefault();
     event.target.className += " was-validated";
-    console.log(this.state);
-    const config = {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
+    //I am calling and making sure the data is stored in token and decoded
+    //Set state is flaky so creating the user before sending it over
+    let user = { 
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email,
+        phonenumber: this.state.phonenumber,
+        city: this.state.city,
+        imageUrl: this.state.imageUrl ? this.state.imageUrl : imagelogo,
+        state: this.state.state,
+        zipcode: this.state.zipcode
+    };
+
+    Axios.post('/auth/signUp', user)
+        //.then( result => { console.log("Result: ", result); return result } );
+        .then( result => { 
+        localStorage.setItem("token", result.data.token); 
+        let theToken = localStorage.getItem('token');
+        let decoded = jwt_decode(theToken);
+        //console.log(JSON.stringify(decoded.data[0]));
+        localStorage.setItem("user", JSON.stringify(decoded.data[0]));
+        this.props.history.push("/home") 
+      })
     }
-    Axios.post('/auth/signUp', this.state, config)
-    //.then(result => console.log("Result: ", result));
-    .then( result => {localStorage.setItem("token", result.data.token); this.render('/home')})
-    // .then( this.render('/home'))
   };
 
   sendForm = () => {
