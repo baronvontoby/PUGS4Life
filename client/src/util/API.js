@@ -13,11 +13,11 @@ export default {
         .then( response => response.data ),
     createNewUser : newUser => axios.post('/api/newuser', newUser)
         .then( response => response.data ),
-    joinEvent : () => axios.post('/api/join/')
+    joinEvent : eventId => axios.post('/api/join/' + eventId )
         .then(response => response.data),
-    updateEvent: id => axios.put('/api/update/' + id)
+    updateEvent: id => axios.put('/api/update/' + id )
         .then( response => response.data ),
-    removeEvent: id => axios.delete('/api/remove/' + id)
+    removeEvent: id => axios.delete('/api/remove/' + id )
         .then( response => response.data ),
     getUser: () => axios.get('/api/user')
         .then( response => response.data)
