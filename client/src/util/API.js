@@ -16,12 +16,11 @@ export default {
         .then( response => response.data ),
     getIndoor: () => axios.get('/api/indoor')
         .then( response => response.data ),
-    createNewEvent : () => axios.post('/api/newevent')
+    createNewEvent : newEvent => axios.post('/api/newevent/' + newEvent)
         .then( response => response.data ),
-            // Axios.post('/auth/login', this.state, config )        
-    createNewUser : (dbUser) => axios.post('/api/newuser')
+    createNewUser : newUser => axios.post('/api/newuser/' + newUser)
         .then( response => response.data ),
-    joinEvent : data => axios.put('/api/join/' + data)
+    joinEvent : () => axios.post('/api/join/')
         .then(response => response.data),
     updateEvent: id => axios.put('/api/update/' + id)
         .then( response => response.data ),
