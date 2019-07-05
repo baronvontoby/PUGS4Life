@@ -66,8 +66,8 @@ class MyPugs extends React.Component {
                         <MDBCol>
 
                             <h1><strong>PUGS I've made here...</strong></h1>
-                            <hr></hr>
-                            <hr></hr>
+                            <hr className="hrTag1"></hr>
+                            
                         </MDBCol>
 
                     </MDBRow>
@@ -77,7 +77,7 @@ class MyPugs extends React.Component {
                     <MDBCol>
 
                     <h1><strong>PUGS I've joined here...</strong></h1>
-                    <hr></hr>
+                    <hr className="hrTag2"></hr>
                     <hr></hr>
 
                     </MDBCol>
