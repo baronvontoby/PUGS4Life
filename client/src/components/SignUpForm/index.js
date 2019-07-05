@@ -13,6 +13,7 @@ import {
 import "./pugs.png";
 import './index.css';
 import imagelogo from "./user-circle-solid.svg"
+import API from "../../util/API";
 class RegisterPage extends Component {
   constructor() {
     super();
@@ -23,7 +24,7 @@ class RegisterPage extends Component {
       emailconfirm: "",
       phonenumber: "",
       city: "",
-      imageurl: imagelogo,
+      imageUrl: imagelogo,
       state: "",
       zipcode: ""
     };
@@ -41,22 +42,20 @@ class RegisterPage extends Component {
   };
 
 
-  sendForm = () => {
-    fetch("/api/weather", {
-      method: "POST",
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password,
-        email: this.state.email,
-        phonenumber: this.state.phonenumber,
-        city: this.state.city,
-        imageurl: this.state.imageurl,
-        state: this.state.state,
-        zipcode: this.state.zipcode
-      })
-    })
-      .then(res => res.json())
-      .catch(err => console.log(err));
+  sendForm = event => {
+    event.preventDefault()
+    const newUser = {
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email,
+      emailconfirm: this.state.emailconfirm,
+      phonenumber: this.state.phonenumber,
+      city: this.state.city,
+      imageUrl: this.state.imageurl,
+      state: this.state.state,
+      zipcode: this.state.zipcode
+    }
+    API.createNewUser(newUser).then(() => console.log('Success'))
   };
 
   render() {

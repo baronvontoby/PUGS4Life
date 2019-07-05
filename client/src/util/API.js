@@ -13,7 +13,7 @@ export default {
         .then( response => response.data ),
     createNewUser : newUser => axios.post('/api/newuser/' + newUser)
         .then( response => response.data ),
-    joinEvent : data => axios.post('/api/join/')
+    joinEvent : () => axios.post('/api/join/')
         .then(response => response.data),
     updateEvent: id => axios.put('/api/update/' + id)
         .then( response => response.data ),

@@ -54,7 +54,15 @@ router.post('/join', function(req,res) {
   });
 });
 
-
+router.get('/eventscreated/:id', function(req,res) {
+  db.Events.findAll({
+    where: {
+      UserId: req.params.id
+    }
+  })
+  .then(result => 
+    res.json(result))
+});
 //========================================================================
 // WORKING - get myevents by id and count the number of participants who have joined. 
 router.get("/myevents/:id", function(req,res) {
@@ -74,7 +82,6 @@ router.get("/myevents/:id", function(req,res) {
   )
   });
 //==========================================================================
-
 //========================================================================
 //Working - get events that available to join (this does not include events I have already signed up for)
 router.get("/allevents/:id", function(req, res) {
@@ -93,23 +100,7 @@ router.get("/allevents/:id", function(req, res) {
     res.json(eventsToJoin[0]);
   })
 });
-
-
 //========================================================================
-
-//========================================================================
-//WORKING - grab all events that a user has created
-router.get('/eventscreated/:id', function(req,res) {
-  db.Events.findAll({
-    where: {
-      UserId: req.params.id
-    }
-  })
-  .then(result => 
-    res.json(result))
-});
-//========================================================================
-
 // WORKING - add new user
 router.route('/newuser') 
   .post((req,res,err) => {
@@ -118,7 +109,6 @@ router.route('/newuser')
       .then(user => res.json(user))
       .catch(err => res.json(500, err))
   });
-
 // WORKING - update event information
 router.put('/update/:id', function(req, res){
   db.Events.update(
@@ -146,7 +136,6 @@ router.delete('/remove/:id', function(req, res) {
     res.json(dbdelete);
   });
 });
-
 router.route('/api/user')
     .get((req,res,err) => {
         res.json();
