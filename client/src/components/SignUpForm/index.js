@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Axios from 'axios';
+
 import {
   MDBCol,
   MDBInput,
@@ -38,8 +40,17 @@ class RegisterPage extends Component {
   submitHandler = event => {
     event.preventDefault();
     event.target.className += " was-validated";
+    console.log(this.state);
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }
+    Axios.post('/auth/signUp', this.state, config)
+    //.then(result => console.log("Result: ", result));
+    .then( result => {localStorage.setItem("token", result.data.token); this.render('/home')})
+    // .then( this.render('/home'))
   };
-
 
   sendForm = () => {
     fetch("/api/weather", {
@@ -109,7 +120,7 @@ class RegisterPage extends Component {
                           success="Looks good!"
                           name="password"
                           value={this.state.password}
-                          onInput={this.handleInput("password")}
+                          onInput={this.handleInput('password')}
                         />
                       </MDBCol>
                     </MDBRow>
@@ -126,7 +137,7 @@ class RegisterPage extends Component {
                             success="Looks good!"
                             name="email"
                             value={this.state.email}
-                            onInput={this.handleInput("email")}
+                            onInput={this.handleInput('email')}
                             
                           />
                       </MDBCol>

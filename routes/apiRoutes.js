@@ -1,5 +1,10 @@
 var db = require("../models");
 const jwt = require('jsonwebtoken');
+const SECRET_KEY = 'b0TX6u4GeLJ0EUHcR9iMxH02HLEacArt'; //hide it
+const expressJwt = require('express-jwt');
+const jwtProtect = expressJwt({secret: SECRET_KEY});
+var router = require("express").Router();
+var router = require('express').Router();
 
 module.exports = function (app) {
   // Load index page
@@ -30,7 +35,8 @@ var db = require("../models");
 var router = require('express').Router();
 
 // call all events WORKING
-router.get("/allevents", function(req,res) {
+router.route("/allevents") 
+  .get(jwtProtect, (req,res) =>  {
   //console.log("hello")
   // console.log(db.Events);
   db.Events.findAll({})
@@ -46,9 +52,31 @@ router.post('/newevent', function(req,res) {
   });
 });
 
-router.route('/myevents')
-  .get((req,res,err) => {
-      res.json()
+router.post("/myevents", function(req,res) {
+  let uid = req.body.userId;
+  console.log("User id is: ", uid);
+  db.sequelize.query('SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_city, E.event_state, E.event_zipcode, E.description , count(1) as noOfPart FROM events E Join participations AS P1 join participations AS P2 where E.id = P1.EventId and P1.EventId = P2.EventId and P1.UserId = ' + uid + ' group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description')
+  .then(myevents=> {      
+      let events = [];
+      for (let i=0; i < myevents.length; i++)
+      {
+        let event = {
+        id: myevents[i].id,
+        event_name: myevents[i].event_name,
+        start_date: myevents[i].start_date,
+        event_time: myevents[i].event_time,
+        event_city: myevents[i].event_city,
+        event_state: myevents[i].event_state,
+        event_zipcode: myevents[i].event_zipcode,
+        description: myevents[i].description,
+        noOfParticipants: myevents[i].noOfPart
+        };
+        // Each record will now be an instance of Event with Count of Participants
+        events.push(event);
+      }
+      res.json(myevents);
+    }
+  )
   });
 
 // add new user WORKING
@@ -89,9 +117,22 @@ router.delete('/remove/:id', function(req, res) {
   });
 });
 
-// router.route('/user')
-//     .get((req,res,err) => {
-//         res.json();
-//     });
+router.route('/signUp') 
+    .post((req, res, err) => {
+        //console.log(req.body);
+        db.User.create({
+          username: req.body.username,
+          password: req.body.password,
+          email: req.body.email,
+          name: req.body.name,
+          image_link: req.body.image_link,
+          phone_num: req.body.phone_num,
+          city: req.body.phone_num,
+          state: req.body.city,
+          zipcode: req.body.state
+      }).then( newUser => res.json( newUser));
+    }); 
 
 module.exports = router;
+
+

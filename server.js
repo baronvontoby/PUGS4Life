@@ -12,22 +12,6 @@ const JWT = require('./config/jwt');
 const JWT_SECRET_KEY = JWT.JWT_SECRET_KEY;
 const TEST_USER =  JWT.TEST_USER; 
 
-
-//auth test
-app.use(jwt_express({
-  secret: JWT_SECRET_KEY,
-  getToken: function fromHeaderOrQuerystring(req) {
-    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-      return req.headers.authorization.split(' ')[1];
-    } else if (req.query && req.query.token) {
-      return req.query.token;
-    } else if (req.cookies && req.cookies.token) {
-      return req.cookies.token;
-    }
-    return null;
-  }
-}).unless({path: ['/','/login','/token', '/favicon.ico','/register','/api/register']}));
-
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -47,7 +31,7 @@ app.get("*", (req, res) => {
 });
 
 // Starting the server, syncing our models ------------------------------------/
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -55,20 +39,20 @@ if (process.env.NODE_ENV === "test") {
   // this controls the reset of our mysql database
   syncOptions.force = false;
 }
-
+ 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions)
-  .then(function() {
-    console.log('creating user in db : ' + TEST_USER.user_name);
-    return db.User.create({
-      user_name: TEST_USER.user_name,
-      password: TEST_USER.password,
-      name: TEST_USER.name,
-      email: TEST_USER.email, 
-      city: TEST_USER.city,
-      state: TEST_USER.state,
-      zipcode: TEST_USER.zipcode
-    })
+  .then(() => {
+    // console.log('creating user in db : ' + TEST_USER.user_name); //this is only for the first time when db is recreated
+    // return db.User.create({
+    //   username: TEST_USER.user_name,
+    //   password: TEST_USER.password,
+    //   name: TEST_USER.name,
+    //   email: TEST_USER.email, 
+    //   city: TEST_USER.city,
+    //   state: TEST_USER.state,
+    //   zipcode: TEST_USER.zipcode
+    // })
 })
 .then(function() {
   app.listen(PORT, () => {
