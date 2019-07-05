@@ -5,7 +5,6 @@ import './CreatePug.css';
 import '../../components/NavBar';
 import NavBar from '../../components/NavBar';
 import API from '../../util/API';
-import Moment from 'react-moment';
 import moment from 'moment';
 
 class CreatePug extends React.Component {
