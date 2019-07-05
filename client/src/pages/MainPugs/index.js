@@ -1,10 +1,9 @@
-import React, { useImperativeHandle } from 'react';
+import React from 'react';
 import {Row, Container, Button} from 'reactstrap';
 import API from '../../util/API';
 import './MainPugs.css';
 import EventsCard from '../../components/EventsCard';
 import NavBar from '../../components/NavBar';
-import { runInThisContext } from 'vm';
 
 class MainPugs extends React.Component {
 
