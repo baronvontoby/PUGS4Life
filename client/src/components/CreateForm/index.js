@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdbreact";
 import { CustomInput, FormGroup, Label } from 'reactstrap';
-import TimePickerPage from '../TimePicker/TimePicker.js';
+import TimePickerPage from '../../components/TimePicker/TimePicker.js';
 
 
 class CreateForm extends React.Component {
