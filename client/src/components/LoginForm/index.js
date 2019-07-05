@@ -1,9 +1,13 @@
 import React from "react";
 import Axios from 'axios';
 import API from '../../util/API';
+import {withRouter} from 'react-router-dom';
 // import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBCardHeader} from 'mdbreact';
 // import {Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, } from 'reactstrap';
 import "./pugs.png";
+import jwt_decode from 'jwt-decode';
+
+
 
 import {
   MDBRow,
@@ -20,38 +24,35 @@ import {
 class LoginPage extends React.Component {
  
   state = {
-    username: "",
-    password: ""
+    username: "test@gmail.com",
+    password: "pass"
   }
 
   handleInput = field => event => {
     this.setState({[field]: event.target.value})
   }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+      event.preventDefault();
       let user = { 
         username: this.state.username,
         password: this.state.password
       };
-      const config = {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        } 
-        // Axios.post('/auth/login', this.state, config )
-      //console.log("Valid input:",  " state: ",  this.state);
-      API.getUser( {user, config} ).then(userToken => this.setState({token: userToken}))
-    }
         //Need to fill this out
-        // console.log("Valid input:",  " state: ", this.state);
-        // const config = {
-        //   headers: {
-        //     'Content-Type': 'application/x-www-form-urlencoded'
-        //   }
-        // } 
-        // Axios.post('/auth/login', this.state, config )
-        //     .then(result => console.log("Result: ", result));
-            //.then( result => { console.log(result); localStorage.setItem("token", result.data.token); this.props.history.push("/home") })
+        console.log("Valid input:",  " state: ", this.state);
+        Axios.post('/auth/login', user )
+            //.then( result => { console.log("Result: ", result); return result } );
+            .then( result => { 
+              console.log(result.data); 
+              //localStorage.setItem("success", result.data.success);
+              localStorage.setItem("token", result.data.token); 
+              let theToken = localStorage.getItem('token');
+              let decoded = jwt_decode(theToken);
+              //console.log(JSON.stringify(decoded.data[0]));
+              localStorage.setItem("user", JSON.stringify(decoded.data[0]));
+              this.props.history.push("/home") 
+              })
+            }
 
     render () {
       return (
@@ -113,4 +114,4 @@ class LoginPage extends React.Component {
     }
   }
 
-export default LoginPage;
+export default withRouter(LoginPage);

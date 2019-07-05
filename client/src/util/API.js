@@ -26,7 +26,7 @@ export default {
         .then( response => response.data ),
     removeEvent: id => axios.delete('/api/remove/' + id)
         .then( response => response.data ),
-    getUser: (dbLogin, config) => axios.post('/auth/login', dbLogin, config)
-        .then( response => response.data)
+    // getUser: (dbLogin, config) => axios.post('/auth/login', dbLogin, config)
+    //     .then( response => response.data)
         //.then( result => { console.log(result); localStorage.setItem("token", result.data.token); this.props.history.push("/home") })
 }
