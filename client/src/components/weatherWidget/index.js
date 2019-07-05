@@ -44,18 +44,18 @@ class WeatherWidget extends Component {
       });
   }
   render() {
-    const dateToFormat = '1976-04-19T12:59-0500';
+    // const dateToFormat = '1976-04-19T12:59-0500';
 
     return (
-      <div className="widget-right widget-right--type5 widget-right--brown">
+      <div className="widget-right widget-right--type5 widget-right--brown ml-.5 z-depth">
             <div className="mx-auto text-center position-relative"><img src={pugPic} style={{width: "8em"} } className="position-absolute pugImg"></img></div>
-      <div className="widget-right__layout widget-right__layout--brown">
+      <div className="widget-right__layout widget-right__layout--brown mt-1">
 
         <div className="widget-right-card">
           <div className="widget-right__title">{this.state.name}</div>
           <div className="widget-right__description">moderate rain</div>
         </div>
-        <img src={this.state.weathericon} width="50" height="50" alt="Weather in Minneapolis, US" className="weather-right__icon weather-right__icon--type5 weather-right__icon--brown" />
+        <img src={this.state.weathericon} width="50" height="50" alt="" className="weather-right__icon weather-right__icon--type5 weather-right__icon--brown" />
         <table className="weather-right-card">
           <tbody>
           <tr className="weather-right-card__items">

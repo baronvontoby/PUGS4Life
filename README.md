@@ -1,29 +1,35 @@
-# Create React Express App
-
-## About This Boilerplate
-
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
-
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
-
-## Starting the app locally
-
-Start by installing front and backend dependencies. While in this directory, run the following command:
-
-```
-npm install
-```
-
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+# PUGS - Pick Up Game Finding Web Application
+### Created By
+  * Lorenzo Dandrea
+  * Jeff Samuels
+  * Deepa Bhujle
+  * Esther Hwang
+  * Sabrina Thong
+  * Ash Feijoo
+  * Ellen Buelow
+## Overview :fire: :fire: :fire:
+* PUGS is an application for spontaneously finding Pick Up Games in your area!
+* PUGS allows users to quickly form teams for indoor and outdoor sports, table-top games, video-games & more.
+## **<a href="https://stark-reef-81765.herokuapp.com/" target="_blank">++++ DEMO ++++</a>**
+### Dependencies
+* [Node.js](https://nodejs.org/en/)
+* [Express.js](https://expressjs.com/)
+* [Path](https://github.com/mtrpcic/pathjs)
+* [Dotenv](https://www.npmjs.com/package/dotenv)
+* [Handlebars.js](https://www.npmjs.com/package/express-handlebars)
+* [MomentJs](https://momentjs.com/docs/#/plugins)
+* [OpenWeatherAPI](https://openweathermap.org/api)
+* [SendMail](https://www.npmjs.com/package/sendmail) * _New Technology_
+* [MDBootstrap](https://mdbootstrap.com/) * _New Technology_
+***
+### How It Works
+* Users enter their name and email and are redirected to the User page to create or join a PUG.
+* Users are emailed a confirmation when they join a PUG.
+* Once a PUG is created, the user is not able to delete their event. However, Users are able to remove themselves from a PUG at any time.
+![Pugs Landing Page](https://i.gyazo.com/8cfc11cecaf41b12722fe5813cc3d90b.jpg)
+***
+![Pugs User Page](https://i.gyazo.com/2d7822b2dae971733964e7e0c82f8b10.jpg)
+***
+#### Info Button Modal
+* On the Landing page there is an information button to pull up a modal.
+[![Image from Gyazo](https://i.gyazo.com/ca17ffb8ea45c6fea1192ec9be363f01.gif)](https://gyazo.com/ca17ffb8ea45c6fea1192ec9be363f01)
