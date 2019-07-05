@@ -4,8 +4,8 @@ import { CustomInput, FormGroup, Label, Form, Input} from 'reactstrap';
 import './CreatePug.css';
 import '../../components/NavBar';
 import NavBar from '../../components/NavBar';
-import Moment from 'react-moment';
 import API from '../../util/API';
+import moment from 'moment';
 
 class CreatePug extends React.Component {
         state = {
@@ -24,22 +24,22 @@ class CreatePug extends React.Component {
             });
         };
 
-        // handleSwitchInput = isOutdoor => {
-        //     this.setState({
-        //         checked: e.target.checked
-        //       })
-        // }
+        handleSwitchInput = () => {
+            this.setState(state => ({
+                isOutdoor: !state.isOutdoor
+              }));
+        }
 
     
         // clearForm = () => {
-        //     state ={
+        //     this.setState({ 
         //         eventName: "",
         //         eventLoc: "",
         //         isOutdoor: "",
         //         eventImgUrl: "",
         //         eventDes: "",
         //         eventTime: ""
-        //     }
+        //     }) 
         // }
 
         submitHandler = event => {
@@ -47,7 +47,7 @@ class CreatePug extends React.Component {
             const newEvent = {
                 eventName: this.state.eventName,
                 eventLoc: this.state.eventLoc,
-                time: this.state.time,
+                time: moment(this.state.time).format("HH:mm"),
                 isOutdoor: this.state.isOutdoor,
                 eventImgUrl: this.state.eventImgUrl,
                 eventDes: this.state.eventDes
@@ -100,15 +100,17 @@ class CreatePug extends React.Component {
                         <Form>
                             <FormGroup>
                                 <Label for="event-time">Time (12HR Format)</Label>
-                                    <Input
-                                    className="w-50"
-                                    type="time"
-                                    name="time"
-                                    id="event-time"
-                                    placeholder="time placeholder"
-                                    value={this.state.eventTime}
-                                    onChange={this.handleInput('eventTime')}
-                                    />
+                                  
+                                        <Input
+                                        className="w-50"
+                                        type="time"
+                                        name="eventTime"
+                                        id="event-time"
+                                        placeholder="time placeholder"
+                                        value={this.state.eventTime}
+                                        onChange={this.handleInput('eventTime')}
+                                        />
+                                   
                             </FormGroup>
                     </Form>
                     </MDBCol>
@@ -121,7 +123,7 @@ class CreatePug extends React.Component {
                                     id="outdoor" 
                                     name="customSwitch" 
                                     value={this.state.isOutdoor}
-                                    onChange={this.handleInput('isOutdoor')}
+                                    onChange={this.handleSwitchInput}
                                     label="Outdoor" 
                                     />
                                 </div>
