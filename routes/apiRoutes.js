@@ -20,6 +20,17 @@ router.get('/outdoor', function(req,res) {
   });
 });
 // WORKING - get all indoor games
+
+//SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+// E.description , count(1) as player_count
+// FROM events E
+// join participations AS P2
+// join gamecategories AS g
+// where E.GameCategoryId = g.id
+// AND 	E.id = P2.EventId
+// AND 	g.is_outdoor = 0
+// group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description;
+
 router.get('/indoor', function(req,res) {
   db.GameCategory.findAll({
     where: {is_outdoor: false},
