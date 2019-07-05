@@ -1,17 +1,18 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBIcon } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBIcon, MDBInput } from 'mdbreact';
+import { CustomInput, FormGroup, Label} from 'reactstrap';
 import CreateForm from '../../components/CreateForm';
 import './CreatePug.css';
 import '../../components/NavBar';
 import NavBar from '../../components/NavBar';
 import Moment from 'react-moment';
+import TimePickerPage from '../../components/TimePicker/TimePicker.js';
 
 class CreatePug extends React.Component {
         state = {
             eventName: "",
             eventLoc: "",
-            // time (bring in momentREACT),
-            isOutdoor: false,
+            isOutdoor: "",
             eventImgUrl: "",
             eventDes: ""
         }
