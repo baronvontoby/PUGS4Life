@@ -24,7 +24,18 @@ app.get("*", (req, res) => {
 });
 
 
-// var clockwork = require("clockwork")({key:"your clockwork key here"});
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+  apiKey: '4821ffa6',
+  apiSecret: 'dXwIKJrXzb3ZEbZe',
+});
+
+const from = '19522007356';
+const to = '6124198226';
+const text = 'Hello from Nexmo';
+
+nexmo.message.sendSms(from, to, text);
+// // var clockwork = require("clockwork")({key:"your clockwork key here"});
 
 
 // // Send a message
