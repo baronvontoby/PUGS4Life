@@ -6,6 +6,7 @@ import '../../components/NavBar';
 import NavBar from '../../components/NavBar';
 import API from '../../util/API';
 import Moment from 'react-moment';
+import moment from 'moment';
 
 class CreatePug extends React.Component {
         state = {
@@ -47,7 +48,7 @@ class CreatePug extends React.Component {
             const newEvent = {
                 eventName: this.state.eventName,
                 eventLoc: this.state.eventLoc,
-                time: this.state.eventTime,
+                time: moment(this.state.time).format("HH:mm"),
                 isOutdoor: this.state.isOutdoor,
                 eventImgUrl: this.state.eventImgUrl,
                 eventDes: this.state.eventDes
@@ -100,17 +101,17 @@ class CreatePug extends React.Component {
                         <Form>
                             <FormGroup>
                                 <Label for="event-time">Time (12HR Format)</Label>
-                                    <Moment>
+                                  
                                         <Input
                                         className="w-50"
                                         type="time"
-                                        name="time"
+                                        name="eventTime"
                                         id="event-time"
                                         placeholder="time placeholder"
                                         value={this.state.eventTime}
                                         onChange={this.handleInput('eventTime')}
                                         />
-                                    </Moment>
+                                   
                             </FormGroup>
                     </Form>
                     </MDBCol>

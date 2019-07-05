@@ -54,10 +54,11 @@ router.post('/newevent', function(req,res) {
   console.log(req.body)
   let newEvent = {
     event_name: req.body.eventName,
-    event_time: req.body.eventTime,
+    event_time: req.body.time,
     description: req.body.eventDes,
+    start_date: Date.now()
   }
-  //console.log(newEvent)
+  console.log(newEvent)
 
   db.Events.create(newEvent).then(function(response){
       res.json(response);
