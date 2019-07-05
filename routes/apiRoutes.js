@@ -46,7 +46,7 @@ router.get('/indoor', function(req,res) {
   });
 });
 // WORKING - add new event (in postman a json of the add event will be returned)
-router.post('/newevent/', function(req,res) {
+router.post('/newevent/' + newEvent, function(req,res) {
   db.Events.create(req.body).then(function(response){
       res.json(response);
   });
