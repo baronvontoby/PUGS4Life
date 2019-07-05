@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBIcon, MDBInput } from 'mdbreact';
 import { CustomInput, FormGroup, Label, Form, Input} from 'reactstrap';
@@ -5,7 +6,7 @@ import './CreatePug.css';
 import '../../components/NavBar';
 import NavBar from '../../components/NavBar';
 import API from '../../util/API';
-import Moment from 'react-moment';
+import NavBarRe from '../../components/NavBarRe';
 import moment from 'moment';
 
 class CreatePug extends React.Component {
@@ -60,7 +61,7 @@ class CreatePug extends React.Component {
     render() {
         return (
         <div className="create-background">
-          <NavBar />
+          <NavBarRe />
           <div>
           {/* Jumbotron */}
             <MDBRow>
