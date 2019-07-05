@@ -20,42 +20,34 @@ router.get('/outdoor', function(req,res) {
     res.json(events);
   });
 });
+// WORKING - get all indoor games
 
-//===========================================================================
-// WORKING/NEED TO ADD IF NOT JOINED AND COUNT  - get all indoor games
-// router.get('/indoor', function(req,res) {
-//   db.GameCategory.findAll({
-//     where: {is_outdoor: false},
-//     include: [{
-//       model: db.Events,
-//     }]   
-//   })
-//   .then(function(outdoor) {
-//     let events = [];
-//     for (let i=0; i < outdoor.length; i++ ){
-//       for(let e=0; e < outdoor[i].Events.length; e++){
-//         events.push(outdoor[i].Events[e]);
-//       }
-//     }
-//     res.json(events);
-//   });
-// });
+//SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+// E.description , count(1) as player_count
+// FROM events E
+// join participations AS P2
+// join gamecategories AS g
+// where E.GameCategoryId = g.id
+// AND 	E.id = P2.EventId
+// AND 	g.is_outdoor = 0
+// group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description;
 
-//===========================================================================
-// WORKING - get indoor events
-router.get('/indoor/', function(req,res) {
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
-  E.description , count(1) as player_count
-  FROM events E
-  join participations AS P2
-  join gamecategories AS g
-  where E.GameCategoryId = g.id
-  AND 	E.id = P2.EventId
-  AND 	g.is_outdoor = 0
-  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description;`)
-  .then(indoorActivityToJoin => {
-    console.log(indoorActivityToJoin);
-    res.json(indoorActivityToJoin[0]);
+router.get('/indoor', function(req,res) {
+  db.sequelize.query("E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 0 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description");
+  db.GameCategory.findAll({
+    where: {is_outdoor: false},
+    include: [{
+      model: db.Events,
+    }]   
+  })
+  .then(function(outdoor) {
+    let events = [];
+    for (let i=0; i < outdoor.length; i++ ){
+      for(let e=0; e < outdoor[i].Events.length; e++){
+        events.push(outdoor[i].Events[e]);
+      }
+    }
+    res.json(events);
   });
 });
 
@@ -63,7 +55,16 @@ router.get('/indoor/', function(req,res) {
 
 // WORKING - add new event (in postman a json of the add event will be returned)
 router.post('/newevent', function(req,res) {
-  db.Events.create(req.body).then(function(response){
+  console.log(req.body)
+  let newEvent = {
+    event_name: req.body.eventName,
+    event_time: req.body.time,
+    description: req.body.eventDes,
+    start_date: Date.now()
+  }
+  console.log(newEvent)
+
+  db.Events.create(newEvent).then(function(response){
       res.json(response);
   });
 });
@@ -125,7 +126,21 @@ router.get("/allevents/:id", function(req, res) {
 // WORKING - add new user
 router.route('/newuser') 
   .post((req,res,err) => {
-  var newUser = req.body;
+  
+  let newUser = {
+    user_name: req.body.username,
+    password: req.body.password,
+    email: req.body.email,
+    name: req.body.username,
+    image_link: req.body.imageUrl,
+    phone_num: req.body.phonenumber,
+    city: req.body.city,
+    state: req.body.state,
+    zipcode: req.body.zipcode,
+    active: 1
+  }
+
+console.log(newUser);
   db.User.create(newUser)
       .then(user => res.json(user))
       .catch(err => res.json(500, err))

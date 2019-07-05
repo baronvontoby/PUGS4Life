@@ -196,7 +196,7 @@ class RegisterPage extends Component {
                         <div className="mx-auto text-center w-75 p-0 m-0">
                         <figure>
                           <img
-                            alt="Your Image Here"
+                            alt =''
                             src={this.state.imageurl}
                             className="img-fluid img-circle image-av"
                           />
