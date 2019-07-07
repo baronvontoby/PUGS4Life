@@ -32,19 +32,26 @@ class MyPugs extends React.Component {
 
                     <MDBRow>
 
-                        <MDBCol class="col-sm" className="justify-content-center">
-                            <MDBIcon icon="dog" size="5x" />
+                        <MDBCol  className="justify-content-center">
+                        <div className="justify-content-center">
+                        <MDBIcon id="pup" icon="dog" size="5x" />
                             <h1><strong>PUP</strong></h1>
+
+                        </div>
+                            
                         </MDBCol>
-                        <MDBCol></MDBCol>
+                        
                         <MDBCol class="col-sm" className="justify-content-center">
-                            <div className="my-5">
-                                <label htmlFor="customRange1"></label>
+                            <div className="mt-5">
+                                
                                 <input type="range" className="custom-range" id="customRange1" />
-                                <h2 className="justify-content-center"><strong>SKILL LEVEL</strong></h2>
+                                
+                            </div>
+                            <div className="justify-content-center">
+                            <h2 className="justify-content-center"><strong>SKILL LEVEL</strong></h2>
                             </div>
                         </MDBCol>
-                        <MDBCol></MDBCol>
+                        
                         <MDBCol class="col-sm" className="justify-content-center">
                             <MDBIcon icon="fire-alt" size="5x" />
                             <h1><strong>PRO</strong></h1>
