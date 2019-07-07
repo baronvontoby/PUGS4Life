@@ -9,27 +9,25 @@
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-  <link rel="stylesheet" href="./css/svg-with-js.min.css">
-  <link rel="stylesheet" href="./css/v4-shims.min.css">
-  <link rel="stylesheet" href="./css/fontawesome-all.min.css">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/images/favicon/favicon.ico" />
+
   <style>
     @import url("https://fonts.googleapis.com/css?family=B612+Mono&display=swap");
     @import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
   </style>
 
   <link href="https://fonts.googleapis.com/css?family=Cormorant+SC&display=swap" rel="stylesheet">
-<!-- 
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" /> -->
-  <!-- <link rel="manifest" href="/images/favicon/site.webmanifest" />
-  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#323232" /> -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="/images/favicon/site.webmanifest" />
+  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#323232" />
   <!-- Font Awesome -->
- 
-
+  <link rel="stylesheet" href="./css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="./css/svg-with-js.min.css">
+  <link rel="stylesheet" href="./css/v4-shims.min.css">
 
   <!-- Bootstrap core CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -37,6 +35,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet">
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="theme-color" content="#ffffff" />
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 
   <link rel="stylesheet" href="../src/App.css">
   <!--
@@ -51,19 +51,13 @@
     -->
   <title>PUGS </title>
 </head>
-<div id="openweathermap-widget-18"></div>
 
 <body class="mx-auto">
-
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
-  <div id="root" class=" ">
-
+  <div id="root" class="mask "></div>
   </div>
-
-  </div>
-
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -87,9 +81,8 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/js/mdb.min.js"></script>
-  <!-- <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 18,cityid: '5037649',appid: '85fa4de20dcfbd962e68e36c4530c26d',units: 'metric',containerid: 'openweathermap-widget-18',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script> -->
-
-
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
 </body>
 
 </html>
