@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
-MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
-MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBHamburgerToggler
+MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBCollapse, MDBHamburgerToggler, MDBNavbarToggler, MDBIcon
 } from "mdbreact";
 import WeatherWidget from '../weatherWidget/index';
 
@@ -32,43 +31,27 @@ state = {
 
 render() {
   return (
-      <MDBNavbar color="#O32539" expand="md" className="pb-5 z-depth-2">
+      <MDBNavbar color="#O32539" expand="md" className="pb-4 pb-sm-4 z-depth-2">
         <MDBNavbarBrand>
                 <WeatherWidget />
         </MDBNavbarBrand>
-        {/* <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          <MDBNavbarNav right>
-            <MDBNavItem active>
-              <MDBNavLink to="#!">Home</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="#!">Features</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="#!">Pricing</MDBNavLink>
-            </MDBNavItem> */}
-            
-            
-          {/* </MDBNavbarNav>
-          
-        </MDBCollapse> */}
-
-        <MDBHamburgerToggler color="#d3531a" id="hamburger1" onClick={()=> this.toggleSingleCollapse('collapse1')} />
-            <MDBCollapse isOpen={this.state.collapse1} navbar>
+        <div className="menu-cover" style={{backgroundColor: "#O32539", height: "10%", width: "10%"}}></div>
+        {/* Toggle Hamburger Menu */}
+        <MDBHamburgerToggler className="mt-4 mb-3" color="#1C768F" id="hamburger1" onClick={()=> this.toggleSingleCollapse('collapse1')} />
+            <MDBCollapse isOpen={this.state.collapse1} navbar className="mt-4">
               <MDBNavbarNav right>
-                <MDBNavItem>
+                <MDBNavItem className="pt-2">
                   <MDBNavLink to="/home">Search PUGs</MDBNavLink>
                 </MDBNavItem>
-                <MDBNavItem>
+                <MDBNavItem className="pt-2">
                   <MDBNavLink to="/create">Create a PUG</MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to="/mypugs">My PUGs</MDBNavLink>
+                  <MDBNavLink to="/mypugs" className="text-center mx-1 pt-2"><MDBIcon icon="user" /></MDBNavLink>
                 </MDBNavItem>
               </MDBNavbarNav>
             </MDBCollapse>
-      </MDBNavbar>
+        </MDBNavbar>
     );
   }
 }
