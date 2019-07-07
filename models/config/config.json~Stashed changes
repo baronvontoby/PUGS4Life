@@ -1,15 +1,14 @@
 {
     "development": {
       "username": "root",
-      "password": "root1234",
+      "password": "root",
       "database": "pugs4life_db",
       "host": "localhost",
-      "dialect": "mysql",
-      "port": 3306
+      "dialect": "mysql"
     },
     "test": {
-      "username": "root",
-      "password": "root",
+      "username": "root2",
+      "password": "root2",
       "database": "pugs4life_db",
       "host": "localhost",
       "dialect": "mysql"
@@ -19,3 +18,4 @@
       "dialect": "mysql"
     }
   }
+  

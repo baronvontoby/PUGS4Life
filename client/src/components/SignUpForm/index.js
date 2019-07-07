@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Axios from 'axios';
+
 import {
   MDBCol,
   MDBInput,
@@ -39,23 +41,48 @@ class RegisterPage extends Component {
   submitHandler = event => {
     event.preventDefault();
     event.target.className += " was-validated";
-  };
+    //I am calling and making sure the data is stored in token and decoded
+    //Set state is flaky so creating the user before sending it over
+    let user = { 
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email,
+        phonenumber: this.state.phonenumber,
+        city: this.state.city,
+        imageUrl: this.state.imageUrl ? this.state.imageUrl : imagelogo,
+        state: this.state.state,
+        zipcode: this.state.zipcode
+    };
 
-
-  sendForm = event => {
-    event.preventDefault()
-    const newUser = {
-      username: this.state.username,
-      password: this.state.password,
-      email: this.state.email,
-      emailconfirm: this.state.emailconfirm,
-      phonenumber: this.state.phonenumber,
-      city: this.state.city,
-      imageUrl: this.state.imageurl,
-      state: this.state.state,
-      zipcode: this.state.zipcode
+    Axios.post('/auth/signUp', user)
+        //.then( result => { console.log("Result: ", result); return result } );
+        .then( result => { 
+        localStorage.setItem("token", result.data.token); 
+        let theToken = localStorage.getItem('token');
+        let decoded = jwt_decode(theToken);
+        //console.log(JSON.stringify(decoded.data[0]));
+        localStorage.setItem("user", JSON.stringify(decoded.data[0]));
+        this.props.history.push("/home") 
+      })
     }
-    API.createNewUser(newUser).then(() => console.log('Success'))
+  // };
+
+  sendForm = () => {
+    fetch("/api/weather", {
+      method: "POST",
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email,
+        phonenumber: this.state.phonenumber,
+        city: this.state.city,
+        imageurl: this.state.imageurl,
+        state: this.state.state,
+        zipcode: this.state.zipcode
+      })
+    })
+      .then(res => res.json())
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -108,7 +135,7 @@ class RegisterPage extends Component {
                           success="Looks good!"
                           name="password"
                           value={this.state.password}
-                          onInput={this.handleInput("password")}
+                          onInput={this.handleInput('password')}
                         />
                       </MDBCol>
                     </MDBRow>
@@ -125,7 +152,7 @@ class RegisterPage extends Component {
                             success="Looks good!"
                             name="email"
                             value={this.state.email}
-                            onInput={this.handleInput("email")}
+                            onInput={this.handleInput('email')}
                             
                           />
                       </MDBCol>
@@ -200,7 +227,7 @@ class RegisterPage extends Component {
                             src={this.state.imageurl}
                             className="img-fluid img-circle image-av"
                           />
-                          {/* <figcaption>Your Image Here</figcaption> */}
+                          <figcaption>Your Image Here</figcaption>
                           </figure>
                         </div>
                       </MDBCol>
@@ -228,5 +255,6 @@ class RegisterPage extends Component {
     );
   }
 }
+
 
 export default RegisterPage;

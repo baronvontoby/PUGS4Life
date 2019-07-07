@@ -16,9 +16,10 @@ class MainPugs extends React.Component {
        API.getAllEvents().then(events => this.setState({events: events}))
     )
 
-    fetchUserInfo = () => (
-        API.getUser().then( user => this.setState({user: user}))
-    )
+    // fetchUserInfo = () => {
+    //     let curUser = localStorage.getItem('curUser');
+    //     // API.getUser().then( user => this.setState({user: }))
+    // }
 
     handleOutdoorClick = () => {
         API.getOutdoor().then( events => this.setState({events: events}))
@@ -38,7 +39,7 @@ class MainPugs extends React.Component {
     
     componentDidMount () {
         this.fetchAllPugs()
-        this.fetchUserInfo()
+        //this.fetchUserInfo()
     }
 
     render () {

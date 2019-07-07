@@ -1,0 +1,29 @@
+
+
+.pugsIveMade {
+background-color: #1C768F;
+text-align:center;
+margin-top:20px;
+color:#032539;
+}
+
+.pugsIveJoined {
+
+background-color:#032539;
+text-align:center;
+margin-top:20px;
+margin-bottom:40px;
+color: #1C768F;
+
+}
+
+.hrTag1 {
+
+    border: 2px solid #032539;
+}
+
+
+.hrTag2 {
+
+    border: 2px solid #1C768F;
+}

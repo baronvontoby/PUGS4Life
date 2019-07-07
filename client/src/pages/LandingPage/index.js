@@ -8,6 +8,8 @@ import {
   } from "mdbreact";
 
 import FormPage from '../../components/LoginForm'
+import WeatherWidget from '../../components/weatherWidget'
+import NavbarPage from '../../components/NavBar';
 
 
 export default class LandingPage extends React.Component{
@@ -24,5 +26,4 @@ export default class LandingPage extends React.Component{
             </MDBContainer>
         )
     }
-
 }
