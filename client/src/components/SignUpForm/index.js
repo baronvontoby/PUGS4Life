@@ -65,7 +65,7 @@ class RegisterPage extends Component {
         this.props.history.push("/home") 
       })
     }
-  };
+  // };
 
   sendForm = () => {
     fetch("/api/weather", {
@@ -255,5 +255,6 @@ class RegisterPage extends Component {
     );
   }
 }
+
 
 export default RegisterPage;
