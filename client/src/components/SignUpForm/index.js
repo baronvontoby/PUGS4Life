@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Axios from 'axios';
 import * as jwt_decode from 'jwt-decode';
+import {withRouter} from 'react-router-dom';
+
 import {
   MDBCol,
   MDBInput,
@@ -49,7 +51,7 @@ class RegisterPage extends Component {
         username: this.state.username,
         password: this.state.password,
         email: this.state.email,
-        phonenumber: this.state.phonenumber,
+        phone_num: this.state.phonenumber,
         city: this.state.city,
         imageUrl: this.state.imageUrl ? this.state.imageUrl : imagelogo,
         state: this.state.state,

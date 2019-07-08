@@ -4,7 +4,6 @@ import { CustomInput, FormGroup, Label, Form, Input} from 'reactstrap';
 import './CreatePug.css';
 import NavBarRe from '../../components/NavBarRe';
 import API from '../../util/API';
-import EditModal from '../../components/Edit Modal';
 import moment from 'moment';
 
 class CreatePug extends React.Component {
