@@ -1,10 +1,10 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBBtn, MDBCol, MDBIcon, View, MDBJumbotron } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBIcon, View, MDBJumbotron } from 'mdbreact';
 import './MyPugs.css';
 import NavBarRe from '../../components/NavBarRe';
 import API from '../../util/API';
 import MyEventsCard from '../../components/MyEventsCard';
-
+import MyPugsCard from '../../components/MyPugsCard';
 
 
 class MyPugs extends React.Component {
@@ -19,11 +19,11 @@ class MyPugs extends React.Component {
     }
 
     // editEvent = eventId => {
-    //     API.
+    //     API.put request to database
     // }
 
     // deleteEvent = eventId => {
-    //     API.
+    //     API.deleting event from database
     // }
 
     unJoinClickHandler = eventId => {
@@ -107,19 +107,16 @@ class MyPugs extends React.Component {
 
                     <MDBRow >
 
-                        <MDBCol className="pugsIveMade">
+                        <MDBCol sm="12" className="pugsIveMade">
 
-<<<<<<< HEAD
                             <h1><strong>Pugs I've created:</strong></h1>
-                            {/* {
-                                this.state.events.map((events, id) => (
-                                    <MyPugsCard editEvent={this.editEvent} events={events} key={id} />
-                                ))
-                            } */}
-=======
-                            <h1><strong>Pugs I've hosting:</strong></h1>
->>>>>>> a9c03aa11e0068ff24ff39e9e0aa1b123babf3da
                             <hr className="hrTag1"></hr>
+                            {
+                                this.state.events.map((events, id) => (
+                                    <MyPugsCard  events={events} key={id} />
+                                ))
+                            }
+                            
 
                         </MDBCol>
 
