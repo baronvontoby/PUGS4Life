@@ -1,44 +1,50 @@
 import React, { Component } from "react";
-import {
-MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBCollapse, MDBHamburgerToggler, MDBNavbarToggler, MDBIcon
-} from "mdbreact";
+import { 
+    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
+    MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
 import WeatherWidget from '../weatherWidget/index';
 
 class NavbarPage extends Component {
-// state = {
-//   isOpen: false
-// };
-
-// toggleCollapse = () => {
-//   this.setState({ isOpen: !this.state.isOpen });
-// }
 
 state = {
-    collapse1: false,
-    collapseID: ''
-  }
+    isOpen: false
+  };
   
-  toggleCollapse = collapseID => () => {
-    this.setState(prevState => ({ collapseID: (prevState.collapseID !== collapseID ? collapseID : '') }));
-  }
-  
-  toggleSingleCollapse = collapseId => {
-    this.setState({
-      ...this.state,
-      [collapseId]: !this.state[collapseId]
-    });
-  }
+toggleCollapse = () => {
+  this.setState({ isOpen: !this.state.isOpen });
+}
 
 render() {
   return (
-      <MDBNavbar color="#O32539" expand="md" className="pb-4 pb-sm-4 z-depth-2">
+
+// {/* <MDBNavbar color="#O32539" dark expand="md" >
+//       <MDBNavbarBrand>
+//         {/* <WeatherWidget /> */}
+//       </MDBNavbarBrand>
+//       <MDBNavbarToggler onClick={this.toggleCollapse} />
+//       <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+//         <MDBNavbarNav right>
+//           <MDBNavItem>
+//             <MDBNavLink to="#!">Home</MDBNavLink>
+//           </MDBNavItem>
+//           <MDBNavItem>
+//             <MDBNavLink to="#!">Features</MDBNavLink>
+//           </MDBNavItem>
+//           <MDBNavItem>
+//             <MDBNavLink to="#!">Pricing</MDBNavLink>
+//           </MDBNavItem>
+//         </MDBNavbarNav>
+//       </MDBCollapse>
+//     </MDBNavbar> */}
+
+      <MDBNavbar expand="md" className="pb-4 pb-sm-4 z-depth-2" dark>
         <MDBNavbarBrand>
                 <WeatherWidget />
         </MDBNavbarBrand>
-        <div className="menu-cover" style={{backgroundColor: "#O32539", height: "10%", width: "10%"}}></div>
+       
         {/* Toggle Hamburger Menu */}
-        <MDBHamburgerToggler className="mt-4 mb-3" color="#1C768F" id="hamburger1" onClick={()=> this.toggleSingleCollapse('collapse1')} />
-            <MDBCollapse isOpen={this.state.collapse1} navbar className="mt-4">
+        <MDBNavbarToggler onClick={this.toggleCollapse} className="mt-4 mb-3" color="#1C768F" />
+            <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} className="mt-4" navbar>
               <MDBNavbarNav right>
                 <MDBNavItem className="pt-2">
                   <MDBNavLink to="/home">Search PUGs</MDBNavLink>
