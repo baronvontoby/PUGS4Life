@@ -1,7 +1,12 @@
 .container {
 
-    background-color: #1C768F; 
 }
+
+.my-jumbo {
+
+    background-image: url ("dice.jpg")
+}
+
 
 .icon {
     display: inline-block;
@@ -39,4 +44,8 @@ color: #1C768F;
 .pup {
 
     float:right;
+}
+
+.my-jumbo {
+    /* background-image: url() */
 }
