@@ -49,13 +49,12 @@ class MyPugs extends React.Component {
                             <h1><strong>NAME(this.userId.name)</strong></h1>
                             {/* <h2><small className="text-muted">Pro Pugger since 2019</small></h2> */}
                         </MDBCol>
-                        <MDBCol className="justify-content-center">
 
-                        </MDBCol>
+                        
                     </MDBRow>
 
 
-                    <MDBRow>
+                    <MDBRow className="skillDiv resp">
 
                         <MDBCol sm="3" className="text-center">
 
@@ -101,20 +100,20 @@ class MyPugs extends React.Component {
 
                     </MDBRow>
 
-                    <MDBRow className="pugsIveMade">
+                    <MDBRow >
 
-                        <MDBCol>
+                        <MDBCol className="pugsIveMade">
 
-                            <h1><strong>Pugs I've created:</strong></h1>
+                            <h1><strong>Pugs I've hosting:</strong></h1>
                             <hr className="hrTag1"></hr>
 
                         </MDBCol>
 
                     </MDBRow>
 
-                    <MDBRow className="pugsIveJoined">
+                    <MDBRow >
 
-                        <MDBCol>
+                        <MDBCol className="pugsIveJoined">
 
                             <h1><strong>Pugs I've joined:</strong></h1>
                             {
