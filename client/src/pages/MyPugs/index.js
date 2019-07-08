@@ -54,7 +54,7 @@ class MyPugs extends React.Component {
                     </MDBRow>
 
 
-                    <MDBRow className="skillDiv">
+                    <MDBRow className="skillDiv resp">
 
                         <MDBCol sm="3" className="text-center">
 
@@ -104,7 +104,7 @@ class MyPugs extends React.Component {
 
                         <MDBCol className="pugsIveMade">
 
-                            <h1><strong>Pugs I've created:</strong></h1>
+                            <h1><strong>Pugs I've hosting:</strong></h1>
                             <hr className="hrTag1"></hr>
 
                         </MDBCol>
