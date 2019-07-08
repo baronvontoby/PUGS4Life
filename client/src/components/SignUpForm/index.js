@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Axios from 'axios';
-
+import * as jwt_decode from 'jwt-decode';
 import {
   MDBCol,
   MDBInput,
