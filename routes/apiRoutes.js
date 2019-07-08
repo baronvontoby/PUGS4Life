@@ -52,8 +52,15 @@ router.route('/newevent')
     start_date: Date.now()
   }
   db.Events.create(newEvent).then(function(response){
+    let eventId = response.id;
+    let userId = response.UserId;
+    db.Participation.create({
+      EventId: eventId,
+      UserId: userId
+    }).then( () => {
       res.json(response);
-  })
+    })
+})
   .catch(err => res.json(500,err));
 });
 
