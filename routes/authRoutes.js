@@ -43,9 +43,9 @@ router.route('/login')
             name: req.body.name,
             image_link: req.body.image_link,
             phone_num: req.body.phone_num,
-            city: req.body.phone_num,
-            state: req.body.city,
-            zipcode: req.body.state
+            city: req.body.city,
+            state: req.body.state,
+            zipcode: req.body.zipcode
         })
         .then((dbUser) => {
             const token = jwt.sign(
