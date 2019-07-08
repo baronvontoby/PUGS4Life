@@ -31,9 +31,9 @@ class App extends Component {
     }
   }
   
-  componentDidMount () {
-    this.setUser();
-  }
+  // componentDidMount () {
+  //   this.setUser();
+  // }
 
 
   render() {
