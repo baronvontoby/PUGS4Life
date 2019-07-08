@@ -6,7 +6,7 @@ const app = express();
 const db = require("./models");
 
 //auth test user
-const jwt_express = require('express-jwt');
+// const jwt_express = require('express-jwt');
 const JWT = require('./');
 
 const JWT_SECRET_KEY = JWT.JWT_SECRET_KEY;

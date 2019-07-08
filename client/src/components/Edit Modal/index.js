@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBInput, MDBCol, MDBRow, MDBIcon } from
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBInput, MDBCol, MDBRow } from
 'mdbreact';
 import { CustomInput, FormGroup, Label, Form, Input} from 'reactstrap';
 
