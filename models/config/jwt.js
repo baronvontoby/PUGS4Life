@@ -1,5 +1,8 @@
 const JWT_SECRET_KEY = 'b0TX6u4GeLJ0EUHcR9iMxH02HLEacArt'; //hide the key in the config vars
+
+var db = require("../");
 var db = require("../../models");
+
 
 //use dummy user until we are ready with real users database
 const TEST_USER = { 
