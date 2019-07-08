@@ -50,6 +50,7 @@ class LoginPage extends React.Component {
               let decoded = jwt_decode(theToken);
               //console.log(JSON.stringify(decoded.data[0]));
               localStorage.setItem("user", JSON.stringify(decoded.data[0]));
+              this.setState({'loggedIn':'true'});
               this.props.history.push("/home");
               }) 
             }

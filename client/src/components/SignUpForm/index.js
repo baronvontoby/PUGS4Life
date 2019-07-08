@@ -17,6 +17,7 @@ import "./pugs.png";
 import './index.css';
 import imagelogo from "./user-circle-solid.svg"
 import API from "../../util/API";
+
 class RegisterPage extends Component {
   constructor() {
     super();
@@ -63,27 +64,21 @@ class RegisterPage extends Component {
         let decoded = jwt_decode(theToken);
         //console.log(JSON.stringify(decoded.data[0]));
         localStorage.setItem("user", JSON.stringify(decoded.data[0]));
+        this.setState({'loggedIn':'true'});
         this.props.history.push("/home") 
       })
     }
 
-  sendForm = () => {
-    fetch("/api/weather", {
-      method: "POST",
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password,
-        email: this.state.email,
-        phonenumber: this.state.phonenumber,
-        city: this.state.city,
-        imageurl: this.state.imageurl,
-        state: this.state.state,
-        zipcode: this.state.zipcode
-      })
-    })
-      .then(res => res.json())
-      .catch(err => console.log(err));
-  };
+  // sendForm = () => {
+  //   fetch("/api/weather", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       zipcode: this.state.zipcode
+  //     })
+  //   })
+  //     .then(res => res.json())
+  //     .catch(err => console.log(err));
+  // };
 
   render() {
     return (
@@ -235,7 +230,7 @@ class RegisterPage extends Component {
                   </div>
 
                   <div className="text-center p-2 my-4 ">
-                    <MDBBtn color="cyan" onClick={this.sendForm}>
+                    <MDBBtn color="cyan" onClick={this.submitHandler}>
                       Submit
                     </MDBBtn>
                   </div>

@@ -38,7 +38,7 @@ router.route('/login')
 
     router.route('/signUp') 
     .post((req, res, err) => {
-        //console.log(req.body);
+        console.log(req.body);
         db.User.create({
             username: req.body.username,
             password: req.body.password,
@@ -50,12 +50,12 @@ router.route('/login')
             state: req.body.city,
             zipcode: req.body.state
         })
-        .then((newUser) => {
+        .then((dbUser) => {
             const token = jwt.sign(
                 {
                     data: [ { username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } ]
                 }, SECRET_KEY) ; //created the key
-                //console.log(dbUser);
+                console.log(dbUser);
                 res.json({sucess: true, token: token, user: { id: dbUser.id , username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } } ) //send back the token
       });    
     }); 
