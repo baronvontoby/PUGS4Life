@@ -13,8 +13,8 @@ sendSms = (user) =>
     console.log('Data is' , user);
     if (user.phone_num !== null)
     {
-      let phNum = user.phone_num.substring(0) == '1' ? user.phone_num : '1' + user.phone_num;
-
+      let phNum = user.phone_num.substring(0,1) == '1' ? user.phone_num : '1' + user.phone_num;
+      console.log("the number is : ", user.phone_num.substring(0,1));
       const from =  '17828207989'
       const to = phNum;
       const text = 'Welcome to Pugs! Ready to play?'
