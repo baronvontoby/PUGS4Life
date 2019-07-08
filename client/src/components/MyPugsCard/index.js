@@ -17,7 +17,7 @@ const MyPugsCard = props => (
                 </MDBCol>
                 <MDBCol className="col-md-9 position-relative p-0">
                     <span className="position-absolute right joinBtn">
-                        <MDBBtn className="btn btn-default Ripple-parent sugar py-2 px-3 rounded"  onClick={() => props.unJoinEvent(localStorage.getItem('user.id'),props.events.id)}>Delete   <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg"></i></MDBBtn>
+                        <MDBBtn className="btn btn-default Ripple-parent sugar py-2 px-3 rounded"  onClick={() => props.unJoinEvent(localStorage.getItem('user.id'),props.events.id)}>Delete</MDBBtn>
                     </span>
                     <span>
                         <EditModal />
