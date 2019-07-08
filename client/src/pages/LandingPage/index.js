@@ -19,8 +19,7 @@ export default class LandingPage extends React.Component{
                 <MDBRow>
                     <MDBCol md={10} sm={12} lg={9}
                      className="text-left mx-auto">
-                    <FormPage className="text-left mx-auto" />
-            
+                    <FormPage finishLogin={this.props.finishLogin} className="text-left mx-auto" />
                 </MDBCol>
                 </MDBRow>
             </MDBContainer>
