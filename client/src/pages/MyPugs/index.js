@@ -21,7 +21,7 @@ unJoinClickHandler = eventId => {
 }
 
 componentDidMount () {
-    // fetchMyPugs ();
+    fetchMyPugs ();
 }
 
     render() {
