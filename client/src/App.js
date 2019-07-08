@@ -10,13 +10,44 @@ import CreatePug from "./pages/CreatePug";
 
 
 
-const PrivateRoute = () => {
+// const PrivateRoute = ({ component: Component, path}) => {
+//   <Route {...rest} render = {(props) => (
+//     this.state.loggedIn === true ?
+//     <Component {...props}/>
+//     : <Redirect to = '/'/>
+//   )}/>
+// }
+// const PrivateRoute = ({ component, path}) => {
+//   if ( this.state.loggedIn === true )
+//     { 
+//     if ( path === '/home')
+//     {
+//       return component = <MainPugs/>
+//     }
+//     else if ( path === '/mypugs') {
+//       return component = <MyPugs />
+//     }
+//     else if ( path === '/create') {
+//       return component = <CreatePug />
+//     }
+//     }
+//     else if ( this.state.loggedIn !== false )
+//     {
+//       if ( path === '/' )
+//       {
+//         return component = <LandingPage />
+//       }
+//       else if ( path === '/register' ){
+//         return component = <RegisterPage />
+//       }
+//     }
+//     else {
+//       return component = <LandingPage />
+//     }
+// }
 
-}
 
-const PublicRoute = () => {
 
-}
 class App extends Component {
   state = {
     loggedIn : false,
@@ -24,29 +55,25 @@ class App extends Component {
   }
 
   setUser = () => {
-    let user = localStorage.getItem('newUser');
+    let user = localStorage.getItem('user');
     this.setState({ user: user});
     if ( user.id !== null ) {
       this.setState({ loggedIn: true })
     }
   }
   
-  componentDidMount () {
-    this.setUser();
-  }
-
-
   render() {
     return (
       <div className="App">
         <div className="main">
          <BrowserRouter>
             <Switch>
+              {/* <PrivateRoute /> */}
               <Route exact path="/" component={() => <LandingPage />} />
               <Route exact path="/register" component={() => <RegisterPage className="text-left mx-auto"/>}/>
-              <Route exact path='/home' component={() => <MainPugs />}></Route>
-              <Route exact path='/mypugs' component={() => <MyPugs />}></Route>
-              <Route exact path='/create' component={() => <CreatePug />}></Route>
+              <Route exact path='/home' component={() => <MainPugs />} />
+              <Route exact path='/mypugs' component={() => <MyPugs />} />
+              <Route exact path='/create' component={() => <CreatePug />} />
             </Switch>
           </BrowserRouter>
         </div>

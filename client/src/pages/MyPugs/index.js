@@ -14,14 +14,14 @@ state = {
 
 
 fetchMyPugs = () => {
-    let userId = localStorage.getItem('newUser.id');
+    let userId = localStorage.getItem('user.id');
     API.getMyEvents(userId).then( events => this.setState({events: events}) )
 }
     
 
 
 unJoinClickHandler = eventId => {
-    API.unJoinEvent(localStorage.getItem("newUser.id"), eventId).then( events => this.setState({events: events}) )
+    API.unJoinEvent(localStorage.getItem("user.id"), eventId).then( events => this.setState({events: events}) )
 }
 
 componentDidMount () {
