@@ -25,7 +25,7 @@ router.route('/login')
             })   // console.log( "the password is: ", dbUser.password , "the request password is " , req.body.password)
             //.then(dbUser => {console.log(req.body.password === dbUser.password ); console.log("Is Undefined", dbUser); return dbUser })
             .then(newUser => {
-                console.log("It is validated ", SECRET_KEY );
+                // console.log("It is validated ", SECRET_KEY );
                 //let user = {};
                 const token = jwt.sign(
                     {
