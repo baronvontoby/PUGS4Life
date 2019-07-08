@@ -11,21 +11,20 @@ class MainPugs extends React.Component {
         events : []
     }
 
-
     fetchAllPugs = () => (
        API.getAllEvents(localStorage.getItem("newUser.id")).then(events => this.setState({events: events}))
     )
 
     handleOutdoorClick = () => {
-        API.getOutdoor().then( events => this.setState({events: events}))
+        API.getOutdoor(localStorage.getItem("newUser.id")).then( events => this.setState({events: events}))
     }
 
     handleIndoorClick = () => {
-        API.getIndoor().then( events => this.setState({ events: events}))
+        API.getIndoor(localStorage.getItem("newUser.id")).then( events => this.setState({ events: events}))
     }
     
     handle2ButtonClick = () => { 
-        API.getAllEvents().then( events => this.setState({events: events}))
+        API.getAllEvents(localStorage.getItem("newUser.id")).then( events => this.setState({events: events}))
     }
 
     joinClickHandler = id => {
@@ -35,9 +34,7 @@ class MainPugs extends React.Component {
     componentDidMount () {
         this.fetchAllPugs()
     }
-
 render () {
-
     return (
         <div>
             <NavBar />         
