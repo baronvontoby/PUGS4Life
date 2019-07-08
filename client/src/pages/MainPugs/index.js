@@ -41,9 +41,9 @@ render () {
             <div className='han mx-auto'> 
                 <Container className='solo'>
                     <Row className="justify-content-center">
-                        <Button className='sport' onClick={() => this.handle2ButtonClick()} color='info'> View All Events <i className="fal fa-angle-double-down fa-lg"></i></Button>
-                        <Button className='sport' onClick={() => this.handleIndoorClick()} color='info'>Indoor Sports <i className="fal fa-chess-pawn-alt fa-lg right"></i></Button>
-                        <Button className='sport' onClick={() => this.handleOutdoorClick()} color='info'>Outdoor Sports  <i className="fal fa-basketball-hoop fa-lg"></i></Button>
+                        <Button className='sport rounded-pill' onClick={() => this.handle2ButtonClick()} color='info'> View All Events <i className="fal fa-angle-double-down fa-lg"></i></Button>
+                        <Button className='sport rounded-pill' onClick={() => this.handleIndoorClick()} color='info'>Indoor Sports <i className="fal fa-chess-pawn-alt fa-lg right"></i></Button>
+                        <Button className='sport rounded-pill' onClick={() => this.handleOutdoorClick()} color='info'>Outdoor Sports  <i className="fal fa-basketball-hoop fa-lg"></i></Button>
                     </Row>
                       <Row className="justify-content-center px-3">
                         {
