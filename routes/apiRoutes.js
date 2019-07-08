@@ -73,14 +73,15 @@ router.route('/newevent')
 });
 
 // WORKING join/participate in an event (sends back of UserId and EventId)
-router.route('/join')
+router.route('/join/:userId/:eventId')
   .post((req,res,err) => {
+    console.log(req.params.userId, req.params.eventId);
     db.Participation.create({
-      EventId: req.body.eventId,
-      UserId: req.body.userId
+      EventId: req.params.eventId,
+      UserId: req.params.userId
     })
     .then( () => {
-      db.User.findOne({ id: req.body.userId })
+      db.User.findOne({ id: req.params.userId })
       .then( (res) => {
         //write the sms stuff
         // require the Twilio module and create a REST client}
