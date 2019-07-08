@@ -2,6 +2,7 @@ import React from 'react';
 import { MDBCard, MDBCardBody,MDBCardText, MDBCardHeader, MDBCol, MDBCardImage, MDBBtn, MDBCardTitle, MDBCardFooter } from 'mdbreact';
 import './index.css';
 import avatar from './avatar.png'
+import EditModal from '../Edit Modal';
 
 
 
@@ -16,7 +17,10 @@ const MyPugsCard = props => (
                 </MDBCol>
                 <MDBCol className="col-md-9 position-relative p-0">
                     <span className="position-absolute right joinBtn">
-                        <MDBBtn className="btn btn-default Ripple-parent sugar py-2 px-3 rounded"  onClick={() => props.unJoinEvent(localStorage.getItem('user.id'),props.events.id)}>Unjoin   <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg"></i></MDBBtn>
+                        <MDBBtn className="btn btn-default Ripple-parent sugar py-2 px-3 rounded"  onClick={() => props.unJoinEvent(localStorage.getItem('user.id'),props.events.id)}>Delete   <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg"></i></MDBBtn>
+                    </span>
+                    <span>
+                        <EditModal />
                     </span>
 
                     <MDBCardHeader className="row justify-content-center mx-auto align-content-center px-0">
