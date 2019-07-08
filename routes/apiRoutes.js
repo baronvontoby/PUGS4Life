@@ -48,6 +48,7 @@ router.route('/newevent')
   let newEvent = {
     event_name: req.body.eventName,
     event_time: req.body.time,
+    event_city: req.body.eventLoc, //ellen added
     description: req.body.eventDes,
     start_date: Date.now(),
     UserId: req.body.userid
