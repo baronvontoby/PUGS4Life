@@ -61,17 +61,24 @@ class MyPugs extends React.Component {
                         <MDBCol sm="3" className="text-center">
 
                             <MDBIcon id="pup" icon="dog" size="5x" />
-                            <p>
+                            <p className="skill">
 
                                 <h1><strong>PUP</strong></h1>
 
                             </p>
                         </MDBCol>
 
-                        <MDBCol sm="6" className="">
+                        <MDBCol sm="6" className="text-center">
                             <div className="mt-5">
 
                                 <input type="range" className="custom-range" id="customRange1" />
+
+                                <p className="skill">
+                                    <br></br>
+                                    <h3><strong>SKILL LEVEL</strong></h3>
+
+                                </p>
+
 
                             </div>
 
@@ -79,7 +86,7 @@ class MyPugs extends React.Component {
 
                         <MDBCol sm="3" className="text-center">
                             <MDBIcon icon="fire-alt" size="5x" />
-                            <p>
+                            <p className="skill">
 
                                 <h1><strong>PRO</strong></h1>
 
@@ -88,39 +95,7 @@ class MyPugs extends React.Component {
 
                     </MDBRow>
 
-                    <MDBRow>
-
-                        <MDBCol sm="3" className="text-center">
-
-                            <p>
-
-                                <h1><strong>PUP</strong></h1>
-
-                            </p>
-
-                        </MDBCol>
-
-                        <MDBCol sm="6" className="text-center">
-
-                            <p>
-
-                                <h1><strong>SKILL LEVEL</strong></h1>
-
-                            </p>
-
-                        </MDBCol>
-
-                        <MDBCol sm="3" className="text-center">
-
-                            <p>
-
-                                <h1><strong>PRO</strong></h1>
-
-                            </p>
-
-                        </MDBCol>
-
-                    </MDBRow>
+                  
 
                     <MDBRow className="justify-content-center">
                         {/* <MDBBtn className='sport' onClick={} color='info' size='lg'>Edit Profile</MDBBtn> */}
