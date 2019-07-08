@@ -22,6 +22,10 @@ class MyPugs extends React.Component {
     //     API.
     // }
 
+    // deleteEvent = eventId => {
+    //     API.
+    // }
+
     unJoinClickHandler = eventId => {
         API.unJoinEvent(localStorage.getItem("user.id"), eventId).then(events => this.setState({ events: events }))
     }
