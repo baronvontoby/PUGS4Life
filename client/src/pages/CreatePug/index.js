@@ -61,8 +61,8 @@ class CreatePug extends React.Component {
           <NavBarRe />
           <div>
           {/* Jumbotron */}
-                <MDBJumbotron className="image-jumbo">
-                </MDBJumbotron>
+            <MDBJumbotron className="image-jumbo">
+            </MDBJumbotron>
           </div>
             {/* Input Form */}
             <MDBContainer >
