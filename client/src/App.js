@@ -9,33 +9,11 @@ import CreatePug from "./pages/CreatePug";
 
 class App extends Component {
 state = {
-  loggedIn : false
+  loggedIn : false,
+  user: []
 }
 
-renderPage = () => {
-  if (this.state.loggedIn === false ) {
-    if ('/register') {
-      return <RegisterPage className="text-left mx-auto"/>
-    }
-    else {
-      return <LandingPage />
-    }
-  }
-  else if (this.state.loggedIn === true ) {
-    if('/home') {
-      return <RegisterPage className="text-left mx-auto"/>
-    }
-    else if ('/create') {
-      return <MainPugs />
-    }
-    else if ('/mypugs') {
-      return <MyPugs />
-    }
-  }
-  else {
-    return <LandingPage />
-  }
-}
+
   render() {
     return (
       <div className="App">

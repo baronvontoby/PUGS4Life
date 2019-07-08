@@ -19,7 +19,7 @@ const EventsCard = props => (
                 </MDBCol>
                 <MDBCol className="col-md-9 position-relative p-0">
                     <span className="position-absolute right joinBtn">
-                        <MDBBtn className="btn btn-default Ripple-parent sugar py-2 px-3 rounded"  onClick={() => props.joinEvent(localStorage.getItem('newUser.id'),props.events.id)}>Join   <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg"></i></MDBBtn>
+                        <MDBBtn className="btn btn-default Ripple-parent sugar py-2 px-3 rounded"  onClick={() => props.unJoinEvent(localStorage.getItem('newUser.id'),props.events.id)}>Unjoin   <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg"></i></MDBBtn>
                     </span>
 
                     <MDBCardHeader className="row justify-content-center mx-auto align-content-center px-0">

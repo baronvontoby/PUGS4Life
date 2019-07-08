@@ -1,11 +1,28 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBBtn, MDBCol, MDBIcon } from 'mdbreact';
 import './MyPugs.css';
-import '../../components/NavBar';
 import NavBar from '../../components/NavBar';
+import API from '../../util/API';
+import MyEventsCard from '../../components/MyEventsCard';
 
 
 class MyPugs extends React.Component {
+
+state = {
+    events: []
+}
+
+fetchMyPugs = () => (
+    API.getMyEvents(localStorage.getItem("newUser.id")).then( events => this.setState({events: events}) )
+)
+
+unJoinClickHandler = eventId => {
+    API.unJoinEvent(localStorage.getItem("newUser.id"), eventId).then( events => this.setState({events: events}) )
+}
+
+componentDidMount () {
+    fetchMyPugs ();
+}
 
     render() {
         return (
@@ -18,8 +35,8 @@ class MyPugs extends React.Component {
 
                         <MDBCol class="text-center" className="justify-content-center">
                             <img src="https://grfpublishers.com/assets/vendor/img/board.png" alt="avatar" className="img-thumbnail" />
-                            <h1><strong>BARON VON TOBY</strong></h1>
-                            <h2><small className="text-muted">Pro Pugger since 2019</small></h2>
+                            <h1><strong>NAME</strong></h1>
+                            {/* <h2><small className="text-muted">Pro Pugger since 2019</small></h2> */}
                         </MDBCol>
                         <MDBCol className="justify-content-center">
 
@@ -50,14 +67,10 @@ class MyPugs extends React.Component {
                             <h1><strong>PRO</strong></h1>
                         </MDBCol>
 
-
-
-
-
                     </MDBRow>
 
                     <MDBRow className="justify-content-center">
-                        <MDBBtn className='sport' onClick={() => this.handle2ButtonClick()} color='info' size='lg'>Edit Profile</MDBBtn>
+                        {/* <MDBBtn className='sport' onClick={} color='info' size='lg'>Edit Profile</MDBBtn> */}
 
                     </MDBRow>
 
@@ -65,7 +78,7 @@ class MyPugs extends React.Component {
 
                         <MDBCol>
 
-                            <h1><strong>PUGS I've made here...</strong></h1>
+                            <h1><strong>Games I have Created</strong></h1>
                             <hr className="hrTag1"></hr>
                             
                         </MDBCol>
@@ -76,7 +89,12 @@ class MyPugs extends React.Component {
 
                     <MDBCol>
 
-                    <h1><strong>PUGS I've joined here...</strong></h1>
+                    <h1><strong>Pick Up Games I have Joined</strong></h1>
+                        {
+                            this.state.events.map((events, id) => (
+                                <MyEventsCard unJoinEvent={this.unJoinClickHandler} events={events} key={id} />                                
+                                ))
+                        } 
                     <hr className="hrTag2"></hr>
                     <hr></hr>
 
