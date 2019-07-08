@@ -7,7 +7,7 @@ const db = require("./models");
 
 //auth test user
 const jwt_express = require('express-jwt');
-const JWT = require('./config/jwt');
+const JWT = require('./models/config/jwt');
 
 const JWT_SECRET_KEY = JWT.JWT_SECRET_KEY;
 const TEST_USER =  JWT.TEST_USER; 
@@ -42,7 +42,7 @@ app.get("*", (req, res) => {
 //         console.log("Message sent",resp.responses[0].id);
 //     }
 // });
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
