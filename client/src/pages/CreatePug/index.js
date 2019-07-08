@@ -161,8 +161,7 @@ class CreatePug extends React.Component {
                             Create</MDBBtn>
                     </MDBCol>
                 
-                {/* Modal Test Button */}
-                
+                    {/* Modal Test Button */}
                     <MDBCol sm="6" className="text-center">
                         <EditModal />
                     </MDBCol>
