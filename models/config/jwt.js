@@ -1,12 +1,14 @@
-const JWT_SECRET_KEY = 'b0TX6u4GeLJ0EUHcR9iMxH02HLEacArt'; //hide the key in the config vars
-
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY; //hide the key in the config vars
+//'b0TX6u4GeLJ0EUHcR9iMxH02HLEacArt'
 var db = require("../");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4968679128257d50e9d597ed9597195bd2c99a70
 
 //use dummy user until we are ready with real users database
 const TEST_USER = { 
   user_name: "pugs",
-  password: "pass",
   name: "Pugs Gamer",
   email: "pugs2@gmail.com",
   city: "Minneapolis",

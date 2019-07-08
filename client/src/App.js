@@ -31,10 +31,9 @@ class App extends Component {
   }
   
   componentDidMount () {
-    this.setUser();
+    localStorage.removeItem('newUser');
+    //this.setUser();
   }
-
-
   render() {
     return (
       <div className="App">
