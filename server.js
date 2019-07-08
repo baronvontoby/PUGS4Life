@@ -42,7 +42,7 @@ app.get("*", (req, res) => {
 //         console.log("Message sent",resp.responses[0].id);
 //     }
 // });
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
