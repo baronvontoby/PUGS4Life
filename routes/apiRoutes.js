@@ -2,8 +2,9 @@ var db = require("../models");
 var router = require('express').Router();
 
 // WORKING - get all outdoor games
-router.route('/outdoor')
+router.route('/outdoor/:id')
   .get((req,res,err) => {
+<<<<<<< HEAD
   db.sequelize.query("SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 1 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description")
   .then(function(outdoor) {
     let events = [];
@@ -13,13 +14,30 @@ router.route('/outdoor')
       }
     }
     res.json(events);
+=======
+  let userId = req.params.id;
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+  E.description , count(1) as player_count
+  FROM events E
+  join participations AS P2
+  join gamecategories AS g
+  where E.GameCategoryId = g.id
+  AND 	E.id = P2.EventId
+  AND 	g.is_outdoor = 1
+  AND 	P2.EventId not in ( Select EventId from participations where UserId = ${userId} )
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
+  .then((outdoorEvents) => {
+    res.json(outdoorEvents[0]);
+>>>>>>> 9998371598065a3c206603438c2f5b03dc91b0f3
   })
   .catch(err => res.json(500, err));
 });
 
+
 // WORKING - get all indoor games
-router.route('/indoor')
+router.route('/indoor/:id')
   .get((req,res,err) => {
+<<<<<<< HEAD
   db.sequelize.query("SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 0 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description")
   .then(function(outdoor) {
     let events = [];
@@ -29,6 +47,21 @@ router.route('/indoor')
       }
     }
     res.json(events);
+=======
+  let userId = req.params.id;
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+  E.description , count(1) as player_count
+  FROM events E
+  join participations AS P2
+  join gamecategories AS g
+  where E.GameCategoryId = g.id
+  AND 	E.id = P2.EventId
+  AND 	g.is_outdoor = 0
+  AND 	P2.EventId not in ( Select EventId from participations where UserId = ${userId} )
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
+  .then((indoorEvents) => {
+    res.json(indoorEvents[0]);
+>>>>>>> 9998371598065a3c206603438c2f5b03dc91b0f3
   })
   .catch(err => res.json(500, err));
 });
@@ -111,26 +144,26 @@ router.route('/allevents/:id')
   .catch(err => res.json(500,err));
 });
 
-// WORKING - add new user
-router.route('/newuser') 
-  .post((req,res,err) => {
+// // WORKING - add new user
+// router.route('/newuser') 
+//   .post((req,res,err) => {
   
-  let newUser = {
-    user_name: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-    name: req.body.username,
-    image_link: req.body.imageUrl,
-    phone_num: req.body.phonenumber,
-    city: req.body.city,
-    state: req.body.state,
-    zipcode: req.body.zipcode,
-    active: 1
-  }
-  db.User.create(newUser)
-      .then(user => res.json(user))
-      .catch(err => res.json(500, err))
-  });
+//   let newUser = {
+//     user_name: req.body.username,
+//     password: req.body.password,
+//     email: req.body.email,
+//     name: req.body.username,
+//     image_link: req.body.imageUrl,
+//     phone_num: req.body.phonenumber,
+//     city: req.body.city,
+//     state: req.body.state,
+//     zipcode: req.body.zipcode,
+//     active: 1
+//   }
+//   db.User.create(newUser)
+//       .then(user => res.json(user))
+//       .catch(err => res.json(500, err))
+//   });
 
 // WORKING - update event information
 router.route('/update/:id')

@@ -8,13 +8,13 @@ axios.interceptors.request.use(function (config) {
 });
 
 export default {     
-    getAllEvents: () => axios.get('/api/allevents')
+    getAllEvents: id=> axios.get('/api/allevents/' + id)
         .then( response => response.data),
     getMyEvents: () => axios.get('/api/myevents')
         .then( response => response.data),
-    getOutdoor: () => axios.get('/api/outdoor')
+    getOutdoor: id => axios.get('/api/outdoor/' + id)
         .then( response => response.data ),
-    getIndoor: () => axios.get('/api/indoor')
+    getIndoor: id => axios.get('/api/indoor/' + id)
         .then( response => response.data ),
     createNewEvent : newEvent => axios.post('/api/newevent', newEvent)
         .then( response => response.data ),
@@ -25,7 +25,7 @@ export default {
     updateEvent: id => axios.put('/api/update/' + id )
         .then( response => response.data ),
     removeEvent: id => axios.delete('/api/remove/' + id )
-        .then( response => response.data ),
+        .then( response => response.data )
     // getUser: (dbLogin, config) => axios.post('/auth/login', dbLogin, config)
     //     .then( response => response.data)
         //.then( result => { console.log(result); localStorage.setItem("token", result.data.token); this.props.history.push("/home") })
