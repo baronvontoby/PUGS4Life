@@ -9,6 +9,7 @@ import jwt_decode from 'jwt-decode';
 
 
 
+
 import {
   MDBRow,
   MDBCol,
@@ -20,7 +21,6 @@ import {
   MDBBtn
 } from "mdbreact";
 
-// const FormPage = props => ( 
 class LoginPage extends React.Component {
 
   state = {
@@ -51,6 +51,7 @@ class LoginPage extends React.Component {
               //console.log(JSON.stringify(decoded.data[0]));
               localStorage.setItem("user", JSON.stringify(decoded.data[0]));
               //this.props.setUser();
+              this.props.finishLogin();
               this.props.history.push("/home");
               }) 
             }
