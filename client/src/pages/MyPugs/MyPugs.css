@@ -1,7 +1,24 @@
+.myPugs-background {
+    background: #fbf3f2;
+    height: 100%;
+}
 
+
+.my-jumbo {
+    background-image: url("dice.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 15%;
+    min-height: 250px;
+}
+
+.icon {
+    display: inline-block;
+    text-align: center;
+}
 
 .pugsIveMade {
-background-color: #1C768F;
+background-color:#1C768F;
 text-align:center;
 margin-top:20px;
 color:#032539;
@@ -27,3 +44,9 @@ color: #1C768F;
 
     border: 2px solid #1C768F;
 }
+
+.pup {
+
+    float:right;
+}
+
