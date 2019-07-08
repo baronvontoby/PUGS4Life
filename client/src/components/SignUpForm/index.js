@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Axios from 'axios';
-import jwt_decode from 'jwt_decode';
+import * as jwt_decode from 'jwt-decode';
 
 import {
   MDBCol,
@@ -11,7 +11,7 @@ import {
   MDBRow,
   MDBCardHeader,
   MDBContainer,
-  MDBModalFooter
+  MDBModalFooter,
 } from "mdbreact";
 import "./pugs.png";
 import './index.css';
