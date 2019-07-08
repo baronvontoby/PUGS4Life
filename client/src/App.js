@@ -33,11 +33,11 @@ class App extends Component {
           <div className="main">
            <BrowserRouter>
               <Switch>
-                <Route exact path='/home' component={() => <MainPugs />} />
-                <Route exact path='/mypugs' component={() => <MyPugs />} />
-                <Route exact path='/create' component={() => <CreatePug />} />
-                <Route exact path='/' component={() => <MainPugs />} />
-                <Route exact path='/register' component={() => <MainPugs />} />
+                <Route exact path='/home' component={() => <MainPugs user={this.state.user} />} />
+                <Route exact path='/' component={() => <MainPugs user={this.state.user} />} />
+                <Route exact path='/register' component={() => <MainPugs user={this.state.user}  />} />
+                <Route exact path='/mypugs' component={() => <MyPugs user={this.state.user} />} />
+                <Route exact path='/create' component={() => <CreatePug user={this.state.user} />} />
               </Switch>
             </BrowserRouter>
           </div>

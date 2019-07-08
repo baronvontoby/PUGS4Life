@@ -55,12 +55,7 @@ const EventsCard = props => (
         <MDBCol md="12">
             <MDBBtn
             className="btn btn-default Ripple-parent  mx-auto rounded py-2 px-4"
-            onClick={() => 
-              // let participant = {
-              //   userId: props.user.id, 
-              //   eventId: props.events.id
-              // }
-              props.joinEvent(props.user.id, props.events.id)            
+            onClick={() => props.joinEvent(props.user.id, props.events.id)            
             }
             >
             Join <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg" />
@@ -70,15 +65,6 @@ const EventsCard = props => (
       </MDBRow>
       </MDBCol>
     </MDBRow>
-    {/* <MDBRow className="mx-auto">
-                <MDBCol md="3">
-
-                </MDBCol>
-                    <MDBCol md="6">
-                    <MDBCardImage src="avatar"></MDBCardImage>
-
-                    </MDBCol>
-                </MDBRow> */}
   </MDBCard>
   /*  <MDBCard className="card mx-auto row my-3 justify-content-center px-2">
                 <MDBCol className="col-md-3">
