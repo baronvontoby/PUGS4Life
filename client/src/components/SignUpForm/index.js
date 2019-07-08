@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from 'axios';
+import jwt_decode from 'jwt-decode';
 
 import {
   MDBCol,
@@ -65,7 +66,6 @@ class RegisterPage extends Component {
         this.props.history.push("/home") 
       })
     }
-  };
 
   sendForm = () => {
     fetch("/api/weather", {
@@ -255,5 +255,6 @@ class RegisterPage extends Component {
     );
   }
 }
+
 
 export default RegisterPage;

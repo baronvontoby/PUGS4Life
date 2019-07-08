@@ -25,18 +25,12 @@ router.route('/outdoor')
 // WORKING - get all indoor games
 router.route('/indoor')
   .get((req,res,err) => {
-  db.sequelize.query("E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 0 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description");
-  db.GameCategory.findAll({
-    where: {is_outdoor: false},
-    include: [{
-      model: db.Events,
-    }]   
-  })
-  .then(function(outdoor) {
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 0 group by E.description`)
+  .then(function(indoor) {
     let events = [];
-    for (let i=0; i < outdoor.length; i++ ){
-      for(let e=0; e < outdoor[i].Events.length; e++){
-        events.push(outdoor[i].Events[e]);
+    for (let i=0; i < indoor.length; i++ ){
+      for(let e=0; e < indoor[i].Events.length; e++){
+        events.push(indoor[i].Events[e]);
       }
     }
     res.json(events);

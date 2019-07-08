@@ -49,13 +49,14 @@ router.route('/login')
           city: req.body.phone_num,
           state: req.body.city,
           zipcode: req.body.state
-      }).then( newUser => 
-            const token = jwt.sign(
+      }).then( (newUser) => {
+        const token = jwt.sign(
             {
             data: [ { username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } ]
             }, SECRET_KEY) ; //created the key
             //console.log(dbUser);
             res.json({sucess: true, token: token, user: { id: dbUser.id , username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } } ) //send back the token            
+      });
     }); 
  
   

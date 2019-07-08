@@ -42,14 +42,14 @@ app.get("*", (req, res) => {
 //         console.log("Message sent",resp.responses[0].id);
 //     }
 // });
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
   // this controls the reset of our mysql database
   syncOptions.force = false;
-}
+} 
  
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions)
