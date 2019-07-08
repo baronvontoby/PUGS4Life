@@ -4,6 +4,7 @@ import { CustomInput, FormGroup, Label, Form, Input} from 'reactstrap';
 import './CreatePug.css';
 import NavBarRe from '../../components/NavBarRe';
 import API from '../../util/API';
+import EditModal from '../../components/Edit Modal';
 import moment from 'moment';
 
 class CreatePug extends React.Component {
@@ -55,6 +56,10 @@ class CreatePug extends React.Component {
           };
     
     
+        testModal = (e) => {
+            console.log("this is testing/open modal")
+        }
+
     render() {
         return (
         <div className="create-background">
@@ -111,7 +116,7 @@ class CreatePug extends React.Component {
                     </MDBCol>
                     <MDBCol sm="6">
                         <FormGroup>
-                            <Label className="sm-mt-3" for="category-switch">PUG Category</Label>
+                            <Label for="category-switch">PUG Category</Label>
                                 <div>  
                                     <CustomInput 
                                     type="switch" 
@@ -150,10 +155,16 @@ class CreatePug extends React.Component {
                         </MDBCol>
                     </MDBRow>
                 <MDBRow>
-                    <MDBCol sm={12} className="text-center">
+                    <MDBCol sm="6" className="text-center">
                         <MDBBtn 
                         className="createBtn create-color mx-auto mt-3" onClick={this.submitHandler}>
                             Create</MDBBtn>
+                    </MDBCol>
+                
+                {/* Modal Test Button */}
+                
+                    <MDBCol sm="6" className="text-center">
+                        <EditModal />
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
