@@ -1,7 +1,15 @@
+.container {
 
+    background-color: #1C768F; 
+}
+
+.icon {
+    display: inline-block;
+    text-align: center;
+}
 
 .pugsIveMade {
-background-color: #1C768F;
+background-color:#1C768F;
 text-align:center;
 margin-top:20px;
 color:#032539;

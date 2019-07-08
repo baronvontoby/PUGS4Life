@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBBtn, MDBCol, MDBIcon } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBBtn, MDBCol, MDBIcon, View} from 'mdbreact';
 import './MyPugs.css';
 import NavBar from '../../components/NavBar';
 import API from '../../util/API';
@@ -53,10 +53,15 @@ componentDidMount () {
 
                     <MDBRow>
 
-                        <MDBCol  className="justify-content-center">
-                        <div className="justify-content-center">
+                        <MDBCol>
+                        <div class="icon">
+                        
+                        <View style={{justiftyContent:"center", alignItems:"center"}}>
                         <MDBIcon id="pup" icon="dog" size="5x" />
                             <h1><strong>PUP</strong></h1>
+
+                        </View>
+                    
 
                         </div>
                             
@@ -100,7 +105,7 @@ componentDidMount () {
 
                     <MDBCol>
 
-                    <h1><strong>Pick Up Games I have Joined</strong></h1>
+                    <h1><strong>Games I have Joined</strong></h1>
                         {
                             this.state.events.map((events, id) => (
                                 <MyEventsCard unJoinEvent={this.unJoinClickHandler} events={events} key={id} />                                
