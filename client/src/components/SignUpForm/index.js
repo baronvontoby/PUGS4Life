@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Axios from 'axios';
 import * as jwt_decode from 'jwt-decode';
-
 import {
   MDBCol,
   MDBInput,
@@ -16,7 +15,8 @@ import {
 import "./pugs.png";
 import './index.css';
 import imagelogo from "./user-circle-solid.svg"
-import API from "../../util/API";
+
+
 class RegisterPage extends Component {
   constructor() {
     super();
@@ -65,8 +65,8 @@ class RegisterPage extends Component {
         localStorage.setItem("user", JSON.stringify(decoded.data[0]));
         this.props.history.push("/home") 
       })
-    }
-  // };
+    };
+
 
   sendForm = () => {
     fetch("/api/weather", {
