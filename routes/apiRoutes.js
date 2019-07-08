@@ -1,12 +1,35 @@
 var db = require("../models");
 var router = require('express').Router();
-
+//var sms = require('../')
 const Nexmo = require('nexmo')
 
 const nexmo = new Nexmo({
   apiKey: '4821ffa6',
   apiSecret: 'dXwIKJrXzb3ZEbZe'
 })
+
+sendSms = (user) => 
+{
+    console.log('Data is' , user);
+    if (user.phone_num !== null)
+    {
+      const from =  '17828207989'
+      const to = user.phone_num;
+      const text = 'Welcome to Pugs! Ready to play?'
+      console.log(user.phone_num, text);
+      nexmo.message.sendSms(from, to, text, (err, responseData) => {
+          if (err) {
+              console.log(err);
+          } else {
+              if(responseData.messages[0]['status'] === "0") {
+                  console.log("Message sent successfully.");
+              } else {
+                  console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+              }
+          }
+      })
+    }
+}
 
 // WORKING - get all outdoor games
 router.route('/outdoor/:id')
@@ -78,32 +101,11 @@ router.route('/join/:userId/:eventId')
     db.Participation.create({
       EventId: req.params.eventId,
       UserId: req.params.userId
-    })
-    .then( () => {
-      db.User.findOne({ id: req.params.userId })
-      .then( (res) => {
-        //write the sms stuff
-        // require the Twilio module and create a REST client}
-        console.log(res.data);
-        const from =  '17828207989'
-        const to = res.data.phone_num;
-        const text = 'A text message sent using the Nexmo SMS API'
-        
-        nexmo.message.sendSms(from, to, text, (err, responseData) => {
-            if (err) {
-                console.log(err);
-            } else {
-                if(responseData.messages[0]['status'] === "0") {
-                    console.log("Message sent successfully.");
-                } else {
-                    console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
-                }
-            }
-        })
-        res.json(res);
-      })
-    })
-  .catch(err => res.json(500,err));
+    }).then( 
+      db.User.findOne( { where: { id: req.params.userId} })
+      .then( (result)  => sendSms(result)
+      )
+    )
 });
 
 //Events created WORKING
