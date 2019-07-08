@@ -15,11 +15,13 @@ class MainPugs extends React.Component {
     setTheUser = () => {
         let user = JSON.parse(localStorage.getItem('user'))
         this.setState({ user: user })
+        console.log(this.state.user);
     }
 
-    fetchAllPugs = () => (
-       API.getAllEvents(this.state.user.id).then(events => this.setState({events: events}))
-    )
+    fetchAllPugs = () => {
+        API.getAllEvents(this.state.user.id).then(events => this.setState({events: events}))
+    }
+
 
     handleOutdoorClick = () => {
         API.getOutdoor(this.state.user.id).then( events => this.setState({events: events}))
@@ -33,13 +35,13 @@ class MainPugs extends React.Component {
         API.getAllEvents(this.state.user.id).then( events => this.setState({events: events}))
     }
 
-    joinClickHandler = id => {
-        API.joinEvent(id).then( events => this.setState({events: events}))
+    joinClickHandler = (userId, eventId) => {
+        API.joinEvent(userId, eventId).then( events => this.setState({events: events}))
     }
     
     componentDidMount () {
-        this.fetchAllPugs()
-        this.setTheUser()
+        this.setTheUser();
+        this.fetchAllPugs();
     }
 render () {
     return (
@@ -54,8 +56,8 @@ render () {
                     </Row>
                       <Row className="justify-content-center px-3">
                         {
-                            this.state.events.map((events, id) => (
-                                <EventsCard joinEvent={this.joinClickHandler} events={events} key={id} />                                
+                            this.state.events.map((events, user, id) => (
+                                <EventsCard joinEvent={this.joinClickHandler} user={this.state.user} events={events} key={id} />                                
                                 ))
                         } 
                     </Row>  
