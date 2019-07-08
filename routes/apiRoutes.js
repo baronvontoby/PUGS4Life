@@ -127,27 +127,6 @@ router.route('/allevents/:id')
   .catch(err => res.json(500,err));
 });
 
-// // WORKING - add new user
-// router.route('/newuser') 
-//   .post((req,res,err) => {
-  
-//   let newUser = {
-//     user_name: req.body.username,
-//     password: req.body.password,
-//     email: req.body.email,
-//     name: req.body.username,
-//     image_link: req.body.imageUrl,
-//     phone_num: req.body.phonenumber,
-//     city: req.body.city,
-//     state: req.body.state,
-//     zipcode: req.body.zipcode,
-//     active: 1
-//   }
-//   db.User.create(newUser)
-//       .then(user => res.json(user))
-//       .catch(err => res.json(500, err))
-//   });
-
 // WORKING - update event information
 router.route('/update/:id')
   .put((req, res,err) => {
