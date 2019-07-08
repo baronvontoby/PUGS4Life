@@ -20,9 +20,9 @@ unJoinClickHandler = eventId => {
     API.unJoinEvent(localStorage.getItem("newUser.id"), eventId).then( events => this.setState({events: events}) )
 }
 
-componentDidMount () {
-    fetchMyPugs ();
-}
+// componentDidMount () {
+//     fetchMyPugs ();
+// }
 
     render() {
         return (

@@ -99,7 +99,7 @@ router.route('/myevents/:id')
   and P1.UserId = ${uid}
   group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
   .then(myevents=> {
-      console.log(myevents);
+      //console.log(myevents);
       res.json(myevents[0]);
     }
   )
@@ -120,7 +120,7 @@ router.route('/allevents/:id')
   group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
   )
   .then(eventsToJoin => {
-    console.log(eventsToJoin);
+    //console.log(eventsToJoin);
     res.json(eventsToJoin[0]);
   })
   .catch(err => res.json(500,err));

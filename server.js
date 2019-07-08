@@ -38,7 +38,7 @@ const nexmo = new Nexmo({
 
 // require the Twilio module and create a REST client}
 const from =  '17828207989'
-const to = '17157976070'
+const to = '19522007356'
 const text = 'A text message sent using the Nexmo SMS API'
 
 nexmo.message.sendSms(from, to, text, (err, responseData) => {
