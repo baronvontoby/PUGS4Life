@@ -126,7 +126,7 @@ router.route('/eventscreated/:id')
 router.route('/myevents/:id')
   .get((req,res,err) => {
   let uid = req.params.id;
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state ,E.description , count(1) as player_count
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) as player_count
   FROM events E
   Join participations AS P1
   join participations AS P2
@@ -134,8 +134,8 @@ router.route('/myevents/:id')
   and P1.EventId = P2.EventId
   and P1.UserId = ${uid}
   group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
-  .then(myevents=> {
-      //console.log(myevents);
+  .then(myevents => {
+      console.log(myevents);
       res.json(myevents[0]);
     }
   )
@@ -146,6 +146,7 @@ router.route('/myevents/:id')
 router.route('/allevents/:id')
   .get((req, res,err) => {
   let userId = req.params.id;
+  console.log(userId);
   db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
   from events E
   join participations AS P2
@@ -193,12 +194,12 @@ router.route('/remove/:id')
 });
 
 //WORKING - Deletes event by id and event Id in particpation to 'UNJOIN' and event.
-router.route('/unJoin/')
+router.route('/unJoin/:userId/:eventId')
   .delete((req, res,err) => {
   db.Participation.destroy({
     where:{
-      UserId: req.body.userId,
-      EventId: req.body.eventId
+      UserId: req.params.userId,
+      EventId: req.params.eventId
     }
   })
   .then( (dbdelete) => {
