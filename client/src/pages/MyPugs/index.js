@@ -13,13 +13,14 @@ class MyPugs extends React.Component {
         events: []
     }
 
-
     fetchMyPugs = () => {
         let userId = localStorage.getItem('user.id');
         API.getMyEvents(userId).then(events => this.setState({ events: events }))
     }
 
-
+    // editEvent = eventId => {
+    //     API.
+    // }
 
     unJoinClickHandler = eventId => {
         API.unJoinEvent(localStorage.getItem("user.id"), eventId).then(events => this.setState({ events: events }))
@@ -45,7 +46,7 @@ class MyPugs extends React.Component {
                     <MDBRow>
 
                         <MDBCol sm="12" className="text-center">
-                            <img src="https://grfpublishers.com/assets/vendor/img/board.png" alt="avatar" className="img-thumbnail" />
+                            <img src="https://grfpublishers.com/assets/vendor/img/board.png" alt="avatar" className="rounded-circle img-thumbnail" />
                             <h1><strong>NAME(this.userId.name)</strong></h1>
                             {/* <h2><small className="text-muted">Pro Pugger since 2019</small></h2> */}
                         </MDBCol>
@@ -131,6 +132,11 @@ class MyPugs extends React.Component {
                         <MDBCol>
 
                             <h1><strong>Pugs I've created:</strong></h1>
+                            {/* {
+                                this.state.events.map((events, id) => (
+                                    <MyPugsCard editEvent={this.editEvent} events={events} key={id} />
+                                ))
+                            } */}
                             <hr className="hrTag1"></hr>
 
                         </MDBCol>
