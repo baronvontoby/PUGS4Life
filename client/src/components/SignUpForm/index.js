@@ -20,6 +20,7 @@ class RegisterPage extends Component {
   constructor() {
     super();
     this.state = {
+      id: "",
       username: "",
       password: "",
       email: "",
@@ -44,6 +45,7 @@ class RegisterPage extends Component {
     //I am calling and making sure the data is stored in token and decoded
     //Set state is flaky so creating the user before sending it over
     let user = { 
+        id: this.state.id,
         username: this.state.username,
         password: this.state.password,
         email: this.state.email,

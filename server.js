@@ -7,7 +7,7 @@ const db = require("./models");
 
 //auth test user
 const jwt_express = require('express-jwt');
-const JWT = require('./models/config/jwt');
+const JWT = require('./');
 
 const JWT_SECRET_KEY = JWT.JWT_SECRET_KEY;
 const TEST_USER =  JWT.TEST_USER; 
