@@ -16,13 +16,18 @@ class App extends Component {
 
   setUser = () => {
     let user = localStorage.getItem('user');
-    this.setState({ user: user});
-    if ( user.id !== null ) {
-      this.setState({ loggedIn: true })
+    console.log(user)
+    if ( user !== null ) {
+      this.setState({ user: user, loggedIn: true })
     }
   }
   
+  componentDidMount () {
+    this.setUser();
+  }
+
   render() {
+  
     if ( this.state.loggedIn === true ){
     return (
         <div className="App">
@@ -32,6 +37,8 @@ class App extends Component {
                 <Route exact path='/home' component={() => <MainPugs />} />
                 <Route exact path='/mypugs' component={() => <MyPugs />} />
                 <Route exact path='/create' component={() => <CreatePug />} />
+                <Route exact path='/' component={() => <MainPugs />} />
+                <Route exact path='/register' component={() => <MainPugs />} />
               </Switch>
             </BrowserRouter>
           </div>
@@ -45,8 +52,11 @@ class App extends Component {
           <div className="main">
           <BrowserRouter>
             <Switch>
-              <Route exact path="/" component={() => <LandingPage />} />
+              <Route exact path="/" component={ () => <LandingPage finishLogin={this.setUser} />} />
               <Route exact path="/register" component={() => <RegisterPage className="text-left mx-auto"/>}/>
+              <Route exact path="/home" component={ () => <LandingPage finishLogin={this.setUser} />}  />
+              <Route exact path="/create" component={ () => <LandingPage finishLogin={this.setUser} />}  />
+              <Route exact path="/mypugs" component={ () => <LandingPage finishLogin={this.setUser} />}  />
             </Switch>          
           </BrowserRouter>
           </div>

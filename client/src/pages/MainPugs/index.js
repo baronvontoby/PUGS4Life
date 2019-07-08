@@ -11,7 +11,6 @@ class MainPugs extends React.Component {
         events : []
     }
 
-
     fetchAllPugs = () => (
        API.getAllEvents(localStorage.getItem("user.id")).then(events => this.setState({events: events}))
     )

@@ -16,11 +16,11 @@ import "./pugs.png";
 import './index.css';
 import imagelogo from "./user-circle-solid.svg"
 
-
 class RegisterPage extends Component {
   constructor() {
     super();
     this.state = {
+      id: "",
       username: "",
       password: "",
       email: "",
@@ -45,6 +45,7 @@ class RegisterPage extends Component {
     //I am calling and making sure the data is stored in token and decoded
     //Set state is flaky so creating the user before sending it over
     let user = { 
+        id: this.state.id,
         username: this.state.username,
         password: this.state.password,
         email: this.state.email,
@@ -63,6 +64,7 @@ class RegisterPage extends Component {
         let decoded = jwt_decode(theToken);
         //console.log(JSON.stringify(decoded.data[0]));
         localStorage.setItem("user", JSON.stringify(decoded.data[0]));
+        this.setState({'loggedIn':'true'});
         this.props.history.push("/home") 
       })
     };
@@ -72,13 +74,6 @@ class RegisterPage extends Component {
   //   fetch("/api/weather", {
   //     method: "POST",
   //     body: JSON.stringify({
-  //       username: this.state.username,
-  //       password: this.state.password,
-  //       email: this.state.email,
-  //       phonenumber: this.state.phonenumber,
-  //       city: this.state.city,
-  //       imageurl: this.state.imageurl,
-  //       state: this.state.state,
   //       zipcode: this.state.zipcode
   //     })
   //   })

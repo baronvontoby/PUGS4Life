@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const db = require('../models'); //get the models
-const SECRET_KEY = 'b0TX6u4GeLJ0EUHcR9iMxH02HLEacArt';
+const jwtConfig = require('../models/config/jwt');
+const SECRET_KEY = jwtConfig.JWT_SECRET_KEY;
 
 var jwt = require('jsonwebtoken');
 // config jwtConfig = express
@@ -15,6 +16,7 @@ router.route('/login')
             //.then(dbUser => {console.log( "the password1 is: ", dbUser.password , "the request password is " , req.body.password); return dbUser })
             .then(dbUser => {
                 if (req.body.password === dbUser.password ) {
+                    console.log("All good!", dbUser)
                     return dbUser;
                 }
                 else {
@@ -22,15 +24,15 @@ router.route('/login')
                 }
             })   // console.log( "the password is: ", dbUser.password , "the request password is " , req.body.password)
             //.then(dbUser => {console.log(req.body.password === dbUser.password ); console.log("Is Undefined", dbUser); return dbUser })
-            .then(dbUser => {
-                //console.log("It is validated");
+            .then(newUser => {
+                console.log("It is validated ", SECRET_KEY );
                 //let user = {};
                 const token = jwt.sign(
                     {
-                    data: [ { username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } ]
+                    data: [ { id: newUser.id, username: newUser.username, email: newUser.email, ph_num: newUser.phone_num, zipcode: newUser.zipcode } ]
                     }, SECRET_KEY) ; //created the key
-                    //console.log(dbUser);
-                    res.json({sucess: true, token: token, user: { id: dbUser.id , username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } } ) //send back the token            
+                    console.log(token);
+                    res.json({sucess: true, token: token, user: { id: newUser.id , username: newUser.username, email: newUser.email, ph_num: newUser.phone_num, zipcode: newUser.zipcode } } ) //send back the token            
                 })
             .catch( err => res.json(401, err)); 
         //res.json(req.body.Authorization);
@@ -38,7 +40,7 @@ router.route('/login')
 
     router.route('/signUp') 
     .post((req, res, err) => {
-        //console.log(req.body);
+        console.log(req.body);
         db.User.create({
             username: req.body.username,
             password: req.body.password,
@@ -50,12 +52,12 @@ router.route('/login')
             state: req.body.city,
             zipcode: req.body.state
         })
-        .then((newUser) => {
+        .then((dbUser) => {
             const token = jwt.sign(
                 {
-                    data: [ { username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } ]
+                    data: [ { id: dbUser.id, username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } ]
                 }, SECRET_KEY) ; //created the key
-                //console.log(dbUser);
+                console.log(dbUser);
                 res.json({sucess: true, token: token, user: { id: dbUser.id , username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } } ) //send back the token
       });    
     }); 
