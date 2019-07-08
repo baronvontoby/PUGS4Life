@@ -29,6 +29,7 @@ app.use(require("./routes"));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
+
 const Nexmo = require('nexmo')
 
 const nexmo = new Nexmo({
