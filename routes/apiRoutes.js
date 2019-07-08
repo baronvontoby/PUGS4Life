@@ -178,6 +178,20 @@ router.route('/remove/:id')
   .catch(err => res.json(500,err));
 });
 
+//WORKING - Deletes event by id and event Id in particpation to 'UNJOIN' and event.
+router.route('/unJoin/')
+  .delete((req, res,err) => {
+  db.Participation.destroy({
+    where:{
+      UserId: req.body.userId,
+      EventId: req.body.eventId
+    }
+  })
+  .then( (dbdelete) => {
+    res.json(dbdelete);
+  })
+  .catch(err => res.json(500,err));
+});
 
 module.exports = router;
 
