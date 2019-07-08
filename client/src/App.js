@@ -6,7 +6,6 @@ import RegisterPage from "./components/SignUpForm";
 import MainPugs from "./pages/MainPugs";
 import MyPugs from "./pages/MyPugs";
 import CreatePug from "./pages/CreatePug";
-// import jwt_decode from 'jwt-decode';
 
 class App extends Component {
   state = {
