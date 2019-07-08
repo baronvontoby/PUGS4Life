@@ -3,7 +3,7 @@ import {Row, Container, Button} from 'reactstrap';
 import API from '../../util/API';
 import './MainPugs.css';
 import EventsCard from '../../components/EventsCard';
-import NavBar from '../../components/NavBar';
+import NavBarRe from '../../components/NavBarRe';
 
 class MainPugs extends React.Component {
 
@@ -38,7 +38,7 @@ class MainPugs extends React.Component {
 render () {
     return (
         <div>
-            <NavBar />         
+            <NavBarRe />         
             <div className='han mx-auto'> 
                 <Container className='solo'>
                     <Row className="justify-content-center">
