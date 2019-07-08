@@ -8,12 +8,8 @@ var jwt = require('jsonwebtoken');
 
 router.route('/login')
     .post((req, res, err) => {
-        //console.log(req.body);
-        //console.log("username is" , req.body.username);
         db.User.findOne({ where: {email: req.body.username} })
-            //.then(dbUser => {console.log(dbUser); return dbUser})
             .then(dbUser => dbUser ? dbUser : Promise.reject("no such user found") ) //check if the user exists
-            //.then(dbUser => {console.log( "the password1 is: ", dbUser.password , "the request password is " , req.body.password); return dbUser })
             .then(dbUser => {
                 if (req.body.password === dbUser.password ) {
                     console.log("All good!", dbUser)
@@ -35,7 +31,6 @@ router.route('/login')
                     res.json({sucess: true, token: token, user: { id: newUser.id , username: newUser.username, email: newUser.email, ph_num: newUser.phone_num, zipcode: newUser.zipcode } } ) //send back the token            
                 })
             .catch( err => res.json(401, err)); 
-        //res.json(req.body.Authorization);
     });
 
     router.route('/signUp') 

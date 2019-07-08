@@ -31,17 +31,7 @@ app.get("*", (req, res) => {
 });
 
 
-// var clockwork = require("clockwork")({key:"your clockwork key here"});
 
-
-// // Send a message
-// clockwork.sendSms({ To: "9522007356", Content: "Test!"}, function(error, resp) {
-//     if (error) {
-//         console.log("Something went wrong", error);
-//     } else {
-//         console.log("Message sent",resp.responses[0].id);
-//     }
-// });
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
@@ -50,7 +40,7 @@ if (process.env.NODE_ENV === "test") {
   // this controls the reset of our mysql database
   syncOptions.force = false;
 } 
- 
+
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions)
   .then(() => {
