@@ -64,9 +64,9 @@ render() {
                     </Form>
                     </MDBCol>
                     <MDBCol sm="6">
-                        <Form className="float-left mt-3">
+                        <Form className="float-left">
                             <FormGroup>
-                                <Label className="sm-mt-3" for="category-switch">PUG Category</Label>
+                                <Label for="category-switch">PUG Category</Label>
                                     <div>  
                                         <CustomInput 
                                         type="switch" 
@@ -108,7 +108,7 @@ render() {
             </MDBContainer>
           </MDBModalBody>
           {/* <MDBModalFooter> */}
-          <MDBRow>
+          <MDBRow className="mb-3">
               <MDBCol sm="6">
                 <MDBBtn className="float-sm-right" color="secondary" onClick={this.toggle(16)}>Save</MDBBtn>
               </MDBCol>
