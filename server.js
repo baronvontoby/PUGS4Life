@@ -29,29 +29,29 @@ app.use(require("./routes"));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
-//const Nexmo = require('nexmo')
+const Nexmo = require('nexmo')
 
-// const nexmo = new Nexmo({
-//   apiKey: '4821ffa6',
-//   apiSecret: 'dXwIKJrXzb3ZEbZe'
-// })
+const nexmo = new Nexmo({
+  apiKey: '4821ffa6',
+  apiSecret: 'dXwIKJrXzb3ZEbZe'
+})
 
-// // require the Twilio module and create a REST client}
-// const from =  '17828207989'
-// const to = '19522007356'
-// const text = 'A text message sent using the Nexmo SMS API'
+// require the Twilio module and create a REST client}
+const from =  '17828207989'
+const to = ''
+const text = 'A text message sent using the Nexmo SMS API'
 
-// nexmo.message.sendSms(from, to, text, (err, responseData) => {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         if(responseData.messages[0]['status'] === "0") {
-//             console.log("Message sent successfully.");
-//         } else {
-//             console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
-//         }
-//     }
-// })
+nexmo.message.sendSms(from, to, text, (err, responseData) => {
+    if (err) {
+        console.log(err);
+    } else {
+        if(responseData.messages[0]['status'] === "0") {
+            console.log("Message sent successfully.");
+        } else {
+            console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+        }
+    }
+})
 
 var syncOptions = { force: false };
 
