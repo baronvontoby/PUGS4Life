@@ -79,8 +79,6 @@ class MyPugs extends React.Component {
                                 </p>
 
 
-
-
                             </div>
 
                         </MDBCol>
