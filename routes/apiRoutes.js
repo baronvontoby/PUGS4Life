@@ -21,7 +21,6 @@ router.route('/outdoor/:id')
   .catch(err => res.json(500, err));
 });
 
-
 // WORKING - get all indoor games
 router.route('/indoor/:id')
   .get((req,res,err) => {
