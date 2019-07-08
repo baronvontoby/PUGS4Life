@@ -3,6 +3,7 @@ import axios from "axios";
 import './index.css'
 // import Moment from 'react-moment';
 import pugPic from './pugs.png'
+import { userInfo } from "os";
 
 const API_KEY = "85fa4de20dcfbd962e68e36c4530c26d";
 
@@ -19,7 +20,16 @@ class WeatherWidget extends Component {
   componentDidMount() {
     // / const city = e.target.elements.city.value;
     //     // const country = e.target.elements.country.value;
-    const zipCode = "55420";
+    // localStorage.getItem('user');
+    
+    // var retrievedObject = ;
+    var user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
+
+// console.log('retrievedObject: ', );
+    // let user = localStorage.getItem('user');
+    const zipCode = user.zipcode;
+    // console.log( JSON.stringify(zipCode))
     const url = `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${API_KEY}&units=imperial`;
     fetch(url)
     .then(res => res.json())

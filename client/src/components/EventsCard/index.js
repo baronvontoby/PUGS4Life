@@ -16,6 +16,9 @@ import {
 
 import "./index.css";
 import avatar from "./avatar.png";
+var createdBy = JSON.parse(localStorage.getItem('user'));
+var creator = createdBy.username;
+
 
 const EventsCard = props => (
   <MDBCard className="my-3 mx-auto p-2 w-75 z-depth-3">
