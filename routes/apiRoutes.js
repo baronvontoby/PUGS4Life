@@ -52,10 +52,18 @@ router.route('/newevent')
     event_name: req.body.eventName,
     event_time: req.body.time,
     description: req.body.eventDes,
-    start_date: Date.now()
+    start_date: Date.now(),
+    UserId: req.body.userid
   }
   db.Events.create(newEvent).then(function(response){
-      res.json(response);
+      let eventId = response.id;
+      let userId = response.UserId;
+      db.Participation.create({
+        EventId: eventId,
+        UserId: userId
+      }).then( () => {
+        res.json(response);
+      })
   })
   .catch(err => res.json(500,err));
 });
