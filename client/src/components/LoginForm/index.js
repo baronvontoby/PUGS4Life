@@ -22,7 +22,7 @@ import {
 
 // const FormPage = props => ( 
 class LoginPage extends React.Component {
- 
+
   state = {
     username: "test@gmail.com",
     password: "pass"
@@ -50,8 +50,9 @@ class LoginPage extends React.Component {
               let decoded = jwt_decode(theToken);
               //console.log(JSON.stringify(decoded.data[0]));
               localStorage.setItem("user", JSON.stringify(decoded.data[0]));
-              this.props.history.push("/home") 
-              })
+              //this.props.setUser();
+              this.props.history.push("/home");
+              }) 
             }
 
     render () {
