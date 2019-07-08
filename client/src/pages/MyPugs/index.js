@@ -9,24 +9,20 @@ import MyEventsCard from '../../components/MyEventsCard';
 
 class MyPugs extends React.Component {
 
-    state = {
-        events: []
+    constructor (props) {
+        super(props);
+        this.state = {
+            user: this.props.user,
+            events: []
+        }
     }
-
 
     fetchMyPugs = () => {
-        let userId = localStorage.getItem('user.id');
-        API.getMyEvents(userId).then(events => this.setState({ events: events }))
+        API.getMyEvents(this.state.user.id).then(events => this.setState({ events: events }))
     }
 
-
-
-    unJoinClickHandler = eventId => {
-        API.unJoinEvent(localStorage.getItem("user.id"), eventId).then(events => this.setState({ events: events }))
-    }
-
-    unJoinClickHandler = eventId => {
-        API.unJoinEvent(localStorage.getItem("newUser.id"), eventId).then(events => this.setState({ events: events }))
+    unJoinClickHandler = (userId,eventId) => {
+        API.unJoinEvent( userId, eventId).then(events => this.setState({ events: events }))
     }
 
     componentDidMount() {
@@ -119,7 +115,7 @@ class MyPugs extends React.Component {
                             <h1><strong>Pugs I've joined:</strong></h1>
                             {
                                 this.state.events.map((events, id) => (
-                                    <MyEventsCard unJoinEvent={this.unJoinClickHandler} events={events} key={id} />
+                                    <MyEventsCard unJoinEvent={this.unJoinClickHandler} user={this.state.user} events={events} key={id} />
                                 ))
                             }
                             <hr className="hrTag2"></hr>

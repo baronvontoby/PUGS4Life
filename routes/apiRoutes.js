@@ -131,8 +131,8 @@ router.route('/myevents/:id')
   and P1.EventId = P2.EventId
   and P1.UserId = ${uid}
   group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
-  .then(myevents=> {
-      //console.log(myevents);
+  .then(myevents => {
+      console.log(myevents);
       res.json(myevents[0]);
     }
   )
@@ -143,6 +143,7 @@ router.route('/myevents/:id')
 router.route('/allevents/:id')
   .get((req, res,err) => {
   let userId = req.params.id;
+  console.log(userId);
   db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
   from events E
   join participations AS P2

@@ -8,7 +8,7 @@ axios.interceptors.request.use(function (config) {
 });
 
 export default {     
-    getAllEvents: id=> axios.get('/api/allevents/' + id)
+    getAllEvents: id => axios.get('/api/allevents/' + id)
         .then( response => response.data),
     getMyEvents: id => axios.get('/api/myevents/' + id)
         .then( response => response.data),
