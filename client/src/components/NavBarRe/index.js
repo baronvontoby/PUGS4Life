@@ -17,26 +17,6 @@ toggleCollapse = () => {
 render() {
   return (
 
-// {/* <MDBNavbar color="#O32539" dark expand="md" >
-//       <MDBNavbarBrand>
-//         {/* <WeatherWidget /> */}
-//       </MDBNavbarBrand>
-//       <MDBNavbarToggler onClick={this.toggleCollapse} />
-//       <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-//         <MDBNavbarNav right>
-//           <MDBNavItem>
-//             <MDBNavLink to="#!">Home</MDBNavLink>
-//           </MDBNavItem>
-//           <MDBNavItem>
-//             <MDBNavLink to="#!">Features</MDBNavLink>
-//           </MDBNavItem>
-//           <MDBNavItem>
-//             <MDBNavLink to="#!">Pricing</MDBNavLink>
-//           </MDBNavItem>
-//         </MDBNavbarNav>
-//       </MDBCollapse>
-//     </MDBNavbar> */}
-
       <MDBNavbar expand="md" className="pb-4 pb-sm-4 z-depth-2" dark>
         <MDBNavbarBrand>
                 <WeatherWidget />
