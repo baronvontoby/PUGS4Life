@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { 
-    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
-    MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
+    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBIcon } from "mdbreact";
 import WeatherWidget from '../weatherWidget/index';
+import './style.css';
+
 
 class NavbarPage extends Component {
 
@@ -26,7 +27,7 @@ render() {
         <MDBNavbarToggler onClick={this.toggleCollapse} className="mt-4 mb-3" color="#1C768F" />
             <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} className="mt-4" navbar>
               <MDBNavbarNav right>
-                <MDBNavItem className="pt-2">
+                <MDBNavItem className="pt-2 text-color">
                   <MDBNavLink to="/home">Search PUGs</MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem className="pt-2">
