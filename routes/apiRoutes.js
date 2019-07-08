@@ -2,38 +2,42 @@ var db = require("../models");
 var router = require('express').Router();
 
 // WORKING - get all outdoor games
-router.route('/outdoor')
+router.route('/outdoor/:id')
   .get((req,res,err) => {
-  db.GameCategory.findAll({
-    where: {is_outdoor: true},
-    include: [{
-      model: db.Events,
-    }]   
-  })
-  .then(function(outdoor) {
-    let events = [];
-    for (let i=0; i < outdoor.length; i++ ){
-      for(let e=0; e < outdoor[i].Events.length; e++){
-        events.push(outdoor[i].Events[e]);
-      }
-    }
-    res.json(events);
+  let userId = req.params.id;
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+  E.description , count(1) as player_count
+  FROM events E
+  join participations AS P2
+  join gamecategories AS g
+  where E.GameCategoryId = g.id
+  AND 	E.id = P2.EventId
+  AND 	g.is_outdoor = 1
+  AND 	P2.EventId not in ( Select EventId from participations where UserId = ${userId} )
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
+  .then((outdoorEvents) => {
+    res.json(outdoorEvents[0]);
   })
   .catch(err => res.json(500, err));
 });
 
+
 // WORKING - get all indoor games
-router.route('/indoor')
+router.route('/indoor/:id')
   .get((req,res,err) => {
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 0 group by E.description`)
-  .then(function(indoor) {
-    let events = [];
-    for (let i=0; i < indoor.length; i++ ){
-      for(let e=0; e < indoor[i].Events.length; e++){
-        events.push(indoor[i].Events[e]);
-      }
-    }
-    res.json(events);
+  let userId = req.params.id;
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+  E.description , count(1) as player_count
+  FROM events E
+  join participations AS P2
+  join gamecategories AS g
+  where E.GameCategoryId = g.id
+  AND 	E.id = P2.EventId
+  AND 	g.is_outdoor = 0
+  AND 	P2.EventId not in ( Select EventId from participations where UserId = ${userId} )
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
+  .then((indoorEvents) => {
+    res.json(indoorEvents[0]);
   })
   .catch(err => res.json(500, err));
 });
@@ -46,10 +50,18 @@ router.route('/newevent')
     event_name: req.body.eventName,
     event_time: req.body.time,
     description: req.body.eventDes,
-    start_date: Date.now()
+    start_date: Date.now(),
+    UserId: req.body.userid
   }
   db.Events.create(newEvent).then(function(response){
-      res.json(response);
+      let eventId = response.id;
+      let userId = response.UserId;
+      db.Participation.create({
+        EventId: eventId,
+        UserId: userId
+      }).then( () => {
+        res.json(response);
+      })
   })
   .catch(err => res.json(500,err));
 });
@@ -115,27 +127,6 @@ router.route('/allevents/:id')
   })
   .catch(err => res.json(500,err));
 });
-
-// WORKING - add new user
-router.route('/newuser') 
-  .post((req,res,err) => {
-  
-  let newUser = {
-    user_name: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-    name: req.body.username,
-    image_link: req.body.imageUrl,
-    phone_num: req.body.phonenumber,
-    city: req.body.city,
-    state: req.body.state,
-    zipcode: req.body.zipcode,
-    active: 1
-  }
-  db.User.create(newUser)
-      .then(user => res.json(user))
-      .catch(err => res.json(500, err))
-  });
 
 // WORKING - update event information
 router.route('/update/:id')
