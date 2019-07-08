@@ -86,7 +86,7 @@ router.route('/join')
         console.log(res.data);
         const from =  '17828207989'
         const to = res.data.phone_num;
-        const text = 'A text message sent using the Nexmo SMS API'
+        const text = 'Welcome to Pugs! Ready to play?'
         
         nexmo.message.sendSms(from, to, text, (err, responseData) => {
             if (err) {
