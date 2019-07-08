@@ -62,7 +62,7 @@ if (process.env.NODE_ENV === "test") {
   // this controls the reset of our mysql database
   syncOptions.force = false;
 } 
- 
+
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions)
   .then(() => {
