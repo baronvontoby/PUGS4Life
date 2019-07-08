@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBBtn, MDBCol, MDBIcon, View} from 'mdbreact';
 import './MyPugs.css';
-import NavBar from '../../components/NavBar';
+import NavBarRe from '../../components/NavBarRe';
 import API from '../../util/API';
 import MyEventsCard from '../../components/MyEventsCard';
 
@@ -31,7 +31,7 @@ componentDidMount () {
     render() {
         return (
             <div>
-                <NavBar />
+                <NavBarRe />
                 <MDBContainer>
 
                     <MDBRow class="text-center">
