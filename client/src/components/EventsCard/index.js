@@ -51,7 +51,7 @@ const EventsCard = props => (
             <p className="font-italic m-0 p-0 text-muted"><i className="text-center mx-auto left fas fa-user-circle fa-lg"></i> Created By: Liz Lemon</p>
           </MDBCol>
           <MDBCol md="4 align-self-center">
-            <p className="font-italic m-0 p-0 text-muted font-smaller "><i class="fas fa-circle green-text text-sm-right fa-sm"></i> 10 Friends</p>
+            <p className="font-italic m-0 p-0 text-muted font-smaller "><i className="fas fa-circle green-text text-sm-right fa-sm"></i> 10 Friends</p>
           </MDBCol>
         </MDBRow>
       </MDBCol>
@@ -60,8 +60,12 @@ const EventsCard = props => (
         <MDBCol md="12">
             <MDBBtn
             className="btn btn-default Ripple-parent  mx-auto rounded py-2 px-4"
-            onClick={() =>
-                props.joinEvent(localStorage.getItem("newUser.id"), props.events.id)
+            onClick={() => 
+              // let participant = {
+              //   userId: props.user.id, 
+              //   eventId: props.events.id
+              // }
+              props.joinEvent(props.user.id, props.events.id)            
             }
             >
             Join <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg" />
