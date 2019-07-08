@@ -70,15 +70,6 @@ const EventsCard = props => (
       </MDBRow>
       </MDBCol>
     </MDBRow>
-    {/* <MDBRow className="mx-auto">
-                <MDBCol md="3">
-
-                </MDBCol>
-                    <MDBCol md="6">
-                    <MDBCardImage src="avatar"></MDBCardImage>
-
-                    </MDBCol>
-                </MDBRow> */}
   </MDBCard>
   /*  <MDBCard className="card mx-auto row my-3 justify-content-center px-2">
                 <MDBCol className="col-md-3">

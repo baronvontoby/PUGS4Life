@@ -42,7 +42,7 @@ class MyPugs extends React.Component {
 
                         <MDBCol sm="12" className="text-center">
                             <img src="https://grfpublishers.com/assets/vendor/img/board.png" alt="avatar" className="rounded-circle img-thumbnail" />
-                            <h1><strong>NAME(this.userId.name)</strong></h1>
+                            <h1><strong>{this.state.user.name}</strong></h1>
                             {/* <h2><small className="text-muted">Pro Pugger since 2019</small></h2> */}
                         </MDBCol>
 

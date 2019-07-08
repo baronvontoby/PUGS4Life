@@ -24,7 +24,7 @@ export default {
         .then(response => response.data),
     updateEvent: id => axios.put('/api/update/' + id )
         .then( response => response.data ),
-    unJoinEvent : ( userId,eventId ) => axios.delete('/api/unjoin', userId, eventId )
+    unJoinEvent : ( userId,eventId ) => axios.delete('/api/unjoin/'+ userId + '/' + eventId )
         .then( response => response.data),
     removeEvent: id => axios.delete('/api/remove/' + id )
         .then( response => response.data )
