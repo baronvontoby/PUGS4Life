@@ -10,7 +10,7 @@ import {
   MDBRow,
   MDBCardHeader,
   MDBContainer,
-  MDBModalFooter
+  MDBModalFooter,
 } from "mdbreact";
 import "./pugs.png";
 import './index.css';

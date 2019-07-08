@@ -44,6 +44,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
 
+
     // Events.hasMany(models.Participation, {
     //   onDelete: "cascade"
     // });
