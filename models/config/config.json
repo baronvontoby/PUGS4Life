@@ -1,7 +1,7 @@
 {
     "development": {
       "username": "root",
-      "password": "golf",
+      "password": "root1234",
       "database": "pugs4life_db",
       "host": "localhost",
       "dialect": "mysql",
