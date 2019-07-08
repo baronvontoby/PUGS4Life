@@ -6,6 +6,7 @@ import API from '../../util/API';
 import MyEventsCard from '../../components/MyEventsCard';
 
 
+
 class MyPugs extends React.Component {
 
     state = {
@@ -30,10 +31,10 @@ class MyPugs extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="myPugs-background">
                 <NavBarRe />
-                <MDBJumbotron className="my-jumbo" style={{ backgroundImage: `url(dice.jpg)` }}>
-                    {/* import in background image */}
+                <MDBJumbotron className="my-jumbo z-depth-2">
+                 
                 </MDBJumbotron>
                 <MDBContainer>
 
@@ -41,7 +42,7 @@ class MyPugs extends React.Component {
 
                         <MDBCol sm="12" className="text-center">
                             <img src="https://grfpublishers.com/assets/vendor/img/board.png" alt="avatar" className="img-thumbnail" />
-                            <h1><strong>NAME</strong></h1>
+                            <h1><strong>NAME(this.userId.name)</strong></h1>
                             {/* <h2><small className="text-muted">Pro Pugger since 2019</small></h2> */}
                         </MDBCol>
                         <MDBCol className="justify-content-center">
@@ -49,23 +50,12 @@ class MyPugs extends React.Component {
                         </MDBCol>
                     </MDBRow>
 
-                    <MDBRow>
-
-                    </MDBRow>
 
                     <MDBRow>
 
                         <MDBCol sm="3" className="text-center">
 
-
-
                             <MDBIcon id="pup" icon="dog" size="5x" />
-
-
-
-
-
-
 
                         </MDBCol>
 

@@ -1,12 +1,22 @@
-.container {
-
+.myPugs-background {
+    background: #fbf3f2;
+    height: 100%;
 }
+
 
 .my-jumbo {
-
-    background-image: url ("dice.jpg")
+    background-image: url("dice.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 15%;
+    min-height: 250px;
 }
 
+/* .MDBJumbotron {
+
+    background-image: url ("dice.jpg")
+   
+} */
 
 .icon {
     display: inline-block;
@@ -46,6 +56,3 @@ color: #1C768F;
     float:right;
 }
 
-.my-jumbo {
-    /* background-image: url() */
-}
