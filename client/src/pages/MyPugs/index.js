@@ -14,25 +14,16 @@ class MyPugs extends React.Component {
     }
 
 
-<<<<<<< HEAD
     fetchMyPugs = () => {
-        let userId = localStorage.getItem('newUser.id');
+        let userId = localStorage.getItem('user.id');
         API.getMyEvents(userId).then(events => this.setState({ events: events }))
     }
 
 
-=======
-fetchMyPugs = () => {
-    let userId = localStorage.getItem('user.id');
-    API.getMyEvents(userId).then( events => this.setState({events: events}) )
-}
-    
 
-
-unJoinClickHandler = eventId => {
-    API.unJoinEvent(localStorage.getItem("user.id"), eventId).then( events => this.setState({events: events}) )
-}
->>>>>>> 3f97cb33d31e7339657943902b4d98b7817f2852
+    unJoinClickHandler = eventId => {
+        API.unJoinEvent(localStorage.getItem("user.id"), eventId).then(events => this.setState({ events: events }))
+    }
 
     unJoinClickHandler = eventId => {
         API.unJoinEvent(localStorage.getItem("newUser.id"), eventId).then(events => this.setState({ events: events }))
@@ -47,7 +38,7 @@ unJoinClickHandler = eventId => {
             <div className="myPugs-background">
                 <NavBarRe />
                 <MDBJumbotron className="my-jumbo z-depth-2">
-                 
+
                 </MDBJumbotron>
                 <MDBContainer>
 
@@ -69,7 +60,11 @@ unJoinClickHandler = eventId => {
                         <MDBCol sm="3" className="text-center">
 
                             <MDBIcon id="pup" icon="dog" size="5x" />
+                            <p>
 
+                                <h1><strong>PUP</strong></h1>
+
+                            </p>
                         </MDBCol>
 
                         <MDBCol sm="6" className="">
@@ -83,7 +78,11 @@ unJoinClickHandler = eventId => {
 
                         <MDBCol sm="3" className="text-center">
                             <MDBIcon icon="fire-alt" size="5x" />
+                            <p>
 
+                                <h1><strong>PRO</strong></h1>
+
+                            </p>
                         </MDBCol>
 
                     </MDBRow>
