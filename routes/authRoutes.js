@@ -40,22 +40,24 @@ router.route('/login')
     .post((req, res, err) => {
         //console.log(req.body);
         db.User.create({
-          username: req.body.username,
-          password: req.body.password,
-          email: req.body.email,
-          name: req.body.name,
-          image_link: req.body.image_link,
-          phone_num: req.body.phone_num,
-          city: req.body.phone_num,
-          state: req.body.city,
-          zipcode: req.body.state
-      }).then( newUser => 
+            username: req.body.username,
+            password: req.body.password,
+            email: req.body.email,
+            name: req.body.name,
+            image_link: req.body.image_link,
+            phone_num: req.body.phone_num,
+            city: req.body.phone_num,
+            state: req.body.city,
+            zipcode: req.body.state
+        })
+        .then((newUser) => {
             const token = jwt.sign(
-            {
-            data: [ { username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } ]
-            }, SECRET_KEY) ; //created the key
-            //console.log(dbUser);
-            res.json({sucess: true, token: token, user: { id: dbUser.id , username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } } ) //send back the token            
+                {
+                    data: [ { username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } ]
+                }, SECRET_KEY) ; //created the key
+                //console.log(dbUser);
+                res.json({sucess: true, token: token, user: { id: dbUser.id , username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } } ) //send back the token
+      });    
     }); 
  
   
