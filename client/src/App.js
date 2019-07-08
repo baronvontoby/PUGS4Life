@@ -31,11 +31,10 @@ class App extends Component {
     }
   }
   
-  // componentDidMount () {
-  //   this.setUser();
-  // }
-
-
+  componentDidMount () {
+    localStorage.removeItem('newUser');
+    //this.setUser();
+  }
   render() {
     return (
       <div className="App">

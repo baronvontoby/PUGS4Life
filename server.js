@@ -7,7 +7,7 @@ const db = require("./models");
 
 //auth test user
 const jwt_express = require('express-jwt');
-const JWT = require('./models/config/jwt');
+const JWT = require('./');
 
 const JWT_SECRET_KEY = JWT.JWT_SECRET_KEY;
 const TEST_USER =  JWT.TEST_USER; 
@@ -49,7 +49,7 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   // this controls the reset of our mysql database
   syncOptions.force = false;
-}
+} 
  
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions)
