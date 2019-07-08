@@ -13,13 +13,18 @@ class MyPugs extends React.Component {
         events: []
     }
 
-
     fetchMyPugs = () => {
         let userId = localStorage.getItem('user.id');
         API.getMyEvents(userId).then(events => this.setState({ events: events }))
     }
 
+    // editEvent = eventId => {
+    //     API.
+    // }
 
+    // deleteEvent = eventId => {
+    //     API.
+    // }
 
     unJoinClickHandler = eventId => {
         API.unJoinEvent(localStorage.getItem("user.id"), eventId).then(events => this.setState({ events: events }))
@@ -45,32 +50,38 @@ class MyPugs extends React.Component {
                     <MDBRow>
 
                         <MDBCol sm="12" className="text-center">
-                            <img src="https://grfpublishers.com/assets/vendor/img/board.png" alt="avatar" className="img-thumbnail" />
+                            <img src="https://grfpublishers.com/assets/vendor/img/board.png" alt="avatar" className="rounded-circle img-thumbnail" />
                             <h1><strong>NAME(this.userId.name)</strong></h1>
                             {/* <h2><small className="text-muted">Pro Pugger since 2019</small></h2> */}
                         </MDBCol>
-                        <MDBCol className="justify-content-center">
 
-                        </MDBCol>
+                        
                     </MDBRow>
 
 
-                    <MDBRow>
+                    <MDBRow className="skillDiv resp">
 
                         <MDBCol sm="3" className="text-center">
 
                             <MDBIcon id="pup" icon="dog" size="5x" />
-                            <p>
+                            <p className="skill">
 
                                 <h1><strong>PUP</strong></h1>
 
                             </p>
                         </MDBCol>
 
-                        <MDBCol sm="6" className="">
+                        <MDBCol sm="6" className="text-center">
                             <div className="mt-5">
 
                                 <input type="range" className="custom-range" id="customRange1" />
+
+                                <p className="skill">
+                                    <br></br>
+                                    <h3><strong>SKILL LEVEL</strong></h3>
+
+                                </p>
+
 
                             </div>
 
@@ -78,7 +89,7 @@ class MyPugs extends React.Component {
 
                         <MDBCol sm="3" className="text-center">
                             <MDBIcon icon="fire-alt" size="5x" />
-                            <p>
+                            <p className="skill">
 
                                 <h1><strong>PRO</strong></h1>
 
@@ -87,59 +98,36 @@ class MyPugs extends React.Component {
 
                     </MDBRow>
 
-                    <MDBRow>
-
-                        <MDBCol sm="3" className="text-center">
-
-                            <p>
-
-                                <h1><strong>PUP</strong></h1>
-
-                            </p>
-
-                        </MDBCol>
-
-                        <MDBCol sm="6" className="text-center">
-
-                            <p>
-
-                                <h1><strong>SKILL LEVEL</strong></h1>
-
-                            </p>
-
-                        </MDBCol>
-
-                        <MDBCol sm="3" className="text-center">
-
-                            <p>
-
-                                <h1><strong>PRO</strong></h1>
-
-                            </p>
-
-                        </MDBCol>
-
-                    </MDBRow>
+                  
 
                     <MDBRow className="justify-content-center">
                         {/* <MDBBtn className='sport' onClick={} color='info' size='lg'>Edit Profile</MDBBtn> */}
 
                     </MDBRow>
 
-                    <MDBRow className="pugsIveMade">
+                    <MDBRow >
 
-                        <MDBCol>
+                        <MDBCol className="pugsIveMade">
 
+<<<<<<< HEAD
                             <h1><strong>Pugs I've created:</strong></h1>
+                            {/* {
+                                this.state.events.map((events, id) => (
+                                    <MyPugsCard editEvent={this.editEvent} events={events} key={id} />
+                                ))
+                            } */}
+=======
+                            <h1><strong>Pugs I've hosting:</strong></h1>
+>>>>>>> a9c03aa11e0068ff24ff39e9e0aa1b123babf3da
                             <hr className="hrTag1"></hr>
 
                         </MDBCol>
 
                     </MDBRow>
 
-                    <MDBRow className="pugsIveJoined">
+                    <MDBRow >
 
-                        <MDBCol>
+                        <MDBCol className="pugsIveJoined">
 
                             <h1><strong>Pugs I've joined:</strong></h1>
                             {

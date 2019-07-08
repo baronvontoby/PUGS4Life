@@ -108,7 +108,7 @@ class CreatePug extends React.Component {
                                 <Label for="event-time">Time (12HR Format)</Label>
                                   
                                         <Input
-                                        className="w-50"
+                                        className="w-75"
                                         type="time"
                                         name="eventTime"
                                         id="event-time"
@@ -161,15 +161,10 @@ class CreatePug extends React.Component {
                         </MDBCol>
                     </MDBRow>
                 <MDBRow>
-                    <MDBCol sm="6" className="text-center">
+                    <MDBCol sm="12" className="text-center">
                         <MDBBtn 
                         className="createBtn create-color mx-auto mt-3" onClick={this.submitHandler}>
                             Create</MDBBtn>
-                    </MDBCol>
-                
-                    {/* Modal Test Button */}
-                    <MDBCol sm="6" className="text-center">
-                        <EditModal />
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>

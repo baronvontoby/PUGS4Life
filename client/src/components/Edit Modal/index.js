@@ -20,7 +20,7 @@ render() {
   return (
     
       <MDBContainer>
-        <MDBBtn onClick={this.toggle(16)}>MDBModal</MDBBtn>
+        <MDBBtn onClick={this.toggle(16)}>Edit</MDBBtn>
         <MDBModal isOpen={this.state.modal16} toggle={this.toggle(16)}>
           <MDBModalHeader toggle={this.toggle(16)}>Edit PUG Event</MDBModalHeader>
           <MDBModalBody>
