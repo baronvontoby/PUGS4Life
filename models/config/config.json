@@ -9,7 +9,7 @@
     },
     "test": {
       "username": "root",
-      "password": "root1234",
+      "password": "root",
       "database": "pugs4life_db",
       "host": "localhost",
       "dialect": "mysql"

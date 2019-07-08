@@ -1,6 +1,5 @@
-const JWT_SECRET_KEY = 'b0TX6u4GeLJ0EUHcR9iMxH02HLEacArt';
-//process.env.JWT_SECRET_KEY; //hide the key in the config vars
-//
+const JWT_SECRET_KEY = 'b0TX6u4GeLJ0EUHcR9iMxH02HLEacArt'; //hide the key in the config vars
+// process.env.JWT_SECRET_KEY; 
 var db = require("../");
 
 //use dummy user until we are ready with real users database

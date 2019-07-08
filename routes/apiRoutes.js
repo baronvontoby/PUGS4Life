@@ -5,7 +5,7 @@ var router = require('express').Router();
 router.route('/outdoor/:id')
   .get((req,res,err) => {
   let userId = req.params.id;
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.event_city,E.event_state, 
   E.description , count(1) as player_count
   FROM events E
   join participations AS P2
@@ -25,7 +25,7 @@ router.route('/outdoor/:id')
 router.route('/indoor/:id')
   .get((req,res,err) => {
   let userId = req.params.id;
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, 
   E.description , count(1) as player_count
   FROM events E
   join participations AS P2
@@ -91,7 +91,7 @@ router.route('/eventscreated/:id')
 router.route('/myevents/:id')
   .get((req,res,err) => {
   let uid = req.params.id;
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) as player_count
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, ,E.description , count(1) as player_count
   FROM events E
   Join participations AS P1
   join participations AS P2
@@ -111,7 +111,7 @@ router.route('/myevents/:id')
 router.route('/allevents/:id')
   .get((req, res,err) => {
   let userId = req.params.id;
-  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) 
+  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
   from events E
   join participations AS P2
   where E.id = P2.EventId
