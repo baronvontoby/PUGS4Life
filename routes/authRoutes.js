@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const db = require('../models'); //get the models
-const SECRET_KEY = 'b0TX6u4GeLJ0EUHcR9iMxH02HLEacArt';
+const jwtConfig =require('../config/jwt');
+const SECRET_KEY = jwtConfig.SECRET_KEY;
 
 var jwt = require('jsonwebtoken');
 // config jwtConfig = express
