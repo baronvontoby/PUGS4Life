@@ -17,6 +17,10 @@
     color: #1C768F
 }
 
+@media (max-width: 100px) {
+    .resp .skillDiv { width: 100%; }
+  }
+
 .icon {
     display: inline-block;
     text-align: center;
@@ -27,6 +31,7 @@ background-color:#1C768F;
 text-align:center;
 margin-top:20px;
 color:#032539;
+border-radius: 20px 20px;
 }
 
 .pugsIveJoined {
@@ -36,6 +41,7 @@ text-align:center;
 margin-top:20px;
 margin-bottom:40px;
 color: #1C768F;
+border-radius: 20px 20px;
 
 }
 
