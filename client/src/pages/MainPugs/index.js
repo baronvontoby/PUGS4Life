@@ -8,23 +8,29 @@ import NavBarRe from '../../components/NavBarRe';
 class MainPugs extends React.Component {
 
     state = {
-        events : []
+        events : [],
+        user: []
+    }
+
+    setTheUser = () => {
+        let user = JSON.parse(localStorage.getItem('user'))
+        this.setState({ user: user })
     }
 
     fetchAllPugs = () => (
-       API.getAllEvents(localStorage.getItem("user.id")).then(events => this.setState({events: events}))
+       API.getAllEvents(this.state.user.id).then(events => this.setState({events: events}))
     )
 
     handleOutdoorClick = () => {
-        API.getOutdoor(localStorage.getItem("user.id")).then( events => this.setState({events: events}))
+        API.getOutdoor(this.state.user.id).then( events => this.setState({events: events}))
     }
 
     handleIndoorClick = () => {
-        API.getIndoor(localStorage.getItem("user.id")).then( events => this.setState({ events: events}))
+        API.getIndoor(this.state.user.id).then( events => this.setState({ events: events}))
     }
     
     handle2ButtonClick = () => { 
-        API.getAllEvents(localStorage.getItem("user.id")).then( events => this.setState({events: events}))
+        API.getAllEvents(this.state.user.id).then( events => this.setState({events: events}))
     }
 
     joinClickHandler = id => {
@@ -33,6 +39,7 @@ class MainPugs extends React.Component {
     
     componentDidMount () {
         this.fetchAllPugs()
+        this.setTheUser()
     }
 render () {
     return (
