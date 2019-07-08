@@ -109,16 +109,12 @@ class MyPugs extends React.Component {
 
                         <MDBCol className="pugsIveMade">
 
-<<<<<<< HEAD
                             <h1><strong>Pugs I've created:</strong></h1>
                             {/* {
                                 this.state.events.map((events, id) => (
                                     <MyPugsCard editEvent={this.editEvent} events={events} key={id} />
                                 ))
                             } */}
-=======
-                            <h1><strong>Pugs I've hosting:</strong></h1>
->>>>>>> a9c03aa11e0068ff24ff39e9e0aa1b123babf3da
                             <hr className="hrTag1"></hr>
 
                         </MDBCol>
