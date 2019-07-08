@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBJumbotron, MDBIcon, MDBInput } from 'mdbreact';
 import { CustomInput, FormGroup, Label, Form, Input} from 'reactstrap';
 import './CreatePug.css';
-// import '../../components/NavBar';
-import NavBar from '../../components/NavBar';
-import API from '../../util/API';
 import NavBarRe from '../../components/NavBarRe';
+import API from '../../util/API';
 import moment from 'moment';
 
 class CreatePug extends React.Component {
@@ -62,12 +59,15 @@ class CreatePug extends React.Component {
         return (
         <div className="create-background">
           <NavBarRe />
+          <div>
           {/* Jumbotron */}
-          <MDBJumbotron className="image-jumbo"></MDBJumbotron>
+                <MDBJumbotron className="image-jumbo">
+                </MDBJumbotron>
+          </div>
             {/* Input Form */}
-            <MDBContainer fluid>
+            <MDBContainer >
             <MDBRow>
-                <MDBCol sm="12" className="text-center">
+                <MDBCol sm={12} className="text-center">
                     <MDBIcon far icon="calendar-plus fa-2x" />
                     <h2>Create a PUG!</h2>
                 </MDBCol>
@@ -136,7 +136,7 @@ class CreatePug extends React.Component {
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
-                    <MDBCol sm="12">
+                    <MDBCol>
                             <MDBInput 
                                 className="my-2" 
                                 type="textarea" 
@@ -150,7 +150,7 @@ class CreatePug extends React.Component {
                         </MDBCol>
                     </MDBRow>
                 <MDBRow>
-                    <MDBCol sm="12" className="text-center">
+                    <MDBCol sm={12} className="text-center">
                         <MDBBtn 
                         className="createBtn create-color mx-auto mt-3" onClick={this.submitHandler}>
                             Create</MDBBtn>
