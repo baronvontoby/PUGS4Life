@@ -124,7 +124,7 @@ router.route('/eventscreated/:id')
 router.route('/myevents/:id')
   .get((req,res,err) => {
   let uid = req.params.id;
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, ,E.description , count(1) as player_count
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state ,E.description , count(1) as player_count
   FROM events E
   Join participations AS P1
   join participations AS P2
