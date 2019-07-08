@@ -12,19 +12,19 @@ class MainPugs extends React.Component {
     }
 
     fetchAllPugs = () => (
-       API.getAllEvents(localStorage.getItem("newUser.id")).then(events => this.setState({events: events}))
+       API.getAllEvents(localStorage.getItem("user.id")).then(events => this.setState({events: events}))
     )
 
     handleOutdoorClick = () => {
-        API.getOutdoor(localStorage.getItem("newUser.id")).then( events => this.setState({events: events}))
+        API.getOutdoor(localStorage.getItem("user.id")).then( events => this.setState({events: events}))
     }
 
     handleIndoorClick = () => {
-        API.getIndoor(localStorage.getItem("newUser.id")).then( events => this.setState({ events: events}))
+        API.getIndoor(localStorage.getItem("user.id")).then( events => this.setState({ events: events}))
     }
     
     handle2ButtonClick = () => { 
-        API.getAllEvents(localStorage.getItem("newUser.id")).then( events => this.setState({events: events}))
+        API.getAllEvents(localStorage.getItem("user.id")).then( events => this.setState({events: events}))
     }
 
     joinClickHandler = id => {

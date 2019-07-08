@@ -21,13 +21,13 @@ router.route('/login')
             })   // console.log( "the password is: ", dbUser.password , "the request password is " , req.body.password)
             //.then(dbUser => {console.log(req.body.password === dbUser.password ); console.log("Is Undefined", dbUser); return dbUser })
             .then(newUser => {
-                //console.log("It is validated ", SECRET_KEY );
+                // console.log("It is validated ", SECRET_KEY );
                 //let user = {};
                 const token = jwt.sign(
                     {
                     data: [ { id: newUser.id, username: newUser.username, email: newUser.email, ph_num: newUser.phone_num, zipcode: newUser.zipcode } ]
                     }, SECRET_KEY) ; //created the key
-                    //console.log(token);
+                    console.log(token);
                     res.json({sucess: true, token: token, user: { id: newUser.id , username: newUser.username, email: newUser.email, ph_num: newUser.phone_num, zipcode: newUser.zipcode } } ) //send back the token            
                 })
             .catch( err => res.json(401, err)); 
