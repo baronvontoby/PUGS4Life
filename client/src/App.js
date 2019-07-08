@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   setUser = () => {
-    let user = localStorage.getItem('user');
+    let user = JSON.parse(localStorage.getItem('user'));
     console.log(user)
     if ( user !== null ) {
       this.setState({ user: user, loggedIn: true })
