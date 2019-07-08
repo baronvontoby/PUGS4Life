@@ -5,7 +5,7 @@ var router = require('express').Router();
 router.route('/outdoor/:id')
   .get((req,res,err) => {
   let userId = req.params.id;
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.event_city,E.event_state, 
   E.description , count(1) as player_count
   FROM events E
   join participations AS P2
@@ -25,7 +25,7 @@ router.route('/outdoor/:id')
 router.route('/indoor/:id')
   .get((req,res,err) => {
   let userId = req.params.id;
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, 
   E.description , count(1) as player_count
   FROM events E
   join participations AS P2
@@ -91,7 +91,7 @@ router.route('/eventscreated/:id')
 router.route('/myevents/:id')
   .get((req,res,err) => {
   let uid = req.params.id;
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) as player_count
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, ,E.description , count(1) as player_count
   FROM events E
   Join participations AS P1
   join participations AS P2
@@ -111,7 +111,7 @@ router.route('/myevents/:id')
 router.route('/allevents/:id')
   .get((req, res,err) => {
   let userId = req.params.id;
-  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) 
+  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
   from events E
   join participations AS P2
   where E.id = P2.EventId
@@ -126,27 +126,6 @@ router.route('/allevents/:id')
   })
   .catch(err => res.json(500,err));
 });
-
-// // WORKING - add new user
-// router.route('/newuser') 
-//   .post((req,res,err) => {
-  
-//   let newUser = {
-//     user_name: req.body.username,
-//     password: req.body.password,
-//     email: req.body.email,
-//     name: req.body.username,
-//     image_link: req.body.imageUrl,
-//     phone_num: req.body.phonenumber,
-//     city: req.body.city,
-//     state: req.body.state,
-//     zipcode: req.body.zipcode,
-//     active: 1
-//   }
-//   db.User.create(newUser)
-//       .then(user => res.json(user))
-//       .catch(err => res.json(500, err))
-//   });
 
 // WORKING - update event information
 router.route('/update/:id')
