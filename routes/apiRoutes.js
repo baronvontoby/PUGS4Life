@@ -4,12 +4,7 @@ var router = require('express').Router();
 // WORKING - get all outdoor games
 router.route('/outdoor')
   .get((req,res,err) => {
-  db.GameCategory.findAll({
-    where: {is_outdoor: true},
-    include: [{
-      model: db.Events,
-    }]   
-  })
+  db.sequelize.query("SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 1 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description")
   .then(function(outdoor) {
     let events = [];
     for (let i=0; i < outdoor.length; i++ ){
@@ -25,13 +20,7 @@ router.route('/outdoor')
 // WORKING - get all indoor games
 router.route('/indoor')
   .get((req,res,err) => {
-  db.sequelize.query("E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 0 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description");
-  db.GameCategory.findAll({
-    where: {is_outdoor: false},
-    include: [{
-      model: db.Events,
-    }]   
-  })
+  db.sequelize.query("SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 0 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description")
   .then(function(outdoor) {
     let events = [];
     for (let i=0; i < outdoor.length; i++ ){
@@ -52,18 +41,10 @@ router.route('/newevent')
     event_name: req.body.eventName,
     event_time: req.body.time,
     description: req.body.eventDes,
-    start_date: Date.now(),
-    UserId: req.body.userid
+    start_date: Date.now()
   }
   db.Events.create(newEvent).then(function(response){
-      let eventId = response.id;
-      let userId = response.UserId;
-      db.Participation.create({
-        EventId: eventId,
-        UserId: userId
-      }).then( () => {
-        res.json(response);
-      })
+      res.json(response);
   })
   .catch(err => res.json(500,err));
 });
