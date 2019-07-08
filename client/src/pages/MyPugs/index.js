@@ -54,13 +54,12 @@ class MyPugs extends React.Component {
                             <h1><strong>NAME(this.userId.name)</strong></h1>
                             {/* <h2><small className="text-muted">Pro Pugger since 2019</small></h2> */}
                         </MDBCol>
-                        <MDBCol className="justify-content-center">
 
-                        </MDBCol>
+                        
                     </MDBRow>
 
 
-                    <MDBRow>
+                    <MDBRow className="skillDiv resp">
 
                         <MDBCol sm="3" className="text-center">
 
@@ -106,25 +105,29 @@ class MyPugs extends React.Component {
 
                     </MDBRow>
 
-                    <MDBRow className="pugsIveMade">
+                    <MDBRow >
 
-                        <MDBCol>
+                        <MDBCol className="pugsIveMade">
 
+<<<<<<< HEAD
                             <h1><strong>Pugs I've created:</strong></h1>
                             {/* {
                                 this.state.events.map((events, id) => (
                                     <MyPugsCard editEvent={this.editEvent} events={events} key={id} />
                                 ))
                             } */}
+=======
+                            <h1><strong>Pugs I've hosting:</strong></h1>
+>>>>>>> a9c03aa11e0068ff24ff39e9e0aa1b123babf3da
                             <hr className="hrTag1"></hr>
 
                         </MDBCol>
 
                     </MDBRow>
 
-                    <MDBRow className="pugsIveJoined">
+                    <MDBRow >
 
-                        <MDBCol>
+                        <MDBCol className="pugsIveJoined">
 
                             <h1><strong>Pugs I've joined:</strong></h1>
                             {
