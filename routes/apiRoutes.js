@@ -127,7 +127,7 @@ router.route('/allevents/:id')
   .catch(err => res.json(500,err));
 });
 
-// // WORKING - add new user
+// // WORKING - add new user (NOW IN AUTH ROUTES)
 // router.route('/newuser') 
 //   .post((req,res,err) => {
   
