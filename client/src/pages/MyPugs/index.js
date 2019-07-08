@@ -14,12 +14,25 @@ class MyPugs extends React.Component {
     }
 
 
+<<<<<<< HEAD
     fetchMyPugs = () => {
         let userId = localStorage.getItem('newUser.id');
         API.getMyEvents(userId).then(events => this.setState({ events: events }))
     }
 
 
+=======
+fetchMyPugs = () => {
+    let userId = localStorage.getItem('user.id');
+    API.getMyEvents(userId).then( events => this.setState({events: events}) )
+}
+    
+
+
+unJoinClickHandler = eventId => {
+    API.unJoinEvent(localStorage.getItem("user.id"), eventId).then( events => this.setState({events: events}) )
+}
+>>>>>>> 3f97cb33d31e7339657943902b4d98b7817f2852
 
     unJoinClickHandler = eventId => {
         API.unJoinEvent(localStorage.getItem("newUser.id"), eventId).then(events => this.setState({ events: events }))
