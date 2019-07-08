@@ -5,7 +5,7 @@
       "database": "pugs4life_db",
       "host": "localhost",
       "dialect": "mysql",
-      "port": 8889
+      "port": 3309
     },
     "test": {
       "username": "root",
