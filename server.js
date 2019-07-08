@@ -7,7 +7,7 @@ const db = require("./models");
 
 //auth test user
 const jwt_express = require('express-jwt');
-const JWT = require('./config/jwt');
+const JWT = require('./config/jwt.js');
 
 const JWT_SECRET_KEY = JWT.JWT_SECRET_KEY;
 const TEST_USER =  JWT.TEST_USER; 
@@ -29,30 +29,30 @@ app.use(require("./routes"));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
+const Nexmo = require('nexmo')
 
-
-const Nexmo = require('nexmo');
 const nexmo = new Nexmo({
   apiKey: '4821ffa6',
-  apiSecret: 'dXwIKJrXzb3ZEbZe',
-});
+  apiSecret: 'dXwIKJrXzb3ZEbZe'
+})
 
-const from = '19522007356';
-const to = '6124198226';
-const text = 'Hello from Nexmo';
+// require the Twilio module and create a REST client}
+const from =  '17828207989'
+const to = '19522007356'
+const text = 'A text message sent using the Nexmo SMS API'
 
-nexmo.message.sendSms(from, to, text);
-// // var clockwork = require("clockwork")({key:"your clockwork key here"});
+nexmo.message.sendSms(from, to, text, (err, responseData) => {
+    if (err) {
+        console.log(err);
+    } else {
+        if(responseData.messages[0]['status'] === "0") {
+            console.log("Message sent successfully.");
+        } else {
+            console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+        }
+    }
+})
 
-
-// // Send a message
-// clockwork.sendSms({ To: "9522007356", Content: "Test!"}, function(error, resp) {
-//     if (error) {
-//         console.log("Something went wrong", error);
-//     } else {
-//         console.log("Message sent",resp.responses[0].id);
-//     }
-// });
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true

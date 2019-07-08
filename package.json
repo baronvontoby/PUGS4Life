@@ -48,6 +48,7 @@
     "reactstrap": "^8.0.0",
     "sendmail": "^1.4.1",
     "sequelize": "^5.9.2",
+    "twilio": "^3.33.0",
     "yarn": "^1.16.0"
   }
 }

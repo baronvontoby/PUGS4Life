@@ -4,17 +4,6 @@ var router = require('express').Router();
 // WORKING - get all outdoor games
 router.route('/outdoor/:id')
   .get((req,res,err) => {
-<<<<<<< HEAD
-  db.sequelize.query("SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 1 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description")
-  .then(function(outdoor) {
-    let events = [];
-    for (let i=0; i < outdoor.length; i++ ){
-      for(let e=0; e < outdoor[i].Events.length; e++){
-        events.push(outdoor[i].Events[e]);
-      }
-    }
-    res.json(events);
-=======
   let userId = req.params.id;
   db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
   E.description , count(1) as player_count
@@ -28,26 +17,13 @@ router.route('/outdoor/:id')
   group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
   .then((outdoorEvents) => {
     res.json(outdoorEvents[0]);
->>>>>>> 9998371598065a3c206603438c2f5b03dc91b0f3
   })
   .catch(err => res.json(500, err));
 });
 
-
 // WORKING - get all indoor games
 router.route('/indoor/:id')
   .get((req,res,err) => {
-<<<<<<< HEAD
-  db.sequelize.query("SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description , count(1) as player_count FROM events E join participations AS P2 join gamecategories AS g where E.GameCategoryId = g.id AND 	E.id = P2.EventId AND 	g.is_outdoor = 0 group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description")
-  .then(function(outdoor) {
-    let events = [];
-    for (let i=0; i < outdoor.length; i++ ){
-      for(let e=0; e < outdoor[i].Events.length; e++){
-        events.push(outdoor[i].Events[e]);
-      }
-    }
-    res.json(events);
-=======
   let userId = req.params.id;
   db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, 
   E.description , count(1) as player_count
@@ -61,7 +37,6 @@ router.route('/indoor/:id')
   group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
   .then((indoorEvents) => {
     res.json(indoorEvents[0]);
->>>>>>> 9998371598065a3c206603438c2f5b03dc91b0f3
   })
   .catch(err => res.json(500, err));
 });
