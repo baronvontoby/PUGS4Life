@@ -21,11 +21,10 @@ class WeatherWidget extends Component {
     //     // const country = e.target.elements.country.value;
     const zipCode = "55420";
     const url = `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${API_KEY}&units=imperial`;
-
-    axios
-      .get(url)
-      .then(response => response.data)
-      .then(data => {
+    fetch(url)
+    .then(res => res.json())
+    .then(
+      (data) => {
         const temperature = Math.round(data.main.temp);
         const minTemp= Math.round(data.main.temp_min);
         const maxTemp= Math.round(data.main.temp_max);
@@ -40,8 +39,20 @@ class WeatherWidget extends Component {
           max: maxTemp,
           min: minTemp
         });
-        console.log(this.state.weathericon);
-      });
+      },
+      // Note: it's important to handle errors here
+      // instead of a catch() block so that we don't swallow
+      // exceptions from actual bugs in components.
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    )
+
+
+
   }
   render() {
     // const dateToFormat = '1976-04-19T12:59-0500';
