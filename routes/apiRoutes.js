@@ -13,10 +13,12 @@ sendSms = (user) =>
     console.log('Data is' , user);
     if (user.phone_num !== null)
     {
+      let phNum = user.phone_num.substring(0,1) == '1' ? user.phone_num : '1' + user.phone_num;
+      console.log("the number is : ", user.phone_num.substring(0,1));
       const from =  '17828207989'
-      const to = user.phone_num;
+      const to = phNum;
       const text = 'Welcome to Pugs! Ready to play?'
-      console.log(user.phone_num, text);
+      console.log(phNum, text);
       nexmo.message.sendSms(from, to, text, (err, responseData) => {
           if (err) {
               console.log(err);
@@ -80,7 +82,10 @@ router.route('/newevent')
     event_time: req.body.time,
     event_city: req.body.eventLoc, //ellen added
     description: req.body.eventDes,
-    start_date: Date.now()
+    start_date: Date.now(),
+    UserId: req.body.userId,
+    event_city: req.body.eventLoc,
+    GameCategoryId: req.body.isOutdoor
   }
   db.Events.create(newEvent).then(function(response){
     let eventId = response.id;

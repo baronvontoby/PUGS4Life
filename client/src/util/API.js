@@ -16,6 +16,8 @@ export default {
         .then( response => response.data ),
     getIndoor: id => axios.get('/api/indoor/' + id)
         .then( response => response.data ),
+    getEventsIcreated: id => axios.get('/api/eventscreated/' + id)
+        .then( response => response.data),
     createNewEvent : newEvent => axios.post('/api/newevent', newEvent)
         .then( response => response.data ),
     createNewUser : newUser => axios.post('/api/newuser', newUser)
