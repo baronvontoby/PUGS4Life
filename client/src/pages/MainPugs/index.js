@@ -6,12 +6,14 @@ import EventsCard from '../../components/EventsCard';
 import NavBarRe from '../../components/NavBarRe';
 
 class MainPugs extends React.Component {
-
-    state = {
-        events : [],
-        user: []
+    
+    constructor (props) {
+        super(props);
+        this.state = {
+            user: this.props.user,
+            events: []
+        }
     }
-
     setTheUser = () => {
         let user = JSON.parse(localStorage.getItem('user'))
         this.setState({ user: user })
@@ -21,7 +23,6 @@ class MainPugs extends React.Component {
     fetchAllPugs = () => {
         API.getAllEvents(this.state.user.id).then(events => this.setState({events: events}))
     }
-
 
     handleOutdoorClick = () => {
         API.getOutdoor(this.state.user.id).then( events => this.setState({events: events}))
@@ -40,7 +41,7 @@ class MainPugs extends React.Component {
     }
     
     componentDidMount () {
-        this.setTheUser();
+        // this.setTheUser();
         this.fetchAllPugs();
     }
 render () {
@@ -56,7 +57,7 @@ render () {
                     </Row>
                       <Row className="justify-content-center px-3">
                         {
-                            this.state.events.map((events, user, id) => (
+                            this.state.events.map((events, id) => (
                                 <EventsCard joinEvent={this.joinClickHandler} user={this.state.user} events={events} key={id} />                                
                                 ))
                         } 

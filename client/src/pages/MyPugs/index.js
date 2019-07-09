@@ -9,29 +9,20 @@ import MyPugsCard from '../../components/MyPugsCard';
 
 class MyPugs extends React.Component {
 
-    state = {
-        events: []
+    constructor (props) {
+        super(props);
+        this.state = {
+            user: this.props.user,
+            events: []
+        }
     }
 
     fetchMyPugs = () => {
-        let userId = localStorage.getItem('user.id');
-        API.getMyEvents(userId).then(events => this.setState({ events: events }))
+        API.getMyEvents(this.state.user.id).then(events => this.setState({ events: events }))
     }
 
-    // editEvent = eventId => {
-    //     API.put request to database
-    // }
-
-    // deleteEvent = eventId => {
-    //     API.deleting event from database
-    // }
-
-    unJoinClickHandler = eventId => {
-        API.unJoinEvent(localStorage.getItem("user.id"), eventId).then(events => this.setState({ events: events }))
-    }
-
-    unJoinClickHandler = eventId => {
-        API.unJoinEvent(localStorage.getItem("newUser.id"), eventId).then(events => this.setState({ events: events }))
+    unJoinClickHandler = (userId,eventId) => {
+        API.unJoinEvent( userId, eventId).then(events => this.setState({ events: events }))
     }
 
     componentDidMount() {
@@ -51,7 +42,7 @@ class MyPugs extends React.Component {
 
                         <MDBCol sm="12" className="text-center">
                             <img src="https://grfpublishers.com/assets/vendor/img/board.png" alt="avatar" className="rounded-circle img-thumbnail" />
-                            <h1><strong>NAME(this.userId.name)</strong></h1>
+                            <h1><strong>{this.state.user.name}</strong></h1>
                             {/* <h2><small className="text-muted">Pro Pugger since 2019</small></h2> */}
                         </MDBCol>
 
@@ -129,7 +120,7 @@ class MyPugs extends React.Component {
                             <h1><strong>Pugs I've joined:</strong></h1>
                             {
                                 this.state.events.map((events, id) => (
-                                    <MyEventsCard unJoinEvent={this.unJoinClickHandler} events={events} key={id} />
+                                    <MyEventsCard unJoinEvent={this.unJoinClickHandler} user={this.state.user} events={events} key={id} />
                                 ))
                             }
                             <hr className="hrTag2"></hr>
