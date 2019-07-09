@@ -20,7 +20,7 @@ class WeatherWidget extends Component {
     // / const city = e.target.elements.city.value;
     //     // const country = e.target.elements.country.value;
     const zipCode = "55420";
-    const url = `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${API_KEY}&units=imperial`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${API_KEY}&units=imperial`;
     fetch(url)
     .then(res => res.json())
     .then(
