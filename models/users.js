@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   //Creates table "user" in pugs4life_db schema.
-  var User = sequelize.define("user", {
+  var User = sequelize.define("User", {
   //creates "username" column in "users" table, cannot be NULL
     username: {
       type: DataTypes.STRING,
@@ -67,17 +67,17 @@ module.exports = function(sequelize, DataTypes) {
 
 
     // Many to Many users thru partic to events
-    user.belongsToMany(models.events, {
+    User.belongsToMany(models.Events, {
       through: models.Participation,
       onDelete: "cascade"
     });
 
     // one to many relationship of user/owner to event created
-    user.hasMany(models.events, {
+    User.hasMany(models.Events, {
     })
 
   };
 
-  return user;
+  return User;
 };
   

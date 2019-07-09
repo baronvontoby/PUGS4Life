@@ -13,12 +13,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   //creates association between two tables. The primary key from GameCategories table will be id(created column). game_id will be created in the Event table as a foreign key
-  gamecategory.associate = function(models) {
-    gamecategory.hasMany(models.events, {
+  GameCategory.associate = function(models) {
+    GameCategory.hasMany(models.Events, {
       onDelete: "cascade"
     });
   };
 
-  return gamecategory;
+  return GameCategory;
 };
     

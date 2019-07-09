@@ -1,11 +1,15 @@
 var db = require("../models");
 var router = require('express').Router();
-require("dotenv").config();
-var keys = require("../keys.js");
+//require("dotenv").config();
+//var sms = require('../')
+//var keys = require("../keys.js");
 
 const Nexmo = require('nexmo')
 
-//const nexmo = new Nexmo(keys.apiKey)
+const nexmo = new Nexmo({
+  apiKey: '4821ffa6',
+  apiSecret: 'dXwIKJrXzb3ZEbZe'
+})
 
 
 sendSms = (user) => 
@@ -113,6 +117,18 @@ router.route('/newevent')
 });
 
 // WORKING join/participate in an event (sends back of UserId and EventId)
+// router.route('/join/:userId/:eventId')
+//   .post((req,res,err) => {
+//     console.log(req.params.userId, req.params.eventId);
+//     db.Participation.create({
+//       EventId: req.params.eventId,
+//       UserId: req.params.userId
+//     }).then( result => {
+//       db.User.findOne( { where: { id: req.params.userId} })
+//       res.json(result)
+//     })
+// });
+
 router.route('/join/:userId/:eventId')
   .post((req,res,err) => {
     console.log(req.params.userId, req.params.eventId);
@@ -168,7 +184,7 @@ router.route('/myevents/:id')
       res.json(myevents[0]);
     }
   )
-  .catch(err => res.json(500,err))
+  .catch(err => res.json(500,err));
   });
 
 //Working - get events that available to join (this does not include events I have already signed up for)
