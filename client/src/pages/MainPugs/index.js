@@ -39,7 +39,7 @@ class MainPugs extends React.Component {
     }
 
     joinClickHandler = (userId, eventId) => {
-        // this.sendSms();
+        
         API.joinEvent(userId, eventId).then(events => this.setState({events: events}))
     }
     
