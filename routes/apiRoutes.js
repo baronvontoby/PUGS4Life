@@ -117,18 +117,6 @@ router.route('/newevent')
 });
 
 // WORKING join/participate in an event (sends back of UserId and EventId)
-// router.route('/join/:userId/:eventId')
-//   .post((req,res,err) => {
-//     console.log(req.params.userId, req.params.eventId);
-//     db.Participation.create({
-//       EventId: req.params.eventId,
-//       UserId: req.params.userId
-//     }).then( result => {
-//       db.User.findOne( { where: { id: req.params.userId} })
-//       res.json(result)
-//     })
-// });
-
 router.route('/join/:userId/:eventId')
   .post((req,res,err) => {
     console.log(req.params.userId, req.params.eventId);
