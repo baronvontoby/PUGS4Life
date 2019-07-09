@@ -54,6 +54,21 @@ db.sequelize.sync(syncOptions)
     //   state: TEST_USER.state,
     //   zipcode: TEST_USER.zipcode
     // })
+  
+    // on start look in db table Game Categories and find and count how many entries are in the table. 
+    // if there aren't 2 then add the seed data
+    db.GameCategory.findAndCountAll({}).then((allGameCategories) => {
+      if (allGameCategories.count !== 2) {
+        db.GameCategory.create({
+          name: "Outdoor",
+          is_outdoor: 1
+        })
+        db.GameCategory.create({
+          name: "Indoor",
+          is_outdoor: 0
+        })
+      }
+    })
 })
 .then(function() {
   app.listen(PORT, () => {
