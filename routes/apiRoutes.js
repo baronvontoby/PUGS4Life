@@ -1,6 +1,9 @@
 var db = require("../models");
 var router = require('express').Router();
+//require("dotenv").config();
 //var sms = require('../')
+//var keys = require("../keys.js");
+
 const Nexmo = require('nexmo')
 
 const nexmo = new Nexmo({
@@ -8,9 +11,10 @@ const nexmo = new Nexmo({
   apiSecret: 'dXwIKJrXzb3ZEbZe'
 })
 
+
 sendSms = (user) => 
 {
-    console.log('Data is' , user);
+    // console.log('Data is' , user);
     if (user.phone_num !== null)
     {
       let phNum = user.phone_num.substring(0,1) == '1' ? user.phone_num : '1' + user.phone_num;
@@ -31,6 +35,19 @@ sendSms = (user) =>
           }
       })
     }
+    db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1)
+        from events E
+        join participations AS P2
+        where E.id = P2.EventId
+        and id not in (
+        select EventId from participations
+        where UserId = ${result.UserId} )
+        group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
+        )
+        .then(eventsToJoin => {
+          //console.log(eventsToJoin);
+          res.json(eventsToJoin[0]);
+        })
 }
 
 // WORKING - get all outdoor games
@@ -81,10 +98,7 @@ router.route('/newevent')
     event_name: req.body.eventName,
     event_time: req.body.time,
     description: req.body.eventDes,
-    start_date: Date.now(),
-    UserId: req.body.userId,
-    event_city: req.body.eventLoc,
-    GameCategoryId: req.body.isOutdoor
+    start_date: Date.now()
   }
   db.Events.create(newEvent).then(function(response){
     let eventId = response.id;
@@ -100,17 +114,41 @@ router.route('/newevent')
 });
 
 // WORKING join/participate in an event (sends back of UserId and EventId)
+// router.route('/join/:userId/:eventId')
+//   .post((req,res,err) => {
+//     console.log(req.params.userId, req.params.eventId);
+//     db.Participation.create({
+//       EventId: req.params.eventId,
+//       UserId: req.params.userId
+//     }).then( result => {
+//       db.User.findOne( { where: { id: req.params.userId} })
+//       res.json(result)
+//     })
+// });
+
 router.route('/join/:userId/:eventId')
   .post((req,res,err) => {
     console.log(req.params.userId, req.params.eventId);
     db.Participation.create({
       EventId: req.params.eventId,
       UserId: req.params.userId
-    }).then( 
-      db.User.findOne( { where: { id: req.params.userId} })
-      .then( (result)  => sendSms(result)
-      )
-    )
+    })
+    .then( () => 
+        db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
+        from events E
+        join participations AS P2
+        where E.id = P2.EventId
+        and id not in (
+        select EventId from participations
+        where UserId = ${ req.params.userId } )
+        group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
+        ) 
+      .then(eventsToJoin => {
+        console.log("Here are the events: " , eventsToJoin[0]);
+        res.json(eventsToJoin[0]);
+      }) )
+      // .then( (result)  => sendSms(result) )
+    
 });
 
 //Events created WORKING
@@ -138,8 +176,8 @@ router.route('/myevents/:id')
   and P1.EventId = P2.EventId
   and P1.UserId = ${uid}
   group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
-  .then(myevents => {
-      console.log(myevents);
+  .then(myevents=> {
+      //console.log(myevents);
       res.json(myevents[0]);
     }
   )
@@ -150,7 +188,6 @@ router.route('/myevents/:id')
 router.route('/allevents/:id')
   .get((req, res,err) => {
   let userId = req.params.id;
-  console.log(userId);
   db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
   from events E
   join participations AS P2
@@ -206,12 +243,22 @@ router.route('/unJoin/:userId/:eventId')
       EventId: req.params.eventId
     }
   })
-  .then( (dbdelete) => {
-    res.json(dbdelete);
-  })
+  .then( () => 
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) as player_count
+  FROM events E
+  Join participations AS P1
+  join participations AS P2
+  where E.id = P1.EventId
+  and P1.EventId = P2.EventId
+  and P1.UserId = ${req.params.userId}
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
+  .then(myevents => {
+      //console.log(myevents);
+      res.json(myevents[0]);
+    })
+  )
   .catch(err => res.json(500,err));
 });
 
 module.exports = router;
-
 
