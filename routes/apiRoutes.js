@@ -1,12 +1,16 @@
 var db = require("../models");
 var router = require('express').Router();
+//require("dotenv").config();
 //var sms = require('../')
+//var keys = require("../keys.js");
+
 const Nexmo = require('nexmo')
 
 const nexmo = new Nexmo({
   apiKey: '4821ffa6',
   apiSecret: 'dXwIKJrXzb3ZEbZe'
 })
+
 
 sendSms = (user) => 
 {
@@ -103,11 +107,23 @@ router.route('/join/:userId/:eventId')
     db.Participation.create({
       EventId: req.params.eventId,
       UserId: req.params.userId
-    }).then( 
-      db.User.findOne( { where: { id: req.params.userId} })
-      .then( (result)  => sendSms(result)
-      )
-    )
+    })
+    .then( () => 
+        db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
+        from events E
+        join participations AS P2
+        where E.id = P2.EventId
+        and id not in (
+        select EventId from participations
+        where UserId = ${ req.params.userId } )
+        group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
+        ) 
+      .then(eventsToJoin => {
+        console.log("Here are the events: " , eventsToJoin[0]);
+        res.json(eventsToJoin[0]);
+      }) )
+      // .then( (result)  => sendSms(result) )
+    
 });
 
 //Events created WORKING
@@ -140,7 +156,7 @@ router.route('/myevents/:id')
       res.json(myevents[0]);
     }
   )
-  .catch(err => res.json(500,err));
+  .catch(err => res.json(500,err))
   });
 
 //Working - get events that available to join (this does not include events I have already signed up for)
@@ -205,6 +221,20 @@ router.route('/unJoin/')
   .then( (dbdelete) => {
     res.json(dbdelete);
   })
+  .then( () => 
+  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
+  from events E
+  join participations AS P2
+  where E.id = P2.EventId
+  and id not in (
+  select EventId from participations
+  where UserId = ${ req.body.userId } )
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
+  ) 
+.then(eventsToJoin => {
+  console.log("Here are the events: " , eventsToJoin[0]);
+  res.json(eventsToJoin[0]);
+  }) )
   .catch(err => res.json(500,err));
 });
 
