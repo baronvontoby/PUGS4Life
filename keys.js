@@ -1,4 +1,4 @@
 exports.nexmo = {
-    id: process.env.APIKEY,
-    secret: process.env.APISECRET
+    id: process.env.apiKey,
+    secret: process.env.apiSecret
 };

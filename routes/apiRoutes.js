@@ -1,15 +1,11 @@
 var db = require("../models");
 var router = require('express').Router();
-//require("dotenv").config();
-//var sms = require('../')
-//var keys = require("../keys.js");
+require("dotenv").config();
+var keys = require("../keys.js");
 
 const Nexmo = require('nexmo')
 
-const nexmo = new Nexmo({
-  apiKey: '4821ffa6',
-  apiSecret: 'dXwIKJrXzb3ZEbZe'
-})
+//const nexmo = new Nexmo(keys.apiKey)
 
 
 sendSms = (user) => 
