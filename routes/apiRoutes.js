@@ -32,11 +32,11 @@ sendSms = (user) =>
       })
     }
     db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1)
-        from events E
-        join participations AS P2
+        from Events E
+        join Participations AS P2
         where E.id = P2.EventId
         and id not in (
-        select EventId from participations
+        select EventId from Participations
         where UserId = ${result.UserId} )
         group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
         )
@@ -52,13 +52,13 @@ router.route('/outdoor/:id')
   let userId = req.params.id;
   db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.event_city,E.event_state, 
   E.description , count(1) as player_count
-  FROM events E
-  join participations AS P2
-  join gamecategories AS g
+  FROM Events E
+  join Participations AS P2
+  join GameCategories AS g
   where E.GameCategoryId = g.id
   AND 	E.id = P2.EventId
   AND 	g.is_outdoor = 1
-  AND 	P2.EventId not in ( Select EventId from participations where UserId = ${userId} )
+  AND 	P2.EventId not in ( Select EventId from Participations where UserId = ${userId} )
   group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
   .then((outdoorEvents) => {
     res.json(outdoorEvents[0]);
@@ -72,13 +72,13 @@ router.route('/indoor/:id')
   let userId = req.params.id;
   db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.event_city, E.event_state, 
   E.description , count(1) as player_count
-  FROM events E
-  join participations AS P2
-  join gamecategories AS g
+  FROM Events E
+  join Participations AS P2
+  join GameCategories AS g
   where E.GameCategoryId = g.id
   AND 	E.id = P2.EventId
   AND 	g.is_outdoor = 0
-  AND 	P2.EventId not in ( Select EventId from participations where UserId = ${userId} )
+  AND 	P2.EventId not in ( Select EventId from Participations where UserId = ${userId} )
   group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
   .then((indoorEvents) => {
     res.json(indoorEvents[0]);
@@ -112,7 +112,7 @@ router.route('/newevent')
   .catch(err => res.json(500,err));
 });
 
-// WORKING join/participate in an event (sends back of UserId and EventId)
+// WORKING join/participate in an event (sends back of UserId and EventId)  
 router.route('/join/:userId/:eventId')
   .post((req,res,err) => {
     console.log(req.params.userId, req.params.eventId);
@@ -122,11 +122,11 @@ router.route('/join/:userId/:eventId')
     })
     .then( () => 
         db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
-        from events E
-        join participations AS P2
+        from Events E
+        join Participations AS P2
         where E.id = P2.EventId
         and id not in (
-        select EventId from participations
+        select EventId from Participations
         where UserId = ${ req.params.userId } )
         group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
         ) 
@@ -156,9 +156,9 @@ router.route('/myevents/:id')
   .get((req,res,err) => {
   let uid = req.params.id;
   db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) as player_count
-  FROM events E
-  Join participations AS P1
-  join participations AS P2
+  FROM Events E
+  Join Participations AS P1
+  join Participations AS P2
   where E.id = P1.EventId
   and P1.EventId = P2.EventId
   and P1.UserId = ${uid}
@@ -175,13 +175,12 @@ router.route('/myevents/:id')
 router.route('/allevents/:id')
   .get((req, res,err) => {
   let userId = req.params.id;
-  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description, E.UserId, count(1) 
-  from events E
-  join participations AS P2
+  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
+  from Events E
+  join Participations AS P2
   where E.id = P2.EventId
   and id not in (
-  select EventId from participations
-  select name from users
+  select EventId from Participations
   where UserId = ${userId} )
   group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description `
   )
@@ -233,9 +232,9 @@ router.route('/unJoin/:userId/:eventId')
   })
   .then( () => 
   db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) as player_count
-  FROM events E
-  Join participations AS P1
-  join participations AS P2
+  FROM Events E
+  Join Participations AS P1
+  join Participations AS P2
   where E.id = P1.EventId
   and P1.EventId = P2.EventId
   and P1.UserId = ${req.params.userId}

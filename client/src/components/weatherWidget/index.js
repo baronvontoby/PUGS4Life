@@ -19,10 +19,10 @@ class WeatherWidget extends Component {
     maxTemp: undefined
   };
   componentDidMount() {
-    var user = JSON.parse(localStorage.getItem('user'));
-    console.log(user);
-    const zipCode = user.zipcode;
-    const url = `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${API_KEY}&units=imperial`;
+    // / const city = e.target.elements.city.value;
+    //     // const country = e.target.elements.country.value;
+    const zipCode = "55420";
+    const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${API_KEY}&units=imperial`;
     fetch(url)
     .then(res => res.json())
     .then(

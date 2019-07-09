@@ -16,29 +16,6 @@ class MainPugs extends React.Component {
         }
     }
 
-    // sendSms = () => {
-    // // console.log('Data is' , user);
-    //     if (this.state.user.ph_num !== null) {
-    //             let phNum = this.state.user.ph_num.substring(0,1) == '1' ? user.ph_num : '1' + this.state.user.ph_num;
-    //             console.log("the number is : ", user.ph_num.substring(0,1));
-    //             const from =  '17828207989'
-    //             const to = phNum;
-    //             const text = 'Welcome to Pugs! Ready to play?'
-    //             console.log(phNum, text);
-    //             nexmo.message.sendSms(from, to, text, (err, responseData) => {
-    //                 if (err) {
-    //                     console.log(err);
-    //                 } else {
-    //                     if(responseData.messages[0]['status'] === "0") {
-    //                         console.log("Message sent successfully.");
-    //                     } else {
-    //                         console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
-    //                     }
-    //                 }
-    //         })
-    //     }
-    // }
-
     setTheUser = () => {
         let user = JSON.parse(localStorage.getItem('user'))
         this.setState({ user: user })
