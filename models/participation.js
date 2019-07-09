@@ -2,20 +2,20 @@ module.exports = function(sequelize, DataTypes) {
   //Creates table "user" in pugs4life_db schema.
   var Participation = sequelize.define("Participation", {
   });
-  Participation.associate = function(models) {
-    Participation.belongsTo(models.User,{
+  participation.associate = function(models) {
+    participation.belongsTo(models.user,{
       foreignKey: {
         allowNull:false
       }
     });
-    Participation.belongsTo(models.Events, {
+    participation.belongsTo(models.events, {
       foreignKey: {
         allowNull:false
       }
     })
   }
 
-  return Participation;
+  return participation;
 
 };
       

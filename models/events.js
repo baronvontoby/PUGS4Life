@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   //Creates table "user" in pugs4life_db schema.
-  var Events = sequelize.define("Events", {
+  var Events = sequelize.define("events", {
   //creates "game_id" column in "Events" table, cannot be NULL.
     event_name: {
       type: DataTypes.STRING,
@@ -36,8 +36,8 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
   //creates association between two tables. The primary key from GameCategories table will be id(created column). game_id will be created in the Event table as a foreign key
-  Events.associate = function(models) {
-    Events.belongsTo(models.GameCategory, {
+  events.associate = function(models) {
+    events.belongsTo(models.gamecategory, {
       foreignKey: {
         allowNUll:false
       }
@@ -50,13 +50,13 @@ module.exports = function(sequelize, DataTypes) {
     // });
 
 
-    Events.belongsToMany(models.User, { 
-      through: models.Participation, 
+    events.belongsToMany(models.User, { 
+      through: models.participation, 
     });
 
-    Events.belongsTo(models.User, {
+    events.belongsTo(models.User, {
     })
   };
-  return Events;
+  return events;
 };
       
