@@ -4,7 +4,8 @@ const jwtConfig = require('../models/config/jwt');
 const SECRET_KEY = jwtConfig.JWT_SECRET_KEY;
 
 var jwt = require('jsonwebtoken');
-// config jwtConfig = express
+// config jwtConfig = express'
+
 
 router.route('/login')
     .post((req, res, err) => {
@@ -52,7 +53,7 @@ router.route('/login')
                 {
                     data: [ { id: dbUser.id, username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } ]
                 }, SECRET_KEY) ; //created the key
-                console.log(dbUser);
+                console.log("Heres the user", dbUser);
                 res.json({sucess: true, token: token, user: { id: dbUser.id , username: dbUser.username, email: dbUser.email, ph_num:dbUser.phone_num, zipcode: dbUser.zipcode } } ) //send back the token
       });    
     }); 

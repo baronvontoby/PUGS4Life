@@ -1,20 +1,17 @@
 import React from 'react';
-// import {Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText} from 'reactstrap';
-// import moment from 'moment';
-import { MDBCard, MDBRow, MDBCol, MDBCardImage, MDBBtn} from 'mdbreact';
-
+import { MDBCard, MDBRow, MDBCardBody,MDBCardText, MDBCardHeader, MDBCol, MDBCardImage, MDBBtn, MDBCardTitle, MDBCardFooter } from 'mdbreact';
 import './index.css';
-import avatar from './avatar.png'
 
 
 
 
-const MyEventsCard = props => (
+
+const MyCreatedPugs = props => (
     <MDBCard className="my-3 mx-auto p-2 w-75 z-depth-3">
     <MDBRow className="mx-auto">
       <MDBCol md="3 align-self-center">
         <MDBCardImage
-          src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.iconexperience.com%2F_img%2Fv_collection_png%2F512x512%2Fshadow%2Fsoccer_ball.png&f=1"
+          src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F3%2F3b%2FSpongeBob_SquarePants_character.svg%2F1200px-SpongeBob_SquarePants_character.svg.png&f=1"
           className="img-thumbnail w-100 rounded-circle mx-auto img-responsive p-0 waves"
         />
       </MDBCol>
@@ -55,7 +52,14 @@ const MyEventsCard = props => (
             onClick={() => props.unJoinEvent(props.user.id, props.events.id)            
             }
             >
-            Unjoin <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg" />
+            Delete <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg" />
+            </MDBBtn>
+            <MDBBtn
+            className="btn btn-default Ripple-parent  mx-auto rounded py-2 px-4"
+            onClick={() => props.unJoinEvent(props.events.id)            
+            }
+            >
+            Update <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg" />
             </MDBBtn>
         </MDBCol>
 
@@ -66,4 +70,4 @@ const MyEventsCard = props => (
 )
 
 
-export default MyEventsCard;
+export default MyCreatedPugs;

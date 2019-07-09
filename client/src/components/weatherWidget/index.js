@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 import './index.css'
 // import Moment from 'react-moment';
 import pugPic from './pugs.png'
+// import { userInfo } from "os";
 
 const API_KEY = "85fa4de20dcfbd962e68e36c4530c26d";
 
@@ -13,6 +14,7 @@ class WeatherWidget extends Component {
     name: undefined,
     weathericon: undefined,
     temp: undefined,
+    description: undefined,
     minTemp: undefined,
     maxTemp: undefined
   };
@@ -28,21 +30,17 @@ class WeatherWidget extends Component {
         const temperature = Math.round(data.main.temp);
         const minTemp= Math.round(data.main.temp_min);
         const maxTemp= Math.round(data.main.temp_max);
-
-        console.log(temperature);
         this.setState({
           weather: data,
           name: data.name,
           weathericon:
           `https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${data.weather[0].icon}.png`,
           temp: temperature,
+          description: data.weather[0].main,
           max: maxTemp,
           min: minTemp
         });
       },
-      // Note: it's important to handle errors here
-      // instead of a catch() block so that we don't swallow
-      // exceptions from actual bugs in components.
       (error) => {
         this.setState({
           isLoaded: true,
@@ -55,8 +53,6 @@ class WeatherWidget extends Component {
 
   }
   render() {
-    // const dateToFormat = '1976-04-19T12:59-0500';
-
     return (
       <div className="widget-right widget-right--type5 widget-right--brown ml-.5 z-depth mt-1" style={{zIndex: "1000"}}>
             <div className="mx-auto text-center position-relative"><img src={pugPic} style={{width: "8em"} } className="position-absolute pugImg"></img></div>
@@ -64,7 +60,7 @@ class WeatherWidget extends Component {
 
         <div className="widget-right-card">
           <div className="widget-right__title">{this.state.name}</div>
-          <div className="widget-right__description">moderate rain</div>
+          <div className="widget-right__description">{this.state.description}</div>
         </div>
         <img src={this.state.weathericon} width="50" height="50" alt="" className="weather-right__icon weather-right__icon--type5 weather-right__icon--brown" />
         <table className="weather-right-card">

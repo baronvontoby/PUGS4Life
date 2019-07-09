@@ -5,8 +5,6 @@ import TimePickerPage from '../../components/TimePicker/TimePicker.js';
 
 
 class CreateForm extends React.Component {
-
-
     render() {
         
         return (

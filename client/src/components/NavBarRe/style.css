@@ -1,3 +1,10 @@
 .navbar.navbar-dark .breadcrumb .nav-item .nav-link, .navbar.navbar-dark .navbar-nav .nav-item .nav-link {
     color: #fa991c;
 }
+
+.logoutbtn{
+    background:transparent!important;
+    box-shadow:none!important;
+    padding:0!important;
+    color: #fa991c;
+}
