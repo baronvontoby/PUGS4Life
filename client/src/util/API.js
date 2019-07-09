@@ -30,4 +30,5 @@ export default {
         .then( response => response.data),
     removeEvent: id => axios.delete('/api/remove/' + id )
         .then( response => response.data )
+        
 }
