@@ -1,11 +1,15 @@
 var db = require("../models");
 var router = require('express').Router();
-require("dotenv").config();
-var keys = require("../keys.js");
+//require("dotenv").config();
+//var sms = require('../')
+//var keys = require("../keys.js");
 
 const Nexmo = require('nexmo')
 
-//const nexmo = new Nexmo(keys.apiKey)
+const nexmo = new Nexmo({
+  apiKey: '4821ffa6',
+  apiSecret: 'dXwIKJrXzb3ZEbZe'
+})
 
 
 sendSms = (user) => 
@@ -168,7 +172,7 @@ router.route('/myevents/:id')
       res.json(myevents[0]);
     }
   )
-  .catch(err => res.json(500,err))
+  .catch(err => res.json(500,err));
   });
 
 //Working - get events that available to join (this does not include events I have already signed up for)
