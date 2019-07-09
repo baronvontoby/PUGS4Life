@@ -4,14 +4,9 @@ import React from "react";
 import {
   MDBRow,
   MDBCard,
-  MDBCardBody,
-  MDBCardText,
-  MDBCardHeader,
   MDBCol,
   MDBCardImage,
-  MDBBtn,
-  MDBCardTitle,
-  MDBCardFooter
+  MDBBtn
 } from "mdbreact";
 
 import "./index.css";
@@ -63,8 +58,7 @@ const EventsCard = props => (
         <MDBCol md="12">
             <MDBBtn
             className="btn btn-default Ripple-parent  mx-auto rounded py-2 px-4"
-            onClick={() =>
-                props.joinEvent(localStorage.getItem("newUser.id"), props.events.id)
+            onClick={() => props.joinEvent(props.user.id, props.events.id)            
             }
             >
             Join <i className="mr-2 mx-auto fal fa-calendar-plus fa-lg" />

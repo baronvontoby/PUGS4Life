@@ -13,7 +13,8 @@ class CreatePug extends React.Component {
             isOutdoor: false,
             eventImgUrl: "",
             eventDes: "",
-            eventTime: ""
+            eventTime: "",
+            userId: ""
         }
       
         handleInput = field => event => {
@@ -49,12 +50,21 @@ class CreatePug extends React.Component {
                 time: moment(this.state.time).format("HH:mm"),
                 isOutdoor: this.state.isOutdoor,
                 eventImgUrl: this.state.eventImgUrl,
-                eventDes: this.state.eventDes
+                eventDes: this.state.eventDes,
+                userId: this.state.user.id
             }
             API.createNewEvent(newEvent).then(() => console.log('Success'))
           };
+
+    setTheUser = () => {
+        let user = JSON.parse(localStorage.getItem('user'))
+        this.setState({ user: user })
+    }
     
-    
+    componentDidMount (){
+        this.setTheUser();
+    }
+
     render() {
         return (
         <div className="create-background">
@@ -97,7 +107,7 @@ class CreatePug extends React.Component {
                                 <Label for="event-time">Time (12HR Format)</Label>
                                   
                                         <Input
-                                        className="w-50"
+                                        className="w-75"
                                         type="time"
                                         name="eventTime"
                                         id="event-time"
@@ -111,7 +121,7 @@ class CreatePug extends React.Component {
                     </MDBCol>
                     <MDBCol sm="6">
                         <FormGroup>
-                            <Label className="sm-mt-3" for="category-switch">PUG Category</Label>
+                            <Label for="category-switch">PUG Category</Label>
                                 <div>  
                                     <CustomInput 
                                     type="switch" 
@@ -150,7 +160,7 @@ class CreatePug extends React.Component {
                         </MDBCol>
                     </MDBRow>
                 <MDBRow>
-                    <MDBCol sm={12} className="text-center">
+                    <MDBCol sm="12" className="text-center">
                         <MDBBtn 
                         className="createBtn create-color mx-auto mt-3" onClick={this.submitHandler}>
                             Create</MDBBtn>

@@ -6,7 +6,7 @@ const app = express();
 const db = require("./models");
 
 //auth test user
-const jwt_express = require('express-jwt');
+// const jwt_express = require('express-jwt');
 const JWT = require('./');
 
 const JWT_SECRET_KEY = JWT.JWT_SECRET_KEY;
@@ -31,17 +31,7 @@ app.get("*", (req, res) => {
 });
 
 
-// var clockwork = require("clockwork")({key:"your clockwork key here"});
 
-
-// // Send a message
-// clockwork.sendSms({ To: "9522007356", Content: "Test!"}, function(error, resp) {
-//     if (error) {
-//         console.log("Something went wrong", error);
-//     } else {
-//         console.log("Message sent",resp.responses[0].id);
-//     }
-// });
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
@@ -50,7 +40,7 @@ if (process.env.NODE_ENV === "test") {
   // this controls the reset of our mysql database
   syncOptions.force = false;
 } 
- 
+
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions)
   .then(() => {
@@ -64,6 +54,21 @@ db.sequelize.sync(syncOptions)
     //   state: TEST_USER.state,
     //   zipcode: TEST_USER.zipcode
     // })
+  
+    // on start look in db table Game Categories and find and count how many entries are in the table. 
+    // if there aren't 2 then add the seed data
+    db.GameCategory.findAndCountAll({}).then((allGameCategories) => {
+      if (allGameCategories.count !== 2) {
+        db.GameCategory.create({
+          name: "Outdoor",
+          is_outdoor: 1
+        })
+        db.GameCategory.create({
+          name: "Indoor",
+          is_outdoor: 0
+        })
+      }
+    })
 })
 .then(function() {
   app.listen(PORT, () => {

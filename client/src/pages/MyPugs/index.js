@@ -1,109 +1,115 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBBtn, MDBCol, MDBIcon } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBIcon, View, MDBJumbotron } from 'mdbreact';
 import './MyPugs.css';
 import NavBarRe from '../../components/NavBarRe';
 import API from '../../util/API';
 import MyEventsCard from '../../components/MyEventsCard';
+import MyPugsCard from '../../components/MyPugsCard';
 
 
 class MyPugs extends React.Component {
 
-state = {
-    events: []
-}
+    constructor (props) {
+        super(props);
+        this.state = {
+            user: this.props.user,
+            events: [],
+            created: []
+        }
+    }
 
+    fetchMyPugs = () => {
+        API.getMyEvents(this.state.user.id).then(events => this.setState({ events: events }))
+    }
 
-fetchMyPugs = () => {
-    let userId = localStorage.getItem('newUser.id');
-    API.getMyEvents(userId).then( events => this.setState({events: events}) )
-}
-    
+    fetchMyCreatedPugs = () => {
+        API.getEventsIcreated(this.state.user.id).then( events => this.setState({ created: events }))
+    }
 
+    unJoinClickHandler = (userId,eventId) => {
+        API.unJoinEvent( userId, eventId).then(events => this.setState({ events: events }))
+    }
 
-unJoinClickHandler = eventId => {
-    API.unJoinEvent(localStorage.getItem("newUser.id"), eventId).then( events => this.setState({events: events}) )
-}
-
-componentDidMount () {
-    this.fetchMyPugs();
-}
+    componentDidMount() {
+        this.fetchMyPugs();
+        // this.fetchMyCreatedPugs();
+    }
 
     render() {
         return (
-            <div>
+            <div className="myPugs-background">
                 <NavBarRe />
+                <MDBJumbotron className="my-jumbo z-depth-2">
+
+                </MDBJumbotron>
                 <MDBContainer>
 
-                    <MDBRow class="text-center">
-                        <MDBCol></MDBCol>
-
-                        <MDBCol class="text-center" className="justify-content-center">
-                            <img src="https://grfpublishers.com/assets/vendor/img/board.png" alt="avatar" className="img-thumbnail" />
-                            <h1><strong>NAME</strong></h1>
+                    <MDBRow>
+                        <MDBCol sm="12" className="text-center">
+                            <img src="https://grfpublishers.com/assets/vendor/img/board.png" alt="avatar" className="rounded-circle img-thumbnail" />
+                            <h1><strong>{this.state.user.username}</strong></h1>
                             {/* <h2><small className="text-muted">Pro Pugger since 2019</small></h2> */}
-                        </MDBCol>
-                        <MDBCol className="justify-content-center">
-
-                        </MDBCol>
+                        </MDBCol>  
                     </MDBRow>
 
-                    <MDBRow>
-
-                    </MDBRow>
-
-                    <MDBRow>
-
-                        <MDBCol class="col-sm" className="justify-content-center">
-                            <MDBIcon icon="dog" size="5x" />
-                            <h1><strong>PUP</strong></h1>
+                    <MDBRow className="skillDiv resp">
+                        <MDBCol sm="3" className="text-center">
+                            <MDBIcon id="pup" icon="dog" size="5x" />
+                            <p className="skill">
+                                <h1><strong>PUP</strong></h1>
+                            </p>
                         </MDBCol>
-                        <MDBCol></MDBCol>
-                        <MDBCol class="col-sm" className="justify-content-center">
-                            <div className="my-5">
-                                <label htmlFor="customRange1"></label>
+
+                        <MDBCol sm="6" className="text-center">
+                            <div className="mt-5">
                                 <input type="range" className="custom-range" id="customRange1" />
-                                <h2 className="justify-content-center"><strong>SKILL LEVEL</strong></h2>
+                                <p className="skill">
+                                    <br></br>
+                                    <h3><strong>SKILL LEVEL</strong></h3>
+                                </p>
                             </div>
                         </MDBCol>
-                        <MDBCol></MDBCol>
-                        <MDBCol class="col-sm" className="justify-content-center">
+
+                        <MDBCol sm="3" className="text-center">
                             <MDBIcon icon="fire-alt" size="5x" />
-                            <h1><strong>PRO</strong></h1>
+                            <p className="skill">
+                                <h1><strong>PRO</strong></h1>
+                            </p>
                         </MDBCol>
 
                     </MDBRow>
-
+                  
                     <MDBRow className="justify-content-center">
                         {/* <MDBBtn className='sport' onClick={} color='info' size='lg'>Edit Profile</MDBBtn> */}
 
                     </MDBRow>
 
-                    <MDBRow className="pugsIveMade">
+                    <MDBRow >
+                        <MDBCol sm="12" className="pugsIveMade">
 
-                        <MDBCol>
-
-                            <h1><strong>Games I have Created</strong></h1>
+                            <h1><strong>Pugs I've created:</strong></h1>
                             <hr className="hrTag1"></hr>
-                            
+                            {
+                                this.state.created.map((events, id) => (
+                                    <MyPugsCard  events={events} key={id} />
+                                ))
+                            }                          
                         </MDBCol>
 
                     </MDBRow>
 
-                    <MDBRow className="pugsIveJoined">
+                    <MDBRow >
 
-                    <MDBCol>
-
-                    <h1><strong>Pick Up Games I have Joined</strong></h1>
-                        {
-                            this.state.events.map((events, id) => (
-                                <MyEventsCard unJoinEvent={this.unJoinClickHandler} events={events} key={id} />                                
+                        <MDBCol className="pugsIveJoined">
+                            <h1><strong>Pugs I've joined:</strong></h1>
+                            <hr className="hrTag2"></hr>
+                            {
+                                this.state.events.map((events, id) => (
+                                    <MyEventsCard unJoinEvent={this.unJoinClickHandler} user={this.state.user} events={events} key={id} />
                                 ))
-                        } 
-                    <hr className="hrTag2"></hr>
-                    <hr></hr>
+                            }
+                        </MDBCol>
 
-                    </MDBCol>
-                       
                     </MDBRow>
 
                 </MDBContainer>
