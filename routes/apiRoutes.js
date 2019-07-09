@@ -74,7 +74,7 @@ router.route('/outdoor/:id')
 router.route('/indoor/:id')
   .get((req,res,err) => {
   let userId = req.params.id;
-  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, 
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.event_city, E.event_state, 
   E.description , count(1) as player_count
   FROM events E
   join participations AS P2
@@ -99,8 +99,9 @@ router.route('/newevent')
     event_time: req.body.time,
     description: req.body.eventDes,
     start_date: Date.now(),
+    UserId: req.body.userId,
     event_city: req.body.eventLoc,
-    UserId: req.body.userId
+    GameCategoryId: req.body.isOutdoor ? 1 : 2
   }
   db.Events.create(newEvent).then(function(response){
     let eventId = response.id;
