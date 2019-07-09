@@ -8,10 +8,10 @@ INSERT INTO users (username, password, email, name, image_link, phone_num, city,
 INSERT INTO users (username, password, email, name, image_link, phone_num, city, state, zipcode, active, createdAt, updatedAt) values ('sthong', '123456', 'email4@gmail.com', 'sabrina', NULL, '7155675302', 'Minneapolis', 'MN', '55111', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- create game category
-INSERT INTO gamecategories (name, is_outdoor, createdAt, updatedAt) values ('Volleyball', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO gamecategories (name, is_outdoor, createdAt, updatedAt) values ('Board Games', FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO gamecategories (name, is_outdoor, createdAt, updatedAt) values ('Basketball', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO gamecategories (name, is_outdoor, createdAt, updatedAt) values ('Cards', FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO gamecategories (name, is_outdoor, createdAt, updatedAt) values ('Outdoor', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO gamecategories (name, is_outdoor, createdAt, updatedAt) values ('Indoor', FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+-- INSERT INTO gamecategories (name, is_outdoor, createdAt, updatedAt) values ('Basketball', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+-- INSERT INTO gamecategories (name, is_outdoor, createdAt, updatedAt) values ('Cards', FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- create events
 INSERT INTO events (event_name, start_date, end_date, event_time, event_city, event_state, event_zipcode, description, createdAt, updatedAt, GameCategoryId, UserId) 
