@@ -222,23 +222,20 @@ router.route('/unJoin/:userId/:eventId')
       EventId: req.params.eventId
     }
   })
-  .then( (dbdelete) => {
-    res.json(dbdelete);
-  })
   .then( () => 
-  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
-  from events E
+  db.sequelize.query(`SELECT E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) as player_count
+  FROM events E
+  Join participations AS P1
   join participations AS P2
-  where E.id = P2.EventId
-  and id not in (
-  select EventId from participations
-  where UserId = ${ req.body.userId } )
-  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
-  ) 
-.then(eventsToJoin => {
-  console.log("Here are the events: " , eventsToJoin[0]);
-  res.json(eventsToJoin[0]);
-  }) )
+  where E.id = P1.EventId
+  and P1.EventId = P2.EventId
+  and P1.UserId = ${req.params.userId}
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`)
+  .then(myevents => {
+      //console.log(myevents);
+      res.json(myevents[0]);
+    })
+  )
   .catch(err => res.json(500,err));
 });
 
