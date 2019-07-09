@@ -81,7 +81,10 @@ router.route('/newevent')
     event_name: req.body.eventName,
     event_time: req.body.time,
     description: req.body.eventDes,
-    start_date: Date.now()
+    start_date: Date.now(),
+    UserId: req.body.userId,
+    event_city: req.body.eventLoc,
+    GameCategoryId: req.body.isOutdoor
   }
   db.Events.create(newEvent).then(function(response){
     let eventId = response.id;
