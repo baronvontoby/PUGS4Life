@@ -179,14 +179,15 @@ router.route('/myevents/:id')
 router.route('/allevents/:id')
   .get((req, res,err) => {
   let userId = req.params.id;
-  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
+  db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description, E.UserId, count(1) 
   from events E
   join participations AS P2
   where E.id = P2.EventId
   and id not in (
   select EventId from participations
+  select name from users
   where UserId = ${userId} )
-  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
+  group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description `
   )
   .then(eventsToJoin => {
     //console.log(eventsToJoin);

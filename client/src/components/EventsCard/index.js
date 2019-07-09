@@ -20,7 +20,7 @@ const EventsCard = props => (
     <MDBRow className="mx-auto">
       <MDBCol md="3 align-self-center">
         <MDBCardImage
-          src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F3%2F3b%2FSpongeBob_SquarePants_character.svg%2F1200px-SpongeBob_SquarePants_character.svg.png&f=1"
+          src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.iconexperience.com%2F_img%2Fv_collection_png%2F512x512%2Fshadow%2Fsoccer_ball.png&f=1"
           className="img-thumbnail w-100 rounded-circle mx-auto img-responsive p-0 waves"
         />
       </MDBCol>
@@ -46,7 +46,7 @@ const EventsCard = props => (
             <MDBCardImage src={avatar} className="img-fluid img avatar" />
           </MDBCol> */}
           <MDBCol md="8 text-left px-0 py-2">
-            <p className="font-italic m-0 p-0 text-muted"><i className="text-center mx-auto left fas fa-user-circle fa-lg"></i> Created By: Liz Lemon</p>
+            <p className="font-italic m-0 p-0 text-muted"><i className="text-center mx-auto left fas fa-user-circle fa-lg"></i> Created By: {props.user.id}</p>
           </MDBCol>
           <MDBCol md="4 align-self-center">
             <p className="font-italic m-0 p-0 text-muted font-smaller "><i className="fas fa-circle green-text text-sm-right fa-sm"></i> 10 Friends</p>

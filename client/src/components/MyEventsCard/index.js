@@ -1,7 +1,7 @@
 import React from 'react';
 // import {Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText} from 'reactstrap';
 // import moment from 'moment';
-import { MDBCard, MDBRow, MDBCardBody,MDBCardText, MDBCardHeader, MDBCol, MDBCardImage, MDBBtn, MDBCardTitle, MDBCardFooter } from 'mdbreact';
+import { MDBCard, MDBRow, MDBCol, MDBCardImage, MDBBtn} from 'mdbreact';
 
 import './index.css';
 import avatar from './avatar.png'
@@ -14,7 +14,7 @@ const MyEventsCard = props => (
     <MDBRow className="mx-auto">
       <MDBCol md="3 align-self-center">
         <MDBCardImage
-          src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F3%2F3b%2FSpongeBob_SquarePants_character.svg%2F1200px-SpongeBob_SquarePants_character.svg.png&f=1"
+          src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.iconexperience.com%2F_img%2Fv_collection_png%2F512x512%2Fshadow%2Fsoccer_ball.png&f=1"
           className="img-thumbnail w-100 rounded-circle mx-auto img-responsive p-0 waves"
         />
       </MDBCol>
