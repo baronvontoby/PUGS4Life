@@ -98,7 +98,9 @@ router.route('/newevent')
     event_name: req.body.eventName,
     event_time: req.body.time,
     description: req.body.eventDes,
-    start_date: Date.now()
+    start_date: Date.now(),
+    event_city: req.body.eventLoc,
+    UserId: req.body.userId
   }
   db.Events.create(newEvent).then(function(response){
     let eventId = response.id;
@@ -114,18 +116,6 @@ router.route('/newevent')
 });
 
 // WORKING join/participate in an event (sends back of UserId and EventId)
-// router.route('/join/:userId/:eventId')
-//   .post((req,res,err) => {
-//     console.log(req.params.userId, req.params.eventId);
-//     db.Participation.create({
-//       EventId: req.params.eventId,
-//       UserId: req.params.userId
-//     }).then( result => {
-//       db.User.findOne( { where: { id: req.params.userId} })
-//       res.json(result)
-//     })
-// });
-
 router.route('/join/:userId/:eventId')
   .post((req,res,err) => {
     console.log(req.params.userId, req.params.eventId);
