@@ -1,4 +1,7 @@
-const JWT_SECRET_KEY = 'b0TX6u4GeLJ0EUHcR9iMxH02HLEacArt'; //hide the key in the config vars
+require("dotenv").config();
+var keys = require("../../keys");
+
+const JWT_SECRET_KEY = keys.JWT_SECRET_KEY;    //hide the key in the config vars
 // process.env.JWT_SECRET_KEY; 
 var db = require("../");
 

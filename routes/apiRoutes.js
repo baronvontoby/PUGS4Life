@@ -1,16 +1,17 @@
 var db = require("../models");
 var router = require('express').Router();
 require("dotenv").config();
-var keys = require("../keys.js");
+const jwtConfig = require('../models/config/jwt');
 
-const Nexmo = require('nexmo')
+const Nexmo = require('nexmo');
+var keys = require("../keys");
 
-//const nexmo = new Nexmo(keys.apiKey)
+const nexmo = new Nexmo({apiKey: keys.API_Key, apiSecret: keys.API_Secret})
 
 
 sendSms = (user) => 
 {
-    // console.log('Data is' , user);
+    //console.log('Data is' , user , 'and the key is ',  keys.API_Key );
     if (user.phone_num !== null)
     {
       let phNum = user.phone_num.substring(0,1) == '1' ? user.phone_num : '1' + user.phone_num;
@@ -20,7 +21,7 @@ sendSms = (user) =>
       const text = 'Welcome to Pugs! Ready to play?'
       console.log(phNum, text);
       nexmo.message.sendSms(from, to, text, (err, responseData) => {
-          if (err) {
+          if (err) { 
               console.log(err);
           } else {
               if(responseData.messages[0]['status'] === "0") {
@@ -28,22 +29,11 @@ sendSms = (user) =>
               } else {
                   console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
               }
-          }
+          }          
       })
     }
-    db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1)
-        from events E
-        join participations AS P2
-        where E.id = P2.EventId
-        and id not in (
-        select EventId from participations
-        where UserId = ${result.UserId} )
-        group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
-        )
-        .then(eventsToJoin => {
-          //console.log(eventsToJoin);
-          res.json(eventsToJoin[0]);
-        })
+    //just send some response
+    res.json('');
 }
 
 // WORKING - get all outdoor games
@@ -110,7 +100,7 @@ router.route('/newevent')
     })
 })
   .catch(err => res.json(500,err));
-});
+}); 
 
 // WORKING join/participate in an event (sends back of UserId and EventId)
 router.route('/join/:userId/:eventId')
@@ -120,7 +110,11 @@ router.route('/join/:userId/:eventId')
       EventId: req.params.eventId,
       UserId: req.params.userId
     })
-    .then( () => 
+    .then( 
+      db.User.findOne( { where: { id: req.params.userId} })
+      .then( result => sendSms(result))
+      )
+   .then( () => 
         db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
         from events E
         join participations AS P2
@@ -129,14 +123,14 @@ router.route('/join/:userId/:eventId')
         select EventId from participations
         where UserId = ${ req.params.userId } )
         group by E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode, E.description`
-        ) 
-      .then(eventsToJoin => {
+        ) )
+    .then(eventsToJoin => {
         console.log("Here are the events: " , eventsToJoin[0]);
         res.json(eventsToJoin[0]);
-      }) )
+      }) 
       // .then( (result)  => sendSms(result) )
     
-});
+}); 
 
 //Events created WORKING
 router.route('/eventscreated/:id')
