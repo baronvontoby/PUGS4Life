@@ -181,7 +181,7 @@ router.route('/allevents/:id')
   let userId = req.params.id;
   db.sequelize.query(`Select E.id, E.event_name, E.start_date, E.event_time, E.event_zipcode,  E.event_city, E.event_state, E.description , count(1) 
   from Events E
-  join participations AS P2
+  join Participations AS P2
   where E.id = P2.EventId
   and id not in (
   select EventId from Participations
