@@ -52,7 +52,7 @@ class App extends Component {
           <BrowserRouter>
             <Switch>
               <Route exact path="/" component={ () => <LandingPage finishLogin={this.setUser} />} />
-              <Route exact path="/register" component={() => <RegisterPage className="text-left mx-auto"/>}/>
+              <Route exact path="/register" component={() => <RegisterPage finishLogin={this.setUser} className="text-left mx-auto"/>}/>
               <Route exact path="/home" component={ () => <LandingPage finishLogin={this.setUser} />}  />
               <Route exact path="/create" component={ () => <LandingPage finishLogin={this.setUser} />}  />
               <Route exact path="/mypugs" component={ () => <LandingPage finishLogin={this.setUser} />}  />
