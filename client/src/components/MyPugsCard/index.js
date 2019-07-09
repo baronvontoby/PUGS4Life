@@ -11,7 +11,7 @@ const MyPugsCard = props => (
      
             <MDBCard className="card mx-auto row my-3 justify-content-center px-2">
                 <MDBCol className="col-md-3">
-                    <MDBCardImage src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F3%2F3b%2FSpongeBob_SquarePants_character.svg%2F1200px-SpongeBob_SquarePants_character.svg.png&f=1" className="img-thumbnail">
+                    <MDBCardImage src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.iconexperience.com%2F_img%2Fv_collection_png%2F512x512%2Fshadow%2Fsoccer_ball.png&f=1" className="img-thumbnail">
                         
                     </MDBCardImage>
                 </MDBCol>
