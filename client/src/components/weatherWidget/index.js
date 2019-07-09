@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 import './index.css'
 // import Moment from 'react-moment';
 import pugPic from './pugs.png'
-import { userInfo } from "os";
+// import { userInfo } from "os";
 
 const API_KEY = "85fa4de20dcfbd962e68e36c4530c26d";
 
@@ -31,6 +31,7 @@ class WeatherWidget extends Component {
     const zipCode = user.zipcode;
     // console.log( JSON.stringify(zipCode))
     const url = `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${API_KEY}&units=imperial`;
+    console.log(url);
     fetch(url)
     .then(res => res.json())
     .then(

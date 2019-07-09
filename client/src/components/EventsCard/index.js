@@ -10,9 +10,9 @@ import {
 } from "mdbreact";
 
 import "./index.css";
-import avatar from "./avatar.png";
-var createdBy = JSON.parse(localStorage.getItem('user'));
-var creator = createdBy.username;
+// import avatar from "./avatar.png";
+// var createdBy = JSON.parse(localStorage.getItem('user'));
+// var creator = createdBy.username;
 
 
 const EventsCard = props => (
