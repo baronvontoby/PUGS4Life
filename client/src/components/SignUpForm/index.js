@@ -67,7 +67,8 @@ class RegisterPage extends Component {
         //console.log(JSON.stringify(decoded.data[0]));
         localStorage.setItem("user", JSON.stringify(decoded.data[0]));
         this.setState({'loggedIn':'true'});
-        this.props.history.push("/home") 
+        this.props.finishLogin();
+        // this.props.history.push("/home") 
       })
     };
 
