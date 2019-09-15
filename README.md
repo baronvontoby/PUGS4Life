@@ -38,14 +38,14 @@
 ### Demos
 
 #### Sign in/Create a New User
-![Pugs Landing Page.](client\public\videos\signup_signin.gif)
+![Pugs Landing Page](client/public/videos/signup_signin.gif)
 ***
 #### Join PUG (View Indoor, Outdoor, or All)
-![Pugs User Page](client\public\videos\view_events_join.gif)
+![Pugs User Page](client/public/videos/view_events_join.gif)
 ***
 #### Create a PUG
-![Pugs User Page](client\public\videos\create_event.gif)
+![Pugs User Page](client/public/videos/create_event.gif)
 ***
 #### View My PUGs (Unjoin event)
-![Pugs User Page](client\public\videos\unjoin.gif)
+![Pugs User Page](client/public/videos/unjoin.gif)
 ***
