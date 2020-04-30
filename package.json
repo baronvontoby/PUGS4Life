@@ -31,7 +31,7 @@
     "formik": "^1.5.7",
     "if-env": "^1.0.4",
     "install": "^0.12.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mdbreact": "^4.17.0",
     "mdreact": "^0.1.5",
     "moment": "^2.24.0",
